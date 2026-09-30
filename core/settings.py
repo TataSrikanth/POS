@@ -835,3 +835,11 @@ PRINT_RECEIPT_LOGO = os.getenv("PRINT_RECEIPT_LOGO", "1") != "0"
 # (<slug>.<BASE_URL domain>). Set SUBDOMAIN_LOGIN_REDIRECT=False while the site
 # has no wildcard domain (for example on a plain *.onrender.com address).
 SUBDOMAIN_LOGIN_REDIRECT = os.getenv("SUBDOMAIN_LOGIN_REDIRECT", "True") == "True"
+
+# Web-service-only deploys (no Celery worker): set CELERY_TASK_ALWAYS_EAGER=True
+# and background tasks run inside the web request instead of being queued.
+# Results are still stored so the AI-import status polling keeps working.
+# Scheduled jobs (daily digest, subscription billing) need a real worker + beat.
+CELERY_TASK_ALWAYS_EAGER = os.getenv("CELERY_TASK_ALWAYS_EAGER", "False") == "True"
+CELERY_TASK_EAGER_PROPAGATES = False
+CELERY_TASK_STORE_EAGER_RESULT = True
