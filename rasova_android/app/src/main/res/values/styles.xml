@@ -2,8 +2,8 @@
 <resources>
     <!-- Dark window background so the startup flash is never white -->
     <style name="Theme.AppCompat.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowBackground">#0a0a0a</item>
-        <item name="android:statusBarColor">#0a0a0a</item>
-        <item name="android:navigationBarColor">#0a0a0a</item>
+        <item name="android:windowBackground">#181715</item>
+        <item name="android:statusBarColor">#181715</item>
+        <item name="android:navigationBarColor">#181715</item>
     </style>
 </resources>

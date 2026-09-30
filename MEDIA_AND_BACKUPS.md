@@ -10,7 +10,7 @@
 
 | Bucket | Visibility | Holds | Served via |
 |---|---|---|---|
-| `rasova-media` | **PUBLIC** | logos, menu images | `https://media.rasova.net/...` (custom domain, CDN-cached) |
+| `rasova-media` | **PUBLIC** | logos, menu images | `https://media.oiramen.com/...` (custom domain, CDN-cached) |
 | `rasova-backups` | **PRIVATE** | `pg_dump` database backups | nothing — API access only |
 
 > ⚠️ **THE RULE:** media is public so images load in browsers. **Database backups
@@ -28,7 +28,7 @@ User uploads a logo in Setup
 Django (S3Boto3Storage)  ──PUT──►  R2 bucket: rasova-media/tenant_logos/xxxx.jpg
         │
         ▼
-tenant.logo.url  ─►  https://media.rasova.net/tenant_logos/xxxx.jpg
+tenant.logo.url  ─►  https://media.oiramen.com/tenant_logos/xxxx.jpg
         │
         ▼
 Browser loads it via the custom domain (Cloudflare CDN, free egress)
@@ -44,7 +44,7 @@ AWS_ACCESS_KEY_ID=<32-char R2 access key id>
 AWS_SECRET_ACCESS_KEY=<R2 secret>
 AWS_S3_ENDPOINT_URL=https://836c606fc06525ba405b92c49ff23845.r2.cloudflarestorage.com
 AWS_S3_REGION_NAME=auto
-AWS_S3_CUSTOM_DOMAIN=media.rasova.net
+AWS_S3_CUSTOM_DOMAIN=media.oiramen.com
 ```
 Driven entirely from `core/settings.py` (the `if _AWS_BUCKET:` block). If
 `AWS_STORAGE_BUCKET_NAME` is unset, it **falls back to local disk** (dev mode).
@@ -274,12 +274,12 @@ sudo systemctl start postgresql
 
 Work down this list:
 
-1. **Is it saved?** `tenant.logo.url` should print a `https://media.rasova.net/...` URL
+1. **Is it saved?** `tenant.logo.url` should print a `https://media.oiramen.com/...` URL
    (not `/media/...`). If it's `/media/...`, the R2 env vars aren't set / loaded.
 2. **Is the file actually in R2?** Check the bucket in the Cloudflare dashboard, or
-   open the `media.rasova.net/...` URL directly.
+   open the `media.oiramen.com/...` URL directly.
    - URL 404s but file *is* in the bucket → the **custom domain isn't Active**
-     (R2 → rasova-media → Settings → Custom Domains → connect `media.rasova.net`).
+     (R2 → rasova-media → Settings → Custom Domains → connect `media.oiramen.com`).
 3. **`Credential access key has length 0`** on upload → `AWS_ACCESS_KEY_ID` is
    empty in `.env`. Add the R2 token keys; verify with:
    ```bash

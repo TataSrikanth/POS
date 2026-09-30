@@ -26,7 +26,7 @@
     .btn-lux:hover, .btn-lux.active { border-color:var(--gold); background:var(--gold); color:#fff; }
     .btn-lux.danger { border-color:var(--red); color:var(--red); }
     .btn-lux.danger:hover { background:var(--red); color:#fff; }
-    .section-title { font-family:'DM Serif Display',serif; font-size:1rem; text-transform:uppercase; letter-spacing:3px; margin-bottom:1.25rem; }
+    .section-title { font-family:'Inter', sans-serif; font-size:1rem; text-transform:uppercase; letter-spacing:3px; margin-bottom:1.25rem; }
     .card-lux { background:var(--panel); border:1px solid var(--border); }
 
     /* Status pills */
@@ -41,7 +41,7 @@
     .po-table { width:100%; border-collapse:collapse; }
     .po-table th { font-size:0.67rem; text-transform:uppercase; letter-spacing:2px; color:var(--muted); padding:0.8rem 1rem; border-bottom:1px solid var(--border); text-align:left; }
     .po-table td { padding:0.9rem 1rem; border-bottom:1px dashed var(--border); font-size:0.88rem; vertical-align:middle; }
-    .po-table tr:hover td { background:rgba(197,160,89,0.04); }
+    .po-table tr:hover td { background:rgba(216, 148, 47,0.04); }
 
     .item-list { list-style:none; margin:0; padding:0; }
     .item-list li { font-size:0.78rem; color:var(--muted); padding:1px 0; }
@@ -64,12 +64,12 @@
         overflow-y:auto; transform:translateX(100%); transition:transform 0.3s ease; padding:2rem;
     }
     .drawer.open { transform:translateX(0); }
-    .drawer-title { font-family:'DM Serif Display',serif; font-size:1.3rem; margin-bottom:1.5rem; }
+    .drawer-title { font-family:'Inter', sans-serif; font-size:1.3rem; margin-bottom:1.5rem; }
     .form-field { margin-bottom:1.2rem; }
     .form-field label { font-size:0.68rem; text-transform:uppercase; letter-spacing:2px; color:var(--muted); display:block; margin-bottom:0.4rem; }
     .form-field select, .form-field input {
         width:100%; background:transparent; border:none; border-bottom:1px solid var(--border);
-        color:var(--text); padding:0.4rem 0; font-size:0.88rem; font-family:'Outfit',sans-serif; outline:none; appearance:none;
+        color:var(--text); padding:0.4rem 0; font-size:0.88rem; font-family:'Inter',sans-serif; outline:none; appearance:none;
     }
     .form-field select:focus, .form-field input:focus { border-color:var(--gold); }
     .form-field select option { background:var(--panel); color:var(--text); }
@@ -77,7 +77,7 @@
     /* Line items */
     .line-item-row { display:grid; grid-template-columns:1fr 90px 90px 28px; gap:0.5rem; align-items:end; margin-bottom:0.75rem; }
     .line-label { font-size:0.65rem; text-transform:uppercase; letter-spacing:1px; color:var(--muted); }
-    .line-item-row input, .line-item-row select { border:none; border-bottom:1px solid var(--border); background:transparent; color:var(--text); font-family:'Outfit',sans-serif; font-size:0.85rem; padding:0.3rem 0; outline:none; width:100%; }
+    .line-item-row input, .line-item-row select { border:none; border-bottom:1px solid var(--border); background:transparent; color:var(--text); font-family:'Inter',sans-serif; font-size:0.85rem; padding:0.3rem 0; outline:none; width:100%; }
     .line-total { font-size:0.75rem; color:var(--muted); text-align:right; padding:0.3rem 0; border-bottom:1px dashed var(--border); }
 
     .empty-state { text-align:center; padding:4rem; color:var(--muted); }
@@ -134,7 +134,7 @@
             {% for po in purchase_orders %}
             <tr id="po-row-{{ po.id }}">
                 <td>
-                    <span style="font-family:'Space Mono',monospace; font-size:0.82rem;">{{ po.po_number }}</span>
+                    <span style="font-family:'Inter', ui-monospace, monospace; font-size:0.82rem;">{{ po.po_number }}</span>
                     {% if po.notes %}
                     <div style="font-size:0.72rem; color:var(--muted);">{{ po.notes|truncatechars:40 }}</div>
                     {% endif %}
@@ -149,7 +149,7 @@
                     <ul class="item-list">
                     {% for line in po.items.all %}
                         <li>
-                            {{ line.item.name }} — {{ line.quantity }} {{ line.item.unit }} @ ₹{{ line.unit_price }}
+                            {{ line.item.name }} - {{ line.quantity }} {{ line.item.unit }} @ ₹{{ line.unit_price }}
                             {% if line.quantity_received > 0 and line.quantity_received < line.quantity %}
                                 <span style="color:var(--amber);">({{ line.quantity_received }} received)</span>
                             {% endif %}
@@ -172,7 +172,7 @@
                         {% if po.emailed_at %}
                             <br><span style="color:var(--green);" title="Emailed to {{ po.supplier.email }} on {{ po.emailed_at|date:'d M Y, h:i A' }}"><i class="bi bi-envelope-check"></i> Emailed</span>
                         {% elif request.user.outlet.po_vendor_email_enabled and po.supplier.email %}
-                            <br><span style="color:var(--red);" title="Vendor email is on but this PO wasn't emailed — check server logs"><i class="bi bi-envelope-exclamation"></i> Not sent</span>
+                            <br><span style="color:var(--red);" title="Vendor email is on but this PO wasn't emailed - check server logs"><i class="bi bi-envelope-exclamation"></i> Not sent</span>
                         {% elif not request.user.outlet.po_vendor_email_enabled %}
                             <br><span style="color:var(--muted);" title="Turn on vendor emails in Outlet Settings to send POs automatically"><i class="bi bi-envelope"></i> Email off</span>
                         {% elif not po.supplier.email %}
@@ -200,7 +200,7 @@
                     {% elif po.status == "received" %}
                         <span style="font-size:0.75rem; color:var(--green);"><i class="bi bi-check-circle-fill me-1"></i>Stock Updated</span>
                     {% else %}
-                        <span style="font-size:0.75rem; color:var(--muted);">—</span>
+                        <span style="font-size:0.75rem; color:var(--muted);">-</span>
                     {% endif %}
                         <a href="{% url 'po_print' po.id %}" target="_blank" class="btn-lux" style="font-size:0.65rem; padding:0.3rem 0.7rem; text-decoration:none;">
                             <i class="bi bi-printer"></i> Print
@@ -234,7 +234,7 @@
     <div class="form-field">
         <label>Supplier</label>
         <select id="po_supplier">
-            <option value="">— select supplier —</option>
+            <option value="">- select supplier -</option>
             {% for s in suppliers %}
             <option value="{{ s.id }}">{{ s.name }}</option>
             {% endfor %}
@@ -284,7 +284,7 @@
 
     <div style="font-size:0.75rem; color:var(--muted); margin-bottom:1.25rem;">
         Enter what actually arrived in <em>this</em> delivery for each line. Defaults
-        to the full remaining quantity at the ordered price — leave as-is if
+        to the full remaining quantity at the ordered price - leave as-is if
         everything showed up as ordered.
     </div>
 
@@ -304,7 +304,7 @@ const CSRF = document.cookie.split('; ').find(r => r.startsWith('csrftoken2=')).
 const ITEMS = [{% for item in inventory_items %}{ id:{{ item.id }}, name:"{{ item.name|escapejs }}", unit:"{{ item.unit }}", cost:{{ item.cost_price }} }{% if not forloop.last %},{% endif %}{% endfor %}];
 let lineCount = 0;
 
-// Per-PO line item data for the receive modal — item id, name, unit,
+// Per-PO line item data for the receive modal - item id, name, unit,
 // remaining quantity (ordered minus already received), and the ordered
 // price as the default invoiced price.
 const PO_LINES = {
@@ -375,7 +375,7 @@ function addLineItem(prefill) {
     row.className = 'line-item-row';
     row.id = id;
     row.innerHTML = `
-        <select class="item-sel" onchange="autofillPrice(this)"><option value="">— item —</option>${options}</select>
+        <select class="item-sel" onchange="autofillPrice(this)"><option value="">- item -</option>${options}</select>
         <input type="number" class="line-qty" placeholder="Qty" min="0.001" step="0.001" oninput="recalcTotal()">
         <input type="number" class="line-price" placeholder="₹" min="0" step="0.01" oninput="recalcTotal()">
         <button class="btn-icon" style="padding:0;" onclick="document.getElementById('${id}').remove(); recalcTotal();">

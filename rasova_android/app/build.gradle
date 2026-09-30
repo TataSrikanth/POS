@@ -26,8 +26,8 @@ android {
     buildTypes {
         debug {
             // Blank — like release. First launch shows the setup screen so each
-            // restaurant scans its own QR (encodes https://<slug>.rasova.net) or
-            // types its subdomain. Hardcoding rasova.net here short-circuited the
+            // restaurant scans its own QR (encodes https://<slug>.oiramen.com) or
+            // types its subdomain. Hardcoding oiramen.com here short-circuited the
             // setup flow and dumped every device on the marketing landing page.
             buildConfigField "String", "SERVER_URL", '""'
         }

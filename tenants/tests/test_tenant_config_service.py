@@ -35,7 +35,7 @@ def _tenant_outlet(name="Config Test Tenant"):
 
 def _superuser(suffix="su"):
     return User.objects.create_superuser(
-        username=f"admin_{suffix}", password="pw", email=f"{suffix}@rasova.net",
+        username=f"admin_{suffix}", password="pw", email=f"{suffix}@oiramen.com",
     )
 
 

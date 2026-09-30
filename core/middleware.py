@@ -15,7 +15,7 @@ class TenantMiddleware:
     Resolves request.tenant from the hostname, for host/branding/routing
     purposes only. Deliberately does NOT touch the tenant query-scoping
     context (see core/tenant_context.py) -- a session cookie is valid
-    across every *.rasova.net subdomain (SESSION_COOKIE_DOMAIN), and the
+    across every *.oiramen.com subdomain (SESSION_COOKIE_DOMAIN), and the
     superuser/portal panel is reachable on any of them, not host-restricted.
     Scoping queries off the subdomain-resolved tenant would make a
     superuser managing tenant B while physically on tenant A's subdomain

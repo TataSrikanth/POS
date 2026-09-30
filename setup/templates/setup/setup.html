@@ -8,7 +8,7 @@
     /* ── Hero ── */
     .hero { text-align: center; padding: 4rem 2rem 2rem; }
     .hero-eyebrow { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 4px; color: var(--accent-gold); margin-bottom: 1rem; }
-    .hero-title { font-size: 2.5rem; font-family: 'DM Serif Display', serif; margin-bottom: 0.75rem; }
+    .hero-title { font-size: 2.5rem; font-family: 'Inter', sans-serif; margin-bottom: 0.75rem; }
     .hero-title i { font-style: italic; font-weight: 400; color: var(--accent-gold); }
     .hero-sub { color: var(--text-muted); font-size: 0.9rem; max-width: 480px; margin: 0 auto; line-height: 1.7; }
     .hero-divider { width: 40px; height: 1px; background: var(--border-color); margin: 2rem auto; }
@@ -54,7 +54,7 @@
             {{ request.user.tenant.name }}
         </h1>
     </a>
-    <p class="brand-subtitle">Setup — {{ request.user.outlet.name }}</p>
+    <p class="brand-subtitle">Setup - {{ request.user.outlet.name }}</p>
 </div>
 {% endblock %}
 
@@ -71,13 +71,13 @@
     <p class="hero-eyebrow">Initial Configuration</p>
     <h1 class="hero-title">Restaurant <i>Setup</i></h1>
     <div class="hero-divider"></div>
-    <p class="hero-sub">Configure your outlet before going live. Complete each section once — settings are saved permanently.</p>
+    <p class="hero-sub">Configure your outlet before going live. Complete each section once - settings are saved permanently.</p>
 </div>
 
 {% if messages %}
 <div class="container mb-4" style="max-width:600px;">
     {% for msg in messages %}
-    <div style="padding:0.8rem 1.2rem;font-size:0.8rem;border-left:3px solid var(--accent-gold);background:rgba(197,160,89,0.08);text-align:center;">{{ msg }}</div>
+    <div style="padding:0.8rem 1.2rem;font-size:0.8rem;border-left:3px solid var(--accent-gold);background:rgba(216, 148, 47,0.08);text-align:center;">{{ msg }}</div>
     {% endfor %}
 </div>
 {% endif %}

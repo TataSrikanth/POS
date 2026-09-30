@@ -68,7 +68,7 @@ def print_kot_task(self, station_id, order_id, kot_id):
 
         if not station.printer_ip:
             logger.warning(
-                "Station '%s' has no printer IP — KOT #%s skipped.",
+                "Station '%s' has no printer IP - KOT #%s skipped.",
                 station.name, kot.kot_number,
             )
             return False
@@ -244,7 +244,7 @@ def _store_printer_error(outlet_id, station_name, kot_number, detail):
         _PRINTER_ERROR_TTL,
     )
     logger.warning(
-        "Printer error stored — outlet %s, station '%s', KOT #%s: %s",
+        "Printer error stored - outlet %s, station '%s', KOT #%s: %s",
         outlet_id, station_name, kot_number, detail,
     )
 

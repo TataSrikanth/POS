@@ -19,7 +19,7 @@ from django.utils import timezone
 logger = logging.getLogger("pos.inventory")
 
 
-def render_purchase_order_pdf(po, base_url="https://rasova.net/"):
+def render_purchase_order_pdf(po, base_url="https://oiramen.com/"):
     html_string = render_to_string("inventory/purchase_order_print.html", {"po": po})
     return weasyprint.HTML(string=html_string, base_url=base_url).write_pdf(
         presentational_hints=False

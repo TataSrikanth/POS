@@ -38,7 +38,7 @@ def robots_txt(request):
     # Same content on every subdomain (this view isn't tenant-aware), which
     # is what we want: the rules below describe the app's URL *shape*, not
     # any one tenant's data, so they apply identically whether requested on
-    # rasova.net or a real tenant subdomain like spice.rasova.net.
+    # oiramen.com or a real tenant subdomain like spice.oiramen.com.
     #
     # /menu/ itself is disallowed further down -- it's the staff-facing
     # menu management screen (login-gated, but no reason to spend crawl
@@ -80,7 +80,7 @@ Disallow: /portal/
 Disallow: /agency/
 Disallow: /menu/
 
-Sitemap: https://rasova.net/sitemap.xml"""
+Sitemap: https://oiramen.com/sitemap.xml"""
     return HttpResponse(content, content_type='text/plain')
 
 def sitemap_xml(request):
@@ -95,16 +95,10 @@ def sitemap_xml(request):
     content = f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://rasova.net/</loc>
-    <lastmod>{today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://rasova.net/compare/</loc>
+    <loc>https://oiramen.com/login/</loc>
     <lastmod>{today}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>1.0</priority>
   </url>
 </urlset>"""
     return HttpResponse(content, content_type='application/xml')
@@ -130,7 +124,8 @@ urlpatterns = [
     # that window, this stops it dead-ending in a 404 and consolidates any
     # indexing signal onto the page that actually exists now.
     path('compare/petpooja/', lambda r: redirect('/compare/', permanent=True)),
-    path('favicon.ico', lambda r: HttpResponse(status=204)),
+    path('compare/', lambda r: redirect('/login/')),  # landing/compare pages are switched off
+    path('favicon.ico', lambda r: redirect('/static/brand/favicon.ico')),
     # PWA
     path('sw.js', views.serve_sw, name='service_worker'),
     path('manifest.json', TemplateView.as_view(template_name='manifest.json', content_type='application/manifest+json')),

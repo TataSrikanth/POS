@@ -1,0 +1,99 @@
+# Render Blueprint for Oi Ramen POS.
+# Dashboard -> New -> Blueprint -> pick this repo. Render then asks for the
+# variables marked "sync: false" below.
+#
+# Plans are starter/basic so the app never sleeps; adjust to taste.
+# The Celery worker is a paid background worker. Without it the web app still
+# runs (orders, billing, reports) but background jobs do not: AI menu/recipe
+# import, WhatsApp receipts, scheduled digests, subscription billing.
+
+databases:
+  - name: oi-ramen-db
+    databaseName: pos_db
+    user: pos_user
+    plan: basic-256mb
+    postgresMajorVersion: "16"
+
+# Values the web app and the worker must share exactly.
+envVarGroups:
+  - name: oi-ramen-shared
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.10
+      - key: DEBUG
+        value: "False"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: FIELD_ENCRYPTION_KEY      # Fernet key. Never change it after first use.
+        sync: false
+      - key: BASE_URL                  # https://<your-service>.onrender.com, later https://oiramen.com
+        sync: false
+      - key: ALLOWED_HOSTS
+        value: oiramen.com,www.oiramen.com,.oiramen.com
+      - key: SESSION_COOKIE_DOMAIN     # "none" = this exact host. Change to .oiramen.com once the real domain is live
+        value: none
+      - key: SUBDOMAIN_LOGIN_REDIRECT  # needs wildcard DNS; turn on later
+        value: "False"
+      - key: DB_ENGINE
+        value: django.db.backends.postgresql
+      - key: GOOGLE_API_KEY            # optional: AI menu / recipe import
+        sync: false
+      - key: AWS_STORAGE_BUCKET_NAME   # optional but recommended: Cloudflare R2 for uploaded logos
+        sync: false
+      - key: AWS_ACCESS_KEY_ID
+        sync: false
+      - key: AWS_SECRET_ACCESS_KEY
+        sync: false
+      - key: AWS_S3_ENDPOINT_URL       # R2 endpoint, https://<account>.r2.cloudflarestorage.com
+        sync: false
+
+services:
+  - type: keyvalue
+    name: oi-ramen-redis
+    plan: starter
+    maxmemoryPolicy: noeviction      # it is the Celery broker, so never evict
+    ipAllowList: []                  # internal network only
+
+  - type: web
+    name: oi-ramen
+    runtime: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
+    startCommand: python manage.py migrate --noinput && gunicorn core.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --threads 4 --worker-class gthread --timeout 120
+    healthCheckPath: /health/
+    envVars:
+      - fromGroup: oi-ramen-shared
+      - key: DB_NAME
+        fromDatabase: {name: oi-ramen-db, property: database}
+      - key: DB_USER
+        fromDatabase: {name: oi-ramen-db, property: user}
+      - key: DB_PASSWORD
+        fromDatabase: {name: oi-ramen-db, property: password}
+      - key: DB_HOST
+        fromDatabase: {name: oi-ramen-db, property: host}
+      - key: DB_PORT
+        fromDatabase: {name: oi-ramen-db, property: port}
+      - key: REDIS_URL
+        fromService: {type: keyvalue, name: oi-ramen-redis, property: connectionString}
+
+  - type: worker
+    name: oi-ramen-worker
+    runtime: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    # -B runs the scheduler inside this one worker, as the EC2 setup did.
+    startCommand: celery -A core worker -B --queues=default,printing --concurrency=2 --loglevel=info
+    envVars:
+      - fromGroup: oi-ramen-shared
+      - key: DB_NAME
+        fromDatabase: {name: oi-ramen-db, property: database}
+      - key: DB_USER
+        fromDatabase: {name: oi-ramen-db, property: user}
+      - key: DB_PASSWORD
+        fromDatabase: {name: oi-ramen-db, property: password}
+      - key: DB_HOST
+        fromDatabase: {name: oi-ramen-db, property: host}
+      - key: DB_PORT
+        fromDatabase: {name: oi-ramen-db, property: port}
+      - key: REDIS_URL
+        fromService: {type: keyvalue, name: oi-ramen-redis, property: connectionString}

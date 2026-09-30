@@ -4,7 +4,7 @@
 {% block extra_css %}
 <style>
   .review-wrap { max-width: 1100px; margin: 0 auto; padding: 2rem; }
-  .review-title { font-family: 'DM Serif Display', serif; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--text-main); }
+  .review-title { font-family: 'Inter', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--text-main); }
   .review-subtitle { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
 
   .banner { border: 1px solid var(--border-color); padding: 0.9rem 1.2rem; margin-bottom: 1rem; font-size: 0.85rem; color: var(--text-main); }
@@ -15,12 +15,12 @@
   .line-table th { text-align: left; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); padding: 0.6rem 0.5rem; border-bottom: 1px solid var(--border-color); }
   .line-table td { padding: 0.6rem 0.5rem; border-bottom: 1px solid var(--border-color); vertical-align: top; }
   .line-row.needs-attention td { background: rgba(239,68,68,0.05); }
-  .raw-text { font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--text-main); }
+  .raw-text { font-family: 'Inter', ui-monospace, monospace; font-size: 0.8rem; color: var(--text-main); }
   .raw-qty { color: var(--text-muted); font-size: 0.75rem; }
 
   .luxury-badge-sm { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; padding: 2px 6px; border-radius: 0; display: inline-block; margin-bottom: 4px; }
   .badge-exact  { background: rgba(34,197,94,0.12); color: #22c55e; border: 1px solid #22c55e; }
-  .badge-fuzzy  { background: rgba(197,160,89,0.12); color: var(--accent-gold); border: 1px solid var(--accent-gold); }
+  .badge-fuzzy  { background: rgba(216, 148, 47,0.12); color: var(--accent-gold); border: 1px solid var(--accent-gold); }
   .badge-ai     { background: rgba(59,130,246,0.12); color: #3b82f6; border: 1px solid #3b82f6; }
   .badge-new    { background: rgba(239,68,68,0.1); color: #ef4444; border: 1px solid #ef4444; }
   .badge-manual { background: rgba(148,163,184,0.12); color: var(--text-muted); border: 1px solid var(--border-color); }
@@ -39,10 +39,10 @@
 <div class="review-wrap">
   <a href="{% url 'menu_management' %}" class="text-muted small" style="text-decoration:none;"><i class="bi bi-arrow-left me-1"></i>Back to Menu</a>
   <h3 class="review-title mt-2">Recipe Import Review</h3>
-  <p class="review-subtitle">{{ job.menu_item.name }} — nothing here is saved until you click "Save Recipe" below.</p>
+  <p class="review-subtitle">{{ job.menu_item.name }} - nothing here is saved until you click "Save Recipe" below.</p>
 
   {% if job.status == "processing" %}
-    <div class="banner banner-info">Still processing — this page was opened before the import finished. Refresh in a moment.</div>
+    <div class="banner banner-info">Still processing - this page was opened before the import finished. Refresh in a moment.</div>
   {% elif job.status == "failed" %}
     <div class="banner banner-warn">Import failed: {{ job.error_message }}</div>
   {% elif job.status == "discarded" %}
@@ -52,7 +52,7 @@
       <div class="banner banner-info">This import was already confirmed on {{ job.confirmed_at }}. Shown below read-only.</div>
     {% endif %}
     {% if existing_recipe_count > 0 %}
-      <div class="banner banner-info">"{{ job.menu_item.name }}" already has {{ existing_recipe_count }} recipe ingredient{{ existing_recipe_count|pluralize }} — confirming will add to or update them, not replace them wholesale.</div>
+      <div class="banner banner-info">"{{ job.menu_item.name }}" already has {{ existing_recipe_count }} recipe ingredient{{ existing_recipe_count|pluralize }} - confirming will add to or update them, not replace them wholesale.</div>
     {% endif %}
     <div class="banner banner-info">Enter quantities for <strong>one serving</strong> of this dish.</div>
 
@@ -81,7 +81,7 @@
             {% else %}<span class="luxury-badge-sm badge-new">No Match</span>
             {% endif %}
             <select class="line-select match-select" {% if job.status != "ready_for_review" %}disabled{% endif %}>
-              <option value="">— none —</option>
+              <option value="">- none -</option>
               {% for item in inventory_items %}
               <option value="{{ item.id }}" data-unit="{{ item.unit }}" {% if line.resolved_inventory_item_id == item.id %}selected{% endif %}>{{ item.name }} ({{ item.unit }})</option>
               {% endfor %}
@@ -95,7 +95,7 @@
           </td>
           <td class="unit-cell">
             <select class="line-select unit-select" {% if job.status != "ready_for_review" %}disabled{% endif %}>
-              <option value="">—</option>
+              <option value="">-</option>
               {% for code, label in unit_choices %}
               <option value="{{ code }}" {% if line.final_unit == code %}selected{% endif %}>{{ code }}</option>
               {% endfor %}
@@ -169,7 +169,7 @@
     if (e.target.classList.contains("match-select") && e.target.value === "__new__") {
       const name = prompt("New ingredient name:");
       if (!name) { e.target.value = ""; return; }
-      const unit = (prompt("Unit — one of: pcs, g, kg, ml, l", "g") || "").trim().toLowerCase();
+      const unit = (prompt("Unit - one of: pcs, g, kg, ml, l", "g") || "").trim().toLowerCase();
       if (!["pcs", "g", "kg", "ml", "l"].includes(unit)) { alert("Invalid unit."); e.target.value = ""; return; }
       fetch("{% url 'create_inventory_item' %}", {
         method: "POST",

@@ -22,7 +22,7 @@ A*^ |TOTAL                 Rs.441|
 A ^ |Paid via                CASH|
 A ^ |----------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -54,7 +54,7 @@ A*^ |TOTAL                                 Rs.441|
 A ^ |Paid via                                CASH|
 A ^ |--------------------------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -81,7 +81,7 @@ A < |------------------------------------------------|
 A*< 1x2 |TOTAL                                     Rs.441|
 A < |Paid via                                    CASH|
 A < |------------------------------------------------|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |MAINS|
@@ -89,7 +89,7 @@ A < |------------------------------------------------|
 A*< |2x [V] Masala Dosa|
 A < |------------------------------------------------|
 A*< |MAINS Total                               Rs.180|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |STARTERS|
@@ -97,7 +97,7 @@ A < |------------------------------------------------|
 A*< |1x [N] Chicken 65|
 A < |------------------------------------------------|
 A*< |STARTERS Total                            Rs.240|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut FULL ~~~
 ==== token receipt, 32 chars | GST extra | dine-in, cash ====
@@ -140,7 +140,7 @@ A*^ |TOTAL                 Rs.467|
 A ^ |Paid via                 UPI|
 A ^ |----------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -173,7 +173,7 @@ A*^ |TOTAL                                 Rs.467|
 A ^ |Paid via                                 UPI|
 A ^ |--------------------------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -201,7 +201,7 @@ A < |------------------------------------------------|
 A*< 1x2 |TOTAL                                     Rs.467|
 A < |Paid via                                     UPI|
 A < |------------------------------------------------|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |BEVERAGES|
@@ -210,7 +210,7 @@ A < |------------------------------------------------|
 A*< |3x [V] Filter Coffee|
 A < |------------------------------------------------|
 A*< |BEVERAGES Total                            Rs.75|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |MAINS|
@@ -219,7 +219,7 @@ A < |------------------------------------------------|
 A*< |1x [V] Paneer Tikka Masala with Butter Naan C|
 A < |------------------------------------------------|
 A*< |MAINS Total                               Rs.350|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut FULL ~~~
 ==== token receipt, 32 chars | GST extra | parcel with a token, UPI ====
@@ -264,7 +264,7 @@ A*^ |TOTAL                Rs.1160|
 A ^ |Paid via                CARD|
 A ^ |----------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -299,7 +299,7 @@ A*^ |TOTAL                                Rs.1160|
 A ^ |Paid via                                CARD|
 A ^ |--------------------------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -329,7 +329,7 @@ A < |------------------------------------------------|
 A*< 1x2 |TOTAL                                    Rs.1160|
 A < |Paid via                                    CARD|
 A < |------------------------------------------------|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |BAR|
@@ -337,7 +337,7 @@ A < |------------------------------------------------|
 A*< |2x [V] Kingfisher Premium 650ml|
 A < |------------------------------------------------|
 A*< |BAR Total                                 Rs.640|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |BEVERAGES|
@@ -345,7 +345,7 @@ A < |------------------------------------------------|
 A*< |1x [V] Filter Coffee|
 A < |------------------------------------------------|
 A*< |BEVERAGES Total                            Rs.25|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |MAINS|
@@ -353,7 +353,7 @@ A < |------------------------------------------------|
 A*< |1x [V] Plain Curd|
 A < |------------------------------------------------|
 A*< |MAINS Total                                Rs.30|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |STARTERS|
@@ -361,7 +361,7 @@ A < |------------------------------------------------|
 A*< |2x [N] Chicken 65|
 A < |------------------------------------------------|
 A*< |STARTERS Total                            Rs.480|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut FULL ~~~
 ==== token receipt, 32 chars | GST extra | mixed rates, 10% off, one voided and one free dish ====
@@ -405,7 +405,7 @@ A*^ |TOTAL                 Rs.942|
 A ^ |Paid via                CASH|
 A ^ |----------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -437,7 +437,7 @@ A*^ |TOTAL                                 Rs.942|
 A ^ |Paid via                                CASH|
 A ^ |--------------------------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -465,7 +465,7 @@ A < |------------------------------------------------|
 A*< 1x2 |TOTAL                                     Rs.942|
 A < |Paid via                                    CASH|
 A < |------------------------------------------------|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |MAINS|
@@ -473,7 +473,7 @@ A < |------------------------------------------------|
 A*< |2x [V] Paneer Tikka Masala with Butter Naan C|
 A < |------------------------------------------------|
 A*< |MAINS Total                               Rs.699|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |STARTERS|
@@ -481,7 +481,7 @@ A < |------------------------------------------------|
 A*< |3x [V] Veg Club Sandwich|
 A < |------------------------------------------------|
 A*< |STARTERS Total                            Rs.300|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut FULL ~~~
 ==== token receipt, 32 chars | GST extra | paise, an item discount and a flat discount ====
@@ -522,7 +522,7 @@ A ^ |----------------------------|
 A*^ |TOTAL                Rs.2993|
 A*^ |----------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -553,7 +553,7 @@ A ^ |--------------------------------------------|
 A*^ |TOTAL                                Rs.2993|
 A*^ |--------------------------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -579,7 +579,7 @@ A < |GST                                       Rs.142|
 A < |------------------------------------------------|
 A*< 1x2 |TOTAL                                    Rs.2993|
 A < |------------------------------------------------|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |MAINS|
@@ -587,7 +587,7 @@ A < |------------------------------------------------|
 A*< |13x [V] Masala Dosa|
 A < |------------------------------------------------|
 A*< |MAINS Total                              Rs.1170|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |STARTERS|
@@ -595,7 +595,7 @@ A < |------------------------------------------------|
 A*< |7x [N] Chicken 65|
 A < |------------------------------------------------|
 A*< |STARTERS Total                           Rs.1680|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut FULL ~~~
 ==== token receipt, 32 chars | GST extra | big order, not paid yet ====
@@ -637,7 +637,7 @@ A ^ |Paid via                CASH|
 A ^ |(prices include GST)|
 A ^ |----------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -670,7 +670,7 @@ A ^ |Paid via                                CASH|
 A ^ |(prices include GST)|
 A ^ |--------------------------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -697,7 +697,7 @@ A < |------------------------------------------------|
 A*< 1x2 |TOTAL                                     Rs.420|
 A < |Paid via                                    CASH|
 A < |------------------------------------------------|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |MAINS|
@@ -705,7 +705,7 @@ A < |------------------------------------------------|
 A*< |2x [V] Masala Dosa|
 A < |------------------------------------------------|
 A*< |MAINS Total                               Rs.180|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |STARTERS|
@@ -713,7 +713,7 @@ A < |------------------------------------------------|
 A*< |1x [N] Chicken 65|
 A < |------------------------------------------------|
 A*< |STARTERS Total                            Rs.240|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut FULL ~~~
 ==== token receipt, 32 chars | GST included | dine-in, cash ====
@@ -757,7 +757,7 @@ A ^ |Paid via                 UPI|
 A ^ |(prices include GST)|
 A ^ |----------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -791,7 +791,7 @@ A ^ |Paid via                                 UPI|
 A ^ |(prices include GST)|
 A ^ |--------------------------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -819,7 +819,7 @@ A < |------------------------------------------------|
 A*< 1x2 |TOTAL                                     Rs.445|
 A < |Paid via                                     UPI|
 A < |------------------------------------------------|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |BEVERAGES|
@@ -828,7 +828,7 @@ A < |------------------------------------------------|
 A*< |3x [V] Filter Coffee|
 A < |------------------------------------------------|
 A*< |BEVERAGES Total                            Rs.75|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |MAINS|
@@ -837,7 +837,7 @@ A < |------------------------------------------------|
 A*< |1x [V] Paneer Tikka Masala with Butter Naan C|
 A < |------------------------------------------------|
 A*< |MAINS Total                               Rs.350|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut FULL ~~~
 ==== token receipt, 32 chars | GST included | parcel with a token, UPI ====
@@ -883,7 +883,7 @@ A ^ |Paid via                CARD|
 A ^ |(prices include GST)|
 A ^ |----------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -919,7 +919,7 @@ A ^ |Paid via                                CARD|
 A ^ |(prices include GST)|
 A ^ |--------------------------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -949,7 +949,7 @@ A < |------------------------------------------------|
 A*< 1x2 |TOTAL                                    Rs.1035|
 A < |Paid via                                    CARD|
 A < |------------------------------------------------|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |BAR|
@@ -957,7 +957,7 @@ A < |------------------------------------------------|
 A*< |2x [V] Kingfisher Premium 650ml|
 A < |------------------------------------------------|
 A*< |BAR Total                                 Rs.640|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |BEVERAGES|
@@ -965,7 +965,7 @@ A < |------------------------------------------------|
 A*< |1x [V] Filter Coffee|
 A < |------------------------------------------------|
 A*< |BEVERAGES Total                            Rs.25|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |MAINS|
@@ -973,7 +973,7 @@ A < |------------------------------------------------|
 A*< |1x [V] Plain Curd|
 A < |------------------------------------------------|
 A*< |MAINS Total                                Rs.30|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |STARTERS|
@@ -981,7 +981,7 @@ A < |------------------------------------------------|
 A*< |2x [N] Chicken 65|
 A < |------------------------------------------------|
 A*< |STARTERS Total                            Rs.480|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut FULL ~~~
 ==== token receipt, 32 chars | GST included | mixed rates, 10% off, one voided and one free dish ====
@@ -1026,7 +1026,7 @@ A ^ |Paid via                CASH|
 A ^ |(prices include GST)|
 A ^ |----------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -1059,7 +1059,7 @@ A ^ |Paid via                                CASH|
 A ^ |(prices include GST)|
 A ^ |--------------------------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -1087,7 +1087,7 @@ A < |------------------------------------------------|
 A*< 1x2 |TOTAL                                     Rs.862|
 A < |Paid via                                    CASH|
 A < |------------------------------------------------|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |MAINS|
@@ -1095,7 +1095,7 @@ A < |------------------------------------------------|
 A*< |2x [V] Paneer Tikka Masala with Butter Naan C|
 A < |------------------------------------------------|
 A*< |MAINS Total                               Rs.699|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |STARTERS|
@@ -1103,7 +1103,7 @@ A < |------------------------------------------------|
 A*< |3x [V] Veg Club Sandwich|
 A < |------------------------------------------------|
 A*< |STARTERS Total                            Rs.300|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut FULL ~~~
 ==== token receipt, 32 chars | GST included | paise, an item discount and a flat discount ====
@@ -1145,7 +1145,7 @@ A*^ |TOTAL                Rs.2850|
 A ^ |(prices include GST)|
 A ^ |----------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -1177,7 +1177,7 @@ A*^ |TOTAL                                Rs.2850|
 A ^ |(prices include GST)|
 A ^ |--------------------------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -1203,7 +1203,7 @@ A < |GST                                       Rs.136|
 A < |------------------------------------------------|
 A*< 1x2 |TOTAL                                    Rs.2850|
 A < |------------------------------------------------|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |MAINS|
@@ -1211,7 +1211,7 @@ A < |------------------------------------------------|
 A*< |13x [V] Masala Dosa|
 A < |------------------------------------------------|
 A*< |MAINS Total                              Rs.1170|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |STARTERS|
@@ -1219,7 +1219,7 @@ A < |------------------------------------------------|
 A*< |7x [N] Chicken 65|
 A < |------------------------------------------------|
 A*< |STARTERS Total                           Rs.1680|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut FULL ~~~
 ==== token receipt, 32 chars | GST included | big order, not paid yet ====
@@ -1259,7 +1259,7 @@ A*^ |TOTAL                 Rs.420|
 A ^ |Paid via                CASH|
 A ^ |----------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -1290,7 +1290,7 @@ A*^ |TOTAL                                 Rs.420|
 A ^ |Paid via                                CASH|
 A ^ |--------------------------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -1319,7 +1319,7 @@ A < |Paid via                                    CASH|
 A < |------------------------------------------------|
 A ^ |Bill of Supply|
 A ^ |------------------------------------------------|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |MAINS|
@@ -1327,7 +1327,7 @@ A < |------------------------------------------------|
 A*< |2x [V] Masala Dosa|
 A < |------------------------------------------------|
 A*< |MAINS Total                               Rs.180|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |STARTERS|
@@ -1335,7 +1335,7 @@ A < |------------------------------------------------|
 A*< |1x [N] Chicken 65|
 A < |------------------------------------------------|
 A*< |STARTERS Total                            Rs.240|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut FULL ~~~
 ==== token receipt, 32 chars | composition | dine-in, cash ====
@@ -1377,7 +1377,7 @@ A*^ |TOTAL                 Rs.445|
 A ^ |Paid via                 UPI|
 A ^ |----------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -1409,7 +1409,7 @@ A*^ |TOTAL                                 Rs.445|
 A ^ |Paid via                                 UPI|
 A ^ |--------------------------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -1439,7 +1439,7 @@ A < |Paid via                                     UPI|
 A < |------------------------------------------------|
 A ^ |Bill of Supply|
 A ^ |------------------------------------------------|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |BEVERAGES|
@@ -1448,7 +1448,7 @@ A < |------------------------------------------------|
 A*< |3x [V] Filter Coffee|
 A < |------------------------------------------------|
 A*< |BEVERAGES Total                            Rs.75|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |MAINS|
@@ -1457,7 +1457,7 @@ A < |------------------------------------------------|
 A*< |1x [V] Paneer Tikka Masala with Butter Naan C|
 A < |------------------------------------------------|
 A*< |MAINS Total                               Rs.350|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut FULL ~~~
 ==== token receipt, 32 chars | composition | parcel with a token, UPI ====
@@ -1501,7 +1501,7 @@ A*^ |TOTAL                Rs.1035|
 A ^ |Paid via                CARD|
 A ^ |----------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -1535,7 +1535,7 @@ A*^ |TOTAL                                Rs.1035|
 A ^ |Paid via                                CARD|
 A ^ |--------------------------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -1567,7 +1567,7 @@ A < |Paid via                                    CARD|
 A < |------------------------------------------------|
 A ^ |Bill of Supply|
 A ^ |------------------------------------------------|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |BAR|
@@ -1575,7 +1575,7 @@ A < |------------------------------------------------|
 A*< |2x [V] Kingfisher Premium 650ml|
 A < |------------------------------------------------|
 A*< |BAR Total                                 Rs.640|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |BEVERAGES|
@@ -1583,7 +1583,7 @@ A < |------------------------------------------------|
 A*< |1x [V] Filter Coffee|
 A < |------------------------------------------------|
 A*< |BEVERAGES Total                            Rs.25|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |MAINS|
@@ -1591,7 +1591,7 @@ A < |------------------------------------------------|
 A*< |1x [V] Plain Curd|
 A < |------------------------------------------------|
 A*< |MAINS Total                                Rs.30|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |STARTERS|
@@ -1599,7 +1599,7 @@ A < |------------------------------------------------|
 A*< |2x [N] Chicken 65|
 A < |------------------------------------------------|
 A*< |STARTERS Total                            Rs.480|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut FULL ~~~
 ==== token receipt, 32 chars | composition | mixed rates, 10% off, one voided and one free dish ====
@@ -1642,7 +1642,7 @@ A*^ |TOTAL                 Rs.862|
 A ^ |Paid via                CASH|
 A ^ |----------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -1673,7 +1673,7 @@ A*^ |TOTAL                                 Rs.862|
 A ^ |Paid via                                CASH|
 A ^ |--------------------------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -1703,7 +1703,7 @@ A < |Paid via                                    CASH|
 A < |------------------------------------------------|
 A ^ |Bill of Supply|
 A ^ |------------------------------------------------|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |MAINS|
@@ -1711,7 +1711,7 @@ A < |------------------------------------------------|
 A*< |2x [V] Paneer Tikka Masala with Butter Naan C|
 A < |------------------------------------------------|
 A*< |MAINS Total                               Rs.699|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |STARTERS|
@@ -1719,7 +1719,7 @@ A < |------------------------------------------------|
 A*< |3x [V] Veg Club Sandwich|
 A < |------------------------------------------------|
 A*< |STARTERS Total                            Rs.300|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut FULL ~~~
 ==== token receipt, 32 chars | composition | paise, an item discount and a flat discount ====
@@ -1759,7 +1759,7 @@ A ^ |----------------------------|
 A*^ |TOTAL                Rs.2850|
 A*^ |----------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -1789,7 +1789,7 @@ A ^ |--------------------------------------------|
 A*^ |TOTAL                                Rs.2850|
 A*^ |--------------------------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -1817,7 +1817,7 @@ A*< 1x2 |TOTAL                                    Rs.2850|
 A < |------------------------------------------------|
 A ^ |Bill of Supply|
 A ^ |------------------------------------------------|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |MAINS|
@@ -1825,7 +1825,7 @@ A < |------------------------------------------------|
 A*< |13x [V] Masala Dosa|
 A < |------------------------------------------------|
 A*< |MAINS Total                              Rs.1170|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |STARTERS|
@@ -1833,7 +1833,7 @@ A < |------------------------------------------------|
 A*< |7x [N] Chicken 65|
 A < |------------------------------------------------|
 A*< |STARTERS Total                           Rs.1680|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut FULL ~~~
 ==== token receipt, 32 chars | composition | big order, not paid yet ====
@@ -1874,7 +1874,7 @@ A ^ |Paid via                CASH|
 A ^ |(prices include GST)|
 A ^ |----------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -1906,7 +1906,7 @@ A ^ |Paid via                                CASH|
 A ^ |(prices include GST)|
 A ^ |--------------------------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -1935,7 +1935,7 @@ A < |Paid via                                    CASH|
 A < |------------------------------------------------|
 A ^ |Bill of Supply|
 A ^ |------------------------------------------------|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |MAINS|
@@ -1943,7 +1943,7 @@ A < |------------------------------------------------|
 A*< |2x [V] Masala Dosa|
 A < |------------------------------------------------|
 A*< |MAINS Total                               Rs.180|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |STARTERS|
@@ -1951,7 +1951,7 @@ A < |------------------------------------------------|
 A*< |1x [N] Chicken 65|
 A < |------------------------------------------------|
 A*< |STARTERS Total                            Rs.240|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut FULL ~~~
 ==== token receipt, 32 chars | composition, GST included | dine-in, cash ====
@@ -1994,7 +1994,7 @@ A ^ |Paid via                 UPI|
 A ^ |(prices include GST)|
 A ^ |----------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -2027,7 +2027,7 @@ A ^ |Paid via                                 UPI|
 A ^ |(prices include GST)|
 A ^ |--------------------------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -2057,7 +2057,7 @@ A < |Paid via                                     UPI|
 A < |------------------------------------------------|
 A ^ |Bill of Supply|
 A ^ |------------------------------------------------|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |BEVERAGES|
@@ -2066,7 +2066,7 @@ A < |------------------------------------------------|
 A*< |3x [V] Filter Coffee|
 A < |------------------------------------------------|
 A*< |BEVERAGES Total                            Rs.75|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |MAINS|
@@ -2075,7 +2075,7 @@ A < |------------------------------------------------|
 A*< |1x [V] Paneer Tikka Masala with Butter Naan C|
 A < |------------------------------------------------|
 A*< |MAINS Total                               Rs.350|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut FULL ~~~
 ==== token receipt, 32 chars | composition, GST included | parcel with a token, UPI ====
@@ -2120,7 +2120,7 @@ A ^ |Paid via                CARD|
 A ^ |(prices include GST)|
 A ^ |----------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -2155,7 +2155,7 @@ A ^ |Paid via                                CARD|
 A ^ |(prices include GST)|
 A ^ |--------------------------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -2187,7 +2187,7 @@ A < |Paid via                                    CARD|
 A < |------------------------------------------------|
 A ^ |Bill of Supply|
 A ^ |------------------------------------------------|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |BAR|
@@ -2195,7 +2195,7 @@ A < |------------------------------------------------|
 A*< |2x [V] Kingfisher Premium 650ml|
 A < |------------------------------------------------|
 A*< |BAR Total                                 Rs.640|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |BEVERAGES|
@@ -2203,7 +2203,7 @@ A < |------------------------------------------------|
 A*< |1x [V] Filter Coffee|
 A < |------------------------------------------------|
 A*< |BEVERAGES Total                            Rs.25|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |MAINS|
@@ -2211,7 +2211,7 @@ A < |------------------------------------------------|
 A*< |1x [V] Plain Curd|
 A < |------------------------------------------------|
 A*< |MAINS Total                                Rs.30|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |STARTERS|
@@ -2219,7 +2219,7 @@ A < |------------------------------------------------|
 A*< |2x [N] Chicken 65|
 A < |------------------------------------------------|
 A*< |STARTERS Total                            Rs.480|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut FULL ~~~
 ==== token receipt, 32 chars | composition, GST included | mixed rates, 10% off, one voided and one free dish ====
@@ -2263,7 +2263,7 @@ A ^ |Paid via                CASH|
 A ^ |(prices include GST)|
 A ^ |----------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -2295,7 +2295,7 @@ A ^ |Paid via                                CASH|
 A ^ |(prices include GST)|
 A ^ |--------------------------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -2325,7 +2325,7 @@ A < |Paid via                                    CASH|
 A < |------------------------------------------------|
 A ^ |Bill of Supply|
 A ^ |------------------------------------------------|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |MAINS|
@@ -2333,7 +2333,7 @@ A < |------------------------------------------------|
 A*< |2x [V] Paneer Tikka Masala with Butter Naan C|
 A < |------------------------------------------------|
 A*< |MAINS Total                               Rs.699|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |STARTERS|
@@ -2341,7 +2341,7 @@ A < |------------------------------------------------|
 A*< |3x [V] Veg Club Sandwich|
 A < |------------------------------------------------|
 A*< |STARTERS Total                            Rs.300|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut FULL ~~~
 ==== token receipt, 32 chars | composition, GST included | paise, an item discount and a flat discount ====
@@ -2382,7 +2382,7 @@ A*^ |TOTAL                Rs.2850|
 A ^ |(prices include GST)|
 A ^ |----------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -2413,7 +2413,7 @@ A*^ |TOTAL                                Rs.2850|
 A ^ |(prices include GST)|
 A ^ |--------------------------------------------|
 B ^ |Thank you for visiting!|
-B ^ |Powered by Rasova POS|
+B ^ |Powered by Oi Ramen POS|
 B ^ ||
 B ^ ||
 B ^ ||
@@ -2441,7 +2441,7 @@ A*< 1x2 |TOTAL                                    Rs.2850|
 A < |------------------------------------------------|
 A ^ |Bill of Supply|
 A ^ |------------------------------------------------|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |MAINS|
@@ -2449,7 +2449,7 @@ A < |------------------------------------------------|
 A*< |13x [V] Masala Dosa|
 A < |------------------------------------------------|
 A*< |MAINS Total                              Rs.1170|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut PART ~~~
 A*^ 2x2 |STARTERS|
@@ -2457,7 +2457,7 @@ A < |------------------------------------------------|
 A*< |7x [N] Chicken 65|
 A < |------------------------------------------------|
 A*< |STARTERS Total                           Rs.1680|
-A ^ |Powered by Rasova|
+A ^ |Powered by Oi Ramen|
 A ^ ||
 ~~~ cut FULL ~~~
 ==== token receipt, 32 chars | composition, GST included | big order, not paid yet ====

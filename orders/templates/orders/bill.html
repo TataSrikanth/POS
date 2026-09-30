@@ -22,7 +22,7 @@
         box-shadow: 0 15px 50px rgba(0,0,0,0.12);
     }
     .r-header  { text-align: center; margin-bottom: 1.5rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 1.5rem; }
-    .r-logo    { font-family: 'DM Serif Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--accent-gold); margin-bottom: 0.4rem; }
+    .r-logo    { font-family: 'Inter', sans-serif; font-size: 1.8rem; font-weight: 700; color: var(--accent-gold); margin-bottom: 0.4rem; }
     .r-address { font-size: 0.75rem; color: var(--text-muted); line-height: 1.4; }
     .r-gst     { font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; margin-top: 8px; font-weight: 600; }
 
@@ -38,7 +38,7 @@
     .total-row { display: flex; justify-content: space-between; padding: 0.22rem 0; font-size: 0.85rem; }
     .grand-total {
         display: flex; justify-content: space-between;
-        font-family: 'DM Serif Display', serif;
+        font-family: 'Inter', sans-serif;
         font-size: 1.5rem; font-weight: 700; color: var(--accent-gold);
         border-top: 1px solid var(--border-color);
         margin-top: 0.9rem; padding-top: 0.9rem;
@@ -46,7 +46,7 @@
 
     /* ── Balance / status card ────────────────────────────── */
     .balance-card {
-        background: rgba(197,160,89,0.07);
+        background: rgba(216, 148, 47,0.07);
         border: 1px solid var(--border-color);
         padding: 1.1rem; text-align: center; margin: 1.25rem 0;
     }
@@ -82,7 +82,7 @@
     .nav-back:hover { color: var(--accent-gold); }
 
     /* ── GST breakdown ────────────────────────────────────── */
-    .gst-breakdown { margin: 0.75rem 0; padding: 0.75rem; border: 1px dashed var(--border-color); background: rgba(197,160,89,0.03); }
+    .gst-breakdown { margin: 0.75rem 0; padding: 0.75rem; border: 1px dashed var(--border-color); background: rgba(216, 148, 47,0.03); }
     .gst-breakdown-title { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 0.6rem; font-weight: 600; }
 
     /* ── Discount section ─────────────────────────────────── */
@@ -106,7 +106,7 @@
     .print-gst { display: none; }
 
     /* ── Print styles ─────────────────────────────────────── */
-    /* @page sets physical paper dimensions — browser routes to built-in
+    /* @page sets physical paper dimensions - browser routes to built-in
        printer on handhelds (Sunmi, PAX, etc.) or to network printer.
        paper_width_mm comes from KitchenStation.paper_width_mm (58 or 80). */
     @page {
@@ -118,7 +118,7 @@
         .nav-back, .pay-area, .discount-section, .loyalty-section,
         .gst-breakdown, .balance-card, .no-print,
         .pos-header { display: none !important; }
-        /* UPI QR prints on the receipt — customer scans after meal */
+        /* UPI QR prints on the receipt - customer scans after meal */
         #upi-qr-wrap { display: block !important; border: none; padding: 0.5rem 0; }
         /* CGST/SGST lines required on printed GST invoice */
         .print-gst { display: block !important; }
@@ -133,7 +133,7 @@
 {% endblock %}
 
 {% block header_left %}
-<span style="font-family:'DM Serif Display',serif;font-size:1.1rem;">
+<span style="font-family:'Inter', sans-serif;font-size:1.1rem;">
     <i class="bi bi-receipt me-2" style="color:var(--accent-gold)"></i>Invoice
 </span>
 {% endblock %}
@@ -150,7 +150,7 @@
 <div class="bill-page">
 <div class="bill-wrap">
 
-    <!-- Back navigation — QSR goes to Tokens, fine-dining goes to Tables -->
+    <!-- Back navigation - QSR goes to Tokens, fine-dining goes to Tables -->
     {% if remaining > 0 %}
         {% if request.user.role == 'owner' or request.user.role == 'manager' %}
         <a href="#" onclick="logBypass({{ order.id }}); return false;" class="nav-back no-print">
@@ -178,6 +178,7 @@
             {% if request.user.tenant.logo %}
             <img src="{{ request.user.tenant.logo.url }}" alt="Logo" style="max-height:80px;margin-bottom:0.5rem;">
             {% else %}
+            <img src="{% static 'brand/logo.png' %}" alt="Oi Ramen" style="max-height:80px;margin-bottom:0.5rem;">
             <div class="r-logo">{{ request.user.tenant.name }}</div>
             {% endif %}
             <div style="font-size:0.85rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:0.4rem;">{{ order.outlet.name }}</div>
@@ -269,7 +270,7 @@
                 <span>Total GST{% if gst_inclusive %} (incl.){% endif %}</span><span>₹{{ order.gst_total }}</span>
             </div>
         </div>
-        {# Print: compact CGST+SGST/UTGST lines — legally required on GST invoice #}
+        {# Print: compact CGST+SGST/UTGST lines - legally required on GST invoice #}
         <div class="print-gst" style="border-top:1px dashed #000;border-bottom:1px dashed #000;padding:0.35rem 0;margin:0.4rem 0;">
             {% if gst_inclusive %}<div style="font-size:0.72rem;font-style:italic;">(All prices inclusive of GST)</div>{% endif %}
             {% for gst in order.gst_breakdown %}
@@ -287,7 +288,7 @@
             <span>TOTAL</span><span>₹{{ order.grand_total }}</span>
         </div>
         {% if is_composition %}
-        <div style="font-size:0.68rem;color:var(--text-muted);text-align:right;margin-top:3px;">Bill of Supply — GST not applicable (Composition Scheme)</div>
+        <div style="font-size:0.68rem;color:var(--text-muted);text-align:right;margin-top:3px;">Bill of Supply - GST not applicable (Composition Scheme)</div>
         {% elif is_unregistered %}
         <div class="no-print" style="font-size:0.68rem;color:var(--text-muted);text-align:right;margin-top:3px;">No GST: this outlet has no GSTIN (Outlet Settings)</div>
         {% elif gst_inclusive %}
@@ -310,7 +311,7 @@
         </div>
         {% endif %}
 
-        <!-- UPI QR — show when upi_id configured and order not yet fully paid -->
+        <!-- UPI QR - show when upi_id configured and order not yet fully paid -->
         {% if config.upi_id and remaining > 0 %}
         <div id="upi-qr-wrap" style="margin:1.25rem 0;text-align:center;border:1px dashed var(--border-color);padding:1.25rem;">
             <div style="font-size:0.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:0.75rem;">
@@ -318,7 +319,7 @@
             </div>
             <div id="upi-qr-canvas" style="display:inline-block;"></div>
             <div id="upi-qr-fallback" style="display:none;font-size:0.78rem;color:#dc2626;margin-top:0.4rem;">
-                Couldn't load the QR — have the customer pay directly to the UPI ID below in any UPI app.
+                Couldn't load the QR - have the customer pay directly to the UPI ID below in any UPI app.
             </div>
             <div style="font-size:0.72rem;color:var(--text-muted);margin-top:0.6rem;">
                 {{ config.upi_id }}
@@ -370,10 +371,10 @@
             {% if remaining > 0 %}
                 <input type="number" id="payAmount" class="input-pay" value="{{ remaining }}" placeholder="Enter amount…"
                        oninput="updateChange(this.value)">
-                <!-- Change-to-give — appears only when cashier enters more than balance -->
+                <!-- Change-to-give - appears only when cashier enters more than balance -->
                 <div id="change-display" style="display:none;background:#dc2626;color:#fff;text-align:center;padding:0.9rem 1rem;margin-bottom:0.75rem;">
                     <div style="font-size:0.6rem;text-transform:uppercase;letter-spacing:3px;opacity:.85;margin-bottom:0.2rem;">Change to Give Back</div>
-                    <div id="change-amount" style="font-family:'DM Serif Display',serif;font-size:2.8rem;font-weight:700;line-height:1.1;">₹0</div>
+                    <div id="change-amount" style="font-family:'Inter', sans-serif;font-size:2.8rem;font-weight:700;line-height:1.1;">₹0</div>
                 </div>
                 <div style="display:flex;gap:0.5rem;margin-bottom:0.5rem;">
                     <button class="btn-set" onclick="setVal('{{ remaining }}')">Pay All</button>
@@ -416,20 +417,20 @@
 
     </div><!-- .receipt-container -->
 
-    <!-- Loyalty points — only when feature is on -->
+    <!-- Loyalty points - only when feature is on -->
     {% if 'loyalty_points' in tenant_features %}
     <div class="loyalty-section no-print">
         <div class="loyalty-title"><i class="bi bi-stars me-1" style="color:var(--accent-gold)"></i>Guest &amp; Loyalty Points</div>
         <div style="display:flex;gap:0.5rem;margin-bottom:0.5rem;">
             <input id="guestPhone" type="tel" class="input-pay"
-                   style="margin:0;flex:1;padding:0.6rem 0.8rem;font-size:0.9rem;font-family:'Outfit',sans-serif;text-align:left;"
+                   style="margin:0;flex:1;padding:0.6rem 0.8rem;font-size:0.9rem;font-family:'Inter',sans-serif;text-align:left;"
                    placeholder="Guest phone number" maxlength="10" inputmode="numeric"
                    value="{{ order.customer_phone|default:'' }}">
             <button class="btn-set" style="flex:0 0 80px;" onclick="lookupGuest()">Lookup</button>
         </div>
         <div id="guestInfo" class="loyalty-info" style="display:none;"></div>
         <input id="guestName" type="text" class="input-pay"
-               style="margin-bottom:0.5rem;padding:0.6rem 0.8rem;font-size:0.9rem;font-family:'Outfit',sans-serif;text-align:left;"
+               style="margin-bottom:0.5rem;padding:0.6rem 0.8rem;font-size:0.9rem;font-family:'Inter',sans-serif;text-align:left;"
                placeholder="Guest name (optional)">
         <div style="display:flex;gap:0.5rem;align-items:center;margin-bottom:0.75rem;">
             <label style="font-size:0.62rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-muted);white-space:nowrap;">Redeem pts:</label>
@@ -513,7 +514,7 @@ renderUpiQR({{ remaining }});
         if (_razorpayPollTimer) { clearInterval(_razorpayPollTimer); _razorpayPollTimer = null; }
     }
 
-    // Big, unmistakable states — a waiter glancing at this for one second
+    // Big, unmistakable states - a waiter glancing at this for one second
     // must know "paid" or "not paid" without reading English carefully.
     function razorpaySetState(kind) {
         const card   = document.getElementById('razorpay-modal-card');
@@ -559,7 +560,7 @@ renderUpiQR({{ remaining }});
             _razorpayPollTimer = setInterval(async () => {
                 if (Date.now() > expiresAt) {
                     clearInterval(_razorpayPollTimer); _razorpayPollTimer = null;
-                    status.textContent = 'QR expired — tap Regenerate';
+                    status.textContent = 'QR expired - tap Regenerate';
                     return;
                 }
                 try {
@@ -567,7 +568,7 @@ renderUpiQR({{ remaining }});
                     const s = await apiClient.get(statusUrl);
                     if (s.status === 'paid') {
                         clearInterval(_razorpayPollTimer); _razorpayPollTimer = null;
-                        // Replace the QR with a big green checkmark — held on
+                        // Replace the QR with a big green checkmark - held on
                         // screen for 2s so it's actually seen, not just flashed.
                         area.innerHTML = `<div style="width:90px;height:90px;border-radius:50%;background:#16a34a;display:flex;align-items:center;justify-content:center;">
                             <span style="color:#fff;font-size:3rem;line-height:1;">✓</span>
@@ -577,9 +578,9 @@ renderUpiQR({{ remaining }});
                         setTimeout(() => location.reload(), 2000);
                     } else if (s.status === 'expired') {
                         clearInterval(_razorpayPollTimer); _razorpayPollTimer = null;
-                        status.textContent = 'QR expired — tap Regenerate';
+                        status.textContent = 'QR expired - tap Regenerate';
                     }
-                } catch (e) { /* keep polling — a transient network blip shouldn't stop it */ }
+                } catch (e) { /* keep polling - a transient network blip shouldn't stop it */ }
             }, 3000);
         } catch (e) {
             area.innerHTML = '<span style="color:#dc2626;font-size:0.85rem;">Could not generate QR</span>';
@@ -626,8 +627,8 @@ renderUpiQR({{ remaining }});
         fetch('{% url "list-promos" %}').then(r => r.json()).then(data => {
             (data.promos || []).forEach(p => {
                 const label = p.discount_type === 'percentage'
-                    ? `${p.name} — ${p.discount_value}% Off`
-                    : `${p.name} — ₹${p.discount_value} Flat`;
+                    ? `${p.name} - ${p.discount_value}% Off`
+                    : `${p.name} - ₹${p.discount_value} Flat`;
                 sel.appendChild(new Option(label, JSON.stringify(p)));
             });
         }).catch(() => {});
@@ -689,7 +690,7 @@ renderUpiQR({{ remaining }});
         }
     }
 
-    // Manual receipt print. On the Rasova app / any device, queue to the on-LAN
+    // Manual receipt print. On the Oi Ramen app / any device, queue to the on-LAN
     // print agent; on a plain desktop browser, fall back to window.print().
     async function printReceipt(orderId) {
         const p = window.rasovaPlatform || {};
@@ -714,7 +715,7 @@ renderUpiQR({{ remaining }});
         const amount = amountOverride !== null ? amountOverride : (amtEl ? amtEl.value : 0);
 
         // Offline: only cash can be confirmed without a live gateway
-        // round-trip (UPI/card verification can't happen without one — see
+        // round-trip (UPI/card verification can't happen without one - see
         // offlinePaymentQueue's own comment in base.html). Queue it and
         // stop here; the print/redirect flow below all depends on the
         // payment actually existing server-side, which it doesn't yet.
@@ -725,7 +726,7 @@ renderUpiQR({{ remaining }});
             }
             try {
                 await offlinePaymentQueue.add({{ order.id }}, amount);
-                ui.toast('Offline — cash payment saved, will sync when back online. Print the receipt manually for now.', 'success');
+                ui.toast('Offline - cash payment saved, will sync when back online. Print the receipt manually for now.', 'success');
                 window.onbeforeunload = null;
             } catch (e) {
                 ui.toast('Could not save payment offline on this device. Please note it down manually.', 'error');
@@ -745,7 +746,7 @@ renderUpiQR({{ remaining }});
 
                 let printed = false;
 
-                // 0. Rasova Android app (or any device): push to the print queue so
+                // 0. Oi Ramen Android app (or any device): push to the print queue so
                 //    the on-LAN agent (PC/phone) prints it. The EC2 server itself
                 //    cannot reach a local printer, so this is the cloud-correct path.
                 const _p = window.rasovaPlatform || {};
@@ -791,14 +792,14 @@ renderUpiQR({{ remaining }});
             }
         } catch(e) {
             // Connection dropped between the navigator.onLine check above and
-            // this request actually landing — same TypeError heuristic
+            // this request actually landing - same TypeError heuristic
             // apiClient.request() and the order queue already use elsewhere.
             // Only cash is safe to queue after the fact for the same reason
             // as the upfront offline check.
             if (e instanceof TypeError && method === 'cash') {
                 try {
                     await offlinePaymentQueue.add({{ order.id }}, amount);
-                    ui.toast('Connection dropped — cash payment saved, will sync once back online.', 'success');
+                    ui.toast('Connection dropped - cash payment saved, will sync once back online.', 'success');
                     window.onbeforeunload = null;
                 } catch (queueErr) {
                     ui.toast('Could not save payment offline on this device. Please note it down manually.', 'error');
@@ -833,7 +834,7 @@ renderUpiQR({{ remaining }});
         } catch (_) { /* apiClient already toasted the failure */ }
     }
 
-    /* ── Rasova Print Agent ── */
+    /* ── Oi Ramen Print Agent ── */
     const RASOVA_AGENT_URL = 'ws://{{ request.user.outlet.agent_host|default:"localhost" }}:8765';
     let _agentSocket = null;
 
@@ -879,7 +880,7 @@ renderUpiQR({{ remaining }});
                 setTimeout(() => { ws.removeEventListener('message', handler); resolve(false); }, 10000);
             });
         } catch(e) {
-            console.warn('Rasova Agent not available:', e.message);
+            console.warn('Oi Ramen Agent not available:', e.message);
             return false;
         }
     }
@@ -898,7 +899,7 @@ renderUpiQR({{ remaining }});
     }
 
     {% if auto_print %}
-    // Payment just completed — auto-open receipt immediately
+    // Payment just completed - auto-open receipt immediately
     window.addEventListener('load', function() {
         setTimeout(openThermalReceipt, 600);
     });
@@ -917,7 +918,7 @@ renderUpiQR({{ remaining }});
                 info.innerHTML = `<strong>${d.name || 'Guest'}</strong> &nbsp;·&nbsp; ${d.visits} visits &nbsp;·&nbsp; <span style="color:var(--accent-gold)">${d.points} pts</span>`;
                 if (d.name) document.getElementById('guestName').value = d.name;
             } else {
-                info.textContent = 'New guest — will be registered on award.';
+                info.textContent = 'New guest - will be registered on award.';
             }
         } catch(e) { info.textContent = 'Lookup failed'; }
     }

@@ -1,11 +1,11 @@
 {% extends 'core/base.html' %}
-{% block title %}Setup — {{ tenant.name }} | Rasova Control Panel{% endblock %}
+{% block title %}Setup - {{ tenant.name }} | Oi Ramen Control Panel{% endblock %}
 
 {% block extra_css %}
 <style>
   .cfg-wrap { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 6rem; }
   .cfg-section { background: var(--panel-bg); border: 1px solid var(--border-color); padding: 1.75rem; margin-bottom: 1.5rem; }
-  .cfg-section h3 { font-family: 'DM Serif Display', serif; font-size: 1.15rem; font-weight: 400; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 8px; }
+  .cfg-section h3 { font-family: 'Inter', sans-serif; font-size: 1.15rem; font-weight: 400; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 8px; }
   .field { margin-bottom: 1rem; }
   .field label { display: block; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 0.3rem; }
   .field input, .field select { width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--border-color); color: var(--text-main); padding: 0.4rem 0; font-size: 0.9rem; font-family: inherit; outline: none; }
@@ -15,7 +15,7 @@
   .btn-cfg { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; padding: 0.5rem 1.2rem; border: 1px solid var(--border-color); background: transparent; color: var(--text-main); cursor: pointer; transition: all 0.2s; }
   .btn-cfg:hover { border-color: var(--accent-gold); color: var(--accent-gold); }
   .btn-cfg-primary { background: var(--accent-gold); border-color: var(--accent-gold); color: #fff; }
-  .btn-cfg-primary:hover { background: #b59250; color: #fff; }
+  .btn-cfg-primary:hover { background: #C28226; color: #fff; }
   .feat-pill { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border-radius: 20px; font-size: 0.7rem; margin: 3px; }
   .feat-on  { background: rgba(16,185,129,.1); color:#10b981; border:1px solid rgba(16,185,129,.3); }
   .feat-off { background: rgba(115,115,115,.1); color:var(--text-muted); border:1px solid var(--border-color); }
@@ -30,7 +30,7 @@
     <a href="/superuser/" style="color:var(--accent-gold);text-decoration:none;">Control Panel</a> / {{ tenant.name }}
   </p>
   <h1 class="brand-title mb-0"><i class="bi bi-building me-2" style="color:var(--accent-gold);"></i>{{ tenant.name }}</h1>
-  <p class="brand-subtitle">{{ tenant.get_tenant_type_display }} — {{ outlet.name }}</p>
+  <p class="brand-subtitle">{{ tenant.get_tenant_type_display }} - {{ outlet.name }}</p>
 </div>
 {% endblock %}
 
@@ -94,7 +94,7 @@
         <input type="text" name="address" value="{{ outlet.address|default:'' }}" placeholder="Shop 4, MG Road, Pune 411001">
       </div>
       <div class="field" style="max-width:220px;">
-        <label>SAC Code <span style="color:var(--accent-gold);font-size:0.65rem;">— printed on every bill</span></label>
+        <label>SAC Code <span style="color:var(--accent-gold);font-size:0.65rem;">- printed on every bill</span></label>
         <input type="text" name="sac_code" value="{{ outlet.sac_code|default:'996331' }}" maxlength="8" placeholder="996331" style="font-family:monospace;">
         <div style="font-size:0.65rem;color:var(--text-muted);margin-top:3px;">996331 = Restaurant/Café/QSR &nbsp;·&nbsp; 996332 = Delivery &nbsp;·&nbsp; 996334 = Catering</div>
       </div>
@@ -105,14 +105,14 @@
             <input type="radio" name="gst_inclusive" value="false" {% if not outlet.gst_inclusive %}checked{% endif %} style="accent-color:var(--accent-gold);">
             <div>
               <strong>Exclusive</strong>
-              <span style="color:var(--text-muted);font-size:0.72rem;"> — GST added on top (fine dining, hotels)</span>
+              <span style="color:var(--text-muted);font-size:0.72rem;"> - GST added on top (fine dining, hotels)</span>
             </div>
           </label>
           <label style="display:flex;align-items:center;gap:8px;font-size:0.82rem;cursor:pointer;">
             <input type="radio" name="gst_inclusive" value="true" {% if outlet.gst_inclusive %}checked{% endif %} style="accent-color:var(--accent-gold);">
             <div>
               <strong>Inclusive</strong>
-              <span style="color:var(--text-muted);font-size:0.72rem;"> — GST inside price (QSR, café, Zomato)</span>
+              <span style="color:var(--text-muted);font-size:0.72rem;"> - GST inside price (QSR, café, Zomato)</span>
             </div>
           </label>
         </div>
@@ -122,7 +122,7 @@
   </div>
 
   <div class="cfg-section">
-    <h3><i class="bi bi-receipt" style="color:var(--accent-gold);"></i> Rasova Subscription</h3>
+    <h3><i class="bi bi-receipt" style="color:var(--accent-gold);"></i> Oi Ramen Subscription</h3>
     <form method="post">
       {% csrf_token %}
       <input type="hidden" name="action" value="update_subscription">
@@ -141,7 +141,7 @@
         </div>
       </div>
       <div style="font-size:0.65rem;color:var(--text-muted);margin:4px 0 12px;">
-        Manual override — sits alongside the automated monthly invoicing and overdue-suspension jobs, not instead of them.
+        Manual override - sits alongside the automated monthly invoicing and overdue-suspension jobs, not instead of them.
       </div>
       <button type="submit" class="btn-cfg btn-cfg-primary">Save Subscription</button>
     </form>
@@ -271,7 +271,7 @@
     <div class="staff-row">
       <div>
         <strong>{{ user.username }}</strong>
-        {% if user.first_name %}<span style="color:var(--text-muted);font-size:0.85rem;"> — {{ user.get_full_name }}</span>{% endif %}
+        {% if user.first_name %}<span style="color:var(--text-muted);font-size:0.85rem;"> - {{ user.get_full_name }}</span>{% endif %}
       </div>
       <span class="role-chip">{{ user.role }}</span>
     </div>

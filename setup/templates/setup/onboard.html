@@ -1,5 +1,5 @@
 {% extends 'core/base.html' %}
-{% block title %}Setup Rasova — Step {{ step }} of {{ total_steps }}{% endblock %}
+{% block title %}Setup Oi Ramen - Step {{ step }} of {{ total_steps }}{% endblock %}
 
 {% block extra_css %}
 <style>
@@ -27,7 +27,7 @@
     /* Card */
     .wiz-card { background: var(--panel); border: 1px solid var(--border); padding: 2.5rem 2rem; }
     .wiz-eyebrow { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 3px; color: var(--gold); margin-bottom: 0.5rem; }
-    .wiz-title { font-family: 'DM Serif Display', serif; font-size: 1.8rem; font-weight: 400; margin-bottom: 0.4rem; }
+    .wiz-title { font-family: 'Inter', sans-serif; font-size: 1.8rem; font-weight: 400; margin-bottom: 0.4rem; }
     .wiz-sub { font-size: 0.85rem; color: var(--muted); line-height: 1.6; margin-bottom: 2rem; }
 
     /* Fields */
@@ -36,7 +36,7 @@
     .field input, .field select, .field textarea {
         width: 100%; background: transparent; border: none;
         border-bottom: 1px solid var(--border); color: var(--text);
-        padding: 0.5rem 0; font-size: 0.95rem; font-family: 'Outfit', sans-serif;
+        padding: 0.5rem 0; font-size: 0.95rem; font-family: 'Inter', sans-serif;
         outline: none;
     }
     .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--gold); }
@@ -83,7 +83,7 @@
 <div>
     <h1 class="brand-title mb-0">
         <i class="bi bi-diamond-half" style="color:var(--accent-gold);"></i>
-        Rasova Setup
+        Oi Ramen Setup
     </h1>
     <p class="brand-subtitle">Let's get your restaurant running</p>
 </div>
@@ -193,7 +193,7 @@
                 .gst-seg-opt:first-child { border-right: 1px solid var(--border-color); }
                 .gst-seg-opt input { display: none; }
                 .gst-seg-opt.active {
-                    background: rgba(197,160,89,0.08);
+                    background: rgba(216, 148, 47,0.08);
                     outline: 1.5px solid var(--accent-gold);
                     outline-offset: -1px;
                 }
@@ -205,7 +205,7 @@
                     align-items: center;
                     gap: 0.4rem;
                 }
-                .gst-seg-sub { font-size: 0.68rem; color: var(--text-muted); font-family: 'Space Mono', monospace; }
+                .gst-seg-sub { font-size: 0.68rem; color: var(--text-muted); font-family: 'Inter', ui-monospace, monospace; }
                 .gst-seg-badge { font-size: 0.55rem; text-transform: uppercase; letter-spacing: 1px; background: rgba(16,185,129,.12); color: #10b981; padding: 1px 5px; }
                 </style>
                 <script>
@@ -222,7 +222,7 @@
             <div class="field">
                 <label>Your POS Web Address</label>
                 <div class="subdomain-preview" id="subdomainPreview">
-                    <span class="subdomain-val" id="subdomainDisplay">{{ tenant.slug }}</span><span class="subdomain-suffix">.rasova.net</span>
+                    <span class="subdomain-val" id="subdomainDisplay">{{ tenant.slug }}</span><span class="subdomain-suffix">.oiramen.com</span>
                     <button type="button" class="subdomain-edit-btn" onclick="toggleSlugEdit()">
                         <i class="bi bi-pencil"></i> Change
                     </button>
@@ -235,7 +235,7 @@
                                oninput="checkSlug(this.value)"
                                pattern="[a-z0-9-]+"
                                autocomplete="off">
-                        <span class="subdomain-suffix">.rasova.net</span>
+                        <span class="subdomain-suffix">.oiramen.com</span>
                     </div>
                     <div class="slug-status" id="slugStatus"></div>
                 </div>
@@ -246,7 +246,7 @@
                     border: 1px solid var(--border-color);
                     padding: 0.65rem 0.9rem;
                     margin-top: 0.4rem;
-                    font-family: 'Space Mono', monospace;
+                    font-family: 'Inter', ui-monospace, monospace;
                     font-size: 0.82rem;
                 }
                 .subdomain-val { color: var(--accent-gold); font-weight: 700; }
@@ -258,23 +258,23 @@
                     text-transform: uppercase; letter-spacing: 1px;
                     padding: 2px 8px; cursor: pointer;
                     transition: border-color 0.15s, color 0.15s;
-                    font-family: 'Outfit', sans-serif;
+                    font-family: 'Inter', sans-serif;
                 }
                 .subdomain-edit-btn:hover { border-color: var(--accent-gold); color: var(--accent-gold); }
                 .subdomain-edit { margin-top: 0.5rem; }
                 .subdomain-input-row {
                     display: flex; align-items: center;
                     border: 1px solid var(--accent-gold);
-                    background: rgba(197,160,89,0.04);
+                    background: rgba(216, 148, 47,0.04);
                 }
                 .subdomain-input-row input {
                     flex: 1; background: transparent; border: none;
                     color: var(--text-main); padding: 0.6rem 0.75rem;
-                    font-size: 0.85rem; font-family: 'Space Mono', monospace;
+                    font-size: 0.85rem; font-family: 'Inter', ui-monospace, monospace;
                     outline: none;
                 }
                 .subdomain-input-row .subdomain-suffix {
-                    padding-right: 0.75rem; font-family: 'Space Mono', monospace;
+                    padding-right: 0.75rem; font-family: 'Inter', ui-monospace, monospace;
                     font-size: 0.8rem;
                 }
                 .slug-status {
@@ -301,7 +301,7 @@
                     const status = document.getElementById('slugStatus');
                     clearTimeout(_slugTimer);
                     if (!slug || slug.length < 3) {
-                        status.textContent = slug ? 'Too short — minimum 3 characters' : '';
+                        status.textContent = slug ? 'Too short - minimum 3 characters' : '';
                         status.className = 'slug-status slug-err';
                         return;
                     }
@@ -312,7 +312,7 @@
                             .then(r => r.json())
                             .then(d => {
                                 if (d.available) {
-                                    status.textContent = `✓ ${d.slug}.rasova.net is available`;
+                                    status.textContent = `✓ ${d.slug}.oiramen.com is available`;
                                     status.className = 'slug-status slug-ok';
                                 } else {
                                     status.textContent = `✗ ${d.reason}`;
@@ -336,7 +336,7 @@
                        onchange="previewLogo(this)">
             </div>
 
-            <button type="submit" class="btn-next">Continue — Add Menu <i class="bi bi-arrow-right ms-1"></i></button>
+            <button type="submit" class="btn-next">Continue - Add Menu <i class="bi bi-arrow-right ms-1"></i></button>
         </form>
 
         {# ── STEP 2: Menu ── #}
@@ -366,7 +366,7 @@
             <div id="ai-spinner" style="font-size:0.85rem;color:var(--muted);"><i class="bi bi-arrow-repeat" style="animation:spin 1s linear infinite;display:inline-block;"></i> Importing your menu…</div>
             <div id="ai-success" style="display:none;">
                 <div style="color:#10b981;font-size:0.95rem;font-weight:600;" id="ai-success-msg"></div>
-                <a href="/setup/onboard/?step=3" class="btn-next" style="display:inline-block;margin-top:1rem;text-decoration:none;text-align:center;">Continue — Add Staff <i class="bi bi-arrow-right ms-1"></i></a>
+                <a href="/setup/onboard/?step=3" class="btn-next" style="display:inline-block;margin-top:1rem;text-decoration:none;text-align:center;">Continue - Add Staff <i class="bi bi-arrow-right ms-1"></i></a>
             </div>
         </div>
 
@@ -395,9 +395,9 @@
             </div>
             {% endfor %}
 
-            <button type="submit" class="btn-next">Continue — Add Staff <i class="bi bi-arrow-right ms-1"></i></button>
+            <button type="submit" class="btn-next">Continue - Add Staff <i class="bi bi-arrow-right ms-1"></i></button>
         </form>
-        <a href="/setup/onboard/?step=3" class="btn-skip">Skip — I'll add the menu later</a>
+        <a href="/setup/onboard/?step=3" class="btn-skip">Skip - I'll add the menu later</a>
 
         {# ── STEP 3: Staff ── #}
         {% elif step == 3 %}
@@ -428,11 +428,11 @@
             <div class="field">
                 <label>Role</label>
                 <select name="role">
-                    <option value="cashier">Cashier — takes payments, manages bills</option>
-                    <option value="manager">Manager — discounts, reports, full access</option>
-                    <option value="captain">Captain — supervises waiters, applies discounts</option>
-                    <option value="waiter">Waiter — takes orders, sees table status</option>
-                    <option value="kitchen">Kitchen — sees KOTs, marks items ready</option>
+                    <option value="cashier">Cashier - takes payments, manages bills</option>
+                    <option value="manager">Manager - discounts, reports, full access</option>
+                    <option value="captain">Captain - supervises waiters, applies discounts</option>
+                    <option value="waiter">Waiter - takes orders, sees table status</option>
+                    <option value="kitchen">Kitchen - sees KOTs, marks items ready</option>
                 </select>
             </div>
 
@@ -442,11 +442,11 @@
             </div>
 
             <button type="submit" class="btn-next">
-                Continue — {% if is_qsr %}Payment{% else %}Tables{% endif %}
+                Continue - {% if is_qsr %}Payment{% else %}Tables{% endif %}
                 <i class="bi bi-arrow-right ms-1"></i>
             </button>
         </form>
-        <a href="/setup/onboard/?step=4" class="btn-skip">Skip — I'll add staff later</a>
+        <a href="/setup/onboard/?step=4" class="btn-skip">Skip - I'll add staff later</a>
 
         {# ── STEP 4: Tables (fine dining) or skip (QSR) ── #}
         {% elif step == 4 %}
@@ -454,10 +454,10 @@
 
         {% if is_qsr %}
         <h2 class="wiz-title">No Tables Needed</h2>
-        <p class="wiz-sub">QSR and café setups use token numbers instead of tables. You're all set — move on to payment.</p>
+        <p class="wiz-sub">QSR and café setups use token numbers instead of tables. You're all set - move on to payment.</p>
         <form method="post">
             {% csrf_token %}
-            <button type="submit" class="btn-next">Continue — Payment Setup <i class="bi bi-arrow-right ms-1"></i></button>
+            <button type="submit" class="btn-next">Continue - Payment Setup <i class="bi bi-arrow-right ms-1"></i></button>
         </form>
         {% else %}
         <h2 class="wiz-title">Your Tables</h2>
@@ -481,14 +481,14 @@
                 <label>Custom Table Name</label>
                 <input type="text" name="custom_table_name" placeholder="e.g. Rooftop, Private Booth, Bar">
             </div>
-            <button type="submit" class="btn-next">Continue — Payment Setup <i class="bi bi-arrow-right ms-1"></i></button>
+            <button type="submit" class="btn-next">Continue - Payment Setup <i class="bi bi-arrow-right ms-1"></i></button>
         </form>
-        <a href="/setup/onboard/?step=5" class="btn-skip">Skip — I'll add tables later</a>
+        <a href="/setup/onboard/?step=5" class="btn-skip">Skip - I'll add tables later</a>
         {% endif %}
 
         {# ── STEP 5: Payment ── #}
         {% elif step == 5 %}
-        <p class="wiz-eyebrow">Step 5 of 5 — Almost done!</p>
+        <p class="wiz-eyebrow">Step 5 of 5 - Almost done!</p>
         <h2 class="wiz-title">Payment Methods</h2>
         <p class="wiz-sub">Choose what your customers can pay with. You can change this anytime from Setup → Payment Methods.</p>
 
@@ -529,13 +529,13 @@
             </div>
 
             <div class="field" style="margin-top:1.5rem;">
-                <label>UPI ID — customers scan this QR to pay directly <span style="color:var(--gold);">(recommended)</span></label>
+                <label>UPI ID - customers scan this QR to pay directly <span style="color:var(--gold);">(recommended)</span></label>
                 <input type="text" name="upi_id" value="{{ config.upi_id }}" placeholder="yourrestaurant@okaxis">
-                <div class="field-hint">Your UPI VPA. Works with any bank — no Razorpay needed.</div>
+                <div class="field-hint">Your UPI VPA. Works with any bank - no Razorpay needed.</div>
             </div>
 
             <button type="submit" class="btn-next" style="background:#10b981;">
-                <i class="bi bi-check-lg me-2"></i>Finish Setup — Open Dashboard
+                <i class="bi bi-check-lg me-2"></i>Finish Setup - Open Dashboard
             </button>
         </form>
         {% endif %}

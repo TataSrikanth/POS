@@ -8,7 +8,7 @@
     .page-body { max-width: 680px; margin: 4rem auto; padding: 0 2rem; }
 
     .page-eyebrow { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 4px; color: var(--accent-gold); margin-bottom: 0.5rem; }
-    .page-title { font-family: 'DM Serif Display', serif; font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .page-title { font-family: 'Inter', sans-serif; font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
     .page-sub { color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; margin-bottom: 2.5rem; }
     .divider { width: 40px; height: 1px; background: var(--accent-gold); margin: 1.5rem 0; }
 
@@ -49,7 +49,7 @@
             {{ request.user.tenant.name }}
         </h1>
     </a>
-    <p class="brand-subtitle">Setup — {{ request.user.outlet.name }}</p>
+    <p class="brand-subtitle">Setup - {{ request.user.outlet.name }}</p>
 </div>
 {% endblock %}
 
@@ -124,7 +124,7 @@
             <div class="method-icon"><i class="bi bi-qr-code-scan"></i></div>
             <div class="method-info" style="flex:1;min-width:200px;">
                 <div class="method-name">Razorpay (UPI QR)</div>
-                <div class="method-desc">Dynamic QR via your own Razorpay account — auto-confirms via webhook, money settles straight to your bank account.</div>
+                <div class="method-desc">Dynamic QR via your own Razorpay account - auto-confirms via webhook, money settles straight to your bank account.</div>
             </div>
             <label class="toggle">
                 <input type="checkbox" name="razorpay_enabled" {% if config.razorpay_enabled %}checked{% endif %}>
@@ -140,18 +140,18 @@
                 <div>
                     <div style="font-size:0.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:4px;">Key Secret</div>
                     <input type="password" name="razorpay_key_secret"
-                           placeholder="{% if config.razorpay_key_secret %}•••••••••• (saved — leave blank to keep){% else %}Paste your key secret{% endif %}"
+                           placeholder="{% if config.razorpay_key_secret %}•••••••••• (saved - leave blank to keep){% else %}Paste your key secret{% endif %}"
                            style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--border-color);color:var(--text-main);padding:4px 0;font-size:0.85rem;outline:none;font-family:inherit;">
                 </div>
                 <div>
                     <div style="font-size:0.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:4px;">Webhook Secret</div>
                     <input type="password" name="razorpay_webhook_secret"
-                           placeholder="{% if config.razorpay_webhook_secret %}•••••••••• (saved — leave blank to keep){% else %}From Razorpay → Settings → Webhooks{% endif %}"
+                           placeholder="{% if config.razorpay_webhook_secret %}•••••••••• (saved - leave blank to keep){% else %}From Razorpay → Settings → Webhooks{% endif %}"
                            style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--border-color);color:var(--text-main);padding:4px 0;font-size:0.85rem;outline:none;font-family:inherit;">
                 </div>
                 {% if razorpay_webhook_url %}
                 <div>
-                    <div style="font-size:0.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:4px;">Webhook URL — paste this into Razorpay → Settings → Webhooks</div>
+                    <div style="font-size:0.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:4px;">Webhook URL - paste this into Razorpay → Settings → Webhooks</div>
                     <input type="text" readonly value="{{ razorpay_webhook_url }}" onclick="this.select()"
                            style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--border-color);color:var(--text-muted);padding:4px 0;font-size:0.78rem;outline:none;font-family:monospace;">
                 </div>
@@ -164,7 +164,7 @@
             <div class="method-icon"><i class="bi bi-qr-code-scan"></i></div>
             <div class="method-info">
                 <div class="method-name">Razorpay (UPI QR)</div>
-                <div class="method-desc">Not enabled for your account yet — ask Rasova support to turn this on for you.</div>
+                <div class="method-desc">Not enabled for your account yet - ask Oi Ramen support to turn this on for you.</div>
             </div>
         </div>
         {% endif %}

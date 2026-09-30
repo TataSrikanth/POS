@@ -4,7 +4,7 @@ A thin native Android shell that does two jobs: hosts the Rasova web dashboard i
 
 ## What this actually is
 
-There's almost no native UI here on purpose. `MainActivity` is a single Activity hosting a WebView pointed at a tenant's `https://<slug>.rasova.net` dashboard, the real UI lives server-side in Django. The only genuinely native logic is the print job polling loop and the printer socket connection, both in `PrintService`.
+There's almost no native UI here on purpose. `MainActivity` is a single Activity hosting a WebView pointed at a tenant's `https://<slug>.oiramen.com` dashboard, the real UI lives server-side in Django. The only genuinely native logic is the print job polling loop and the printer socket connection, both in `PrintService`.
 
 ## Architecture
 
@@ -39,7 +39,7 @@ Stays alive via `START_STICKY` (Android restarts it after being killed for memor
 
 There's no hardcoded server URL in release builds, `BuildConfig.SERVER_URL` is deliberately blank, a comment in the build file explains an earlier hardcoded value once short-circuited setup and pointed every install at the marketing landing page.
 
-First launch: if a `server_url` is already saved, load it directly. Otherwise show the setup screen, type a subdomain (`your-restaurant.rasova.net`) or scan a QR code from the dashboard's Setup > Printer page. That URL is the entire tenant identity, one install equals one tenant, persisted in SharedPreferences, no separate pairing token.
+First launch: if a `server_url` is already saved, load it directly. Otherwise show the setup screen, type a subdomain (`your-restaurant.oiramen.com`) or scan a QR code from the dashboard's Setup > Printer page. That URL is the entire tenant identity, one install equals one tenant, persisted in SharedPreferences, no separate pairing token.
 
 ## Build
 

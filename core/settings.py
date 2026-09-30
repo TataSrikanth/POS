@@ -83,8 +83,14 @@ TENANT_AUTO_SCOPE_ENABLED = os.getenv('TENANT_AUTO_SCOPE_ENABLED', 'True') == 'T
 
 # Parse comma-separated hosts, fallback to localhost for dev
 env_hosts = os.getenv('ALLOWED_HOSTS', '')
-if env_hosts:
-    ALLOWED_HOSTS = [host.strip() for host in env_hosts.split(',') if host.strip()]
+# Render sets RENDER_EXTERNAL_HOSTNAME (e.g. oi-ramen.onrender.com) on its web
+# services. Trust it automatically so a fresh deploy answers on its own URL.
+RENDER_EXTERNAL_HOSTNAME = os.getenv('RENDER_EXTERNAL_HOSTNAME', '')
+_hosts = [host.strip() for host in env_hosts.split(',') if host.strip()]
+if RENDER_EXTERNAL_HOSTNAME and RENDER_EXTERNAL_HOSTNAME not in _hosts:
+    _hosts.append(RENDER_EXTERNAL_HOSTNAME)
+if _hosts:
+    ALLOWED_HOSTS = _hosts
 else:
     from django.core.exceptions import ImproperlyConfigured
     if not DEBUG:
@@ -253,10 +259,11 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
-# WhiteNoise serves files from public/ at the root URL (/)
-# index.html in public/ is served at exactly / (the landing page)
-WHITENOISE_ROOT        = BASE_DIR / 'public'
-WHITENOISE_INDEX_FILE  = True
+# The marketing landing page (public/index.html) is switched off: / now reaches
+# core.views.landing, which sends visitors straight to /login/ (or /dashboard/
+# when signed in). To bring the landing page back, restore:
+#   WHITENOISE_ROOT       = BASE_DIR / 'public'
+#   WHITENOISE_INDEX_FILE = True
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -327,20 +334,26 @@ if not DEBUG:
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
 
-    # Wildcard covers all tenant subdomains (https://*.rasova.net)
+    # Wildcard covers all tenant subdomains (https://*.oiramen.com)
     # Falls back to env var for custom domains
-    _raw_csrf_origins = os.environ.get('CSRF_TRUSTED_ORIGINS', 'https://*.rasova.net,https://rasova.net')
+    _raw_csrf_origins = os.environ.get('CSRF_TRUSTED_ORIGINS', 'https://*.oiramen.com,https://oiramen.com')
     CSRF_TRUSTED_ORIGINS = [o.strip() for o in _raw_csrf_origins.split(',') if o.strip()]
+    if RENDER_EXTERNAL_HOSTNAME:
+        CSRF_TRUSTED_ORIGINS.append(f"https://{RENDER_EXTERNAL_HOSTNAME}")
 
     # Without an explicit cookie domain, a cookie is scoped to the EXACT host
     # that set it. auth_views.py redirects a user from the apex/login host to
-    # their tenant's own subdomain (tenant-slug.rasova.net) after login — a
+    # their tenant's own subdomain (tenant-slug.oiramen.com) after login — a
     # user who authenticates anywhere other than that exact subdomain (the
     # apex domain, or a host TenantMiddleware didn't resolve) would silently
     # not have their session cookie sent to the subdomain they're redirected
     # to. The leading dot makes the cookie valid for the base domain AND every
     # tenant subdomain, matching CSRF_TRUSTED_ORIGINS's wildcard above.
-    _cookie_domain = os.environ.get('SESSION_COOKIE_DOMAIN', '.rasova.net')
+    _cookie_domain = os.environ.get('SESSION_COOKIE_DOMAIN', '.oiramen.com')
+    # "none" / "host" / empty = scope the cookie to the exact host. Needed on a
+    # *.onrender.com address, where a .oiramen.com cookie would be rejected.
+    if _cookie_domain.strip().lower() in ('', 'none', 'host'):
+        _cookie_domain = None
     SESSION_COOKIE_DOMAIN = _cookie_domain
     CSRF_COOKIE_DOMAIN = _cookie_domain
 
@@ -348,8 +361,8 @@ if not DEBUG:
     # comment. The rename itself was originally motivated by exactly this
     # domain-scoping change: any browser that had already logged in BEFORE
     # the domain-wide cookie above was deployed still had an old csrftoken
-    # cookie scoped to the exact host (e.g. spice.rasova.net) alongside the
-    # new one scoped to .rasova.net. Both were valid, both got sent, and the
+    # cookie scoped to the exact host (e.g. spice.oiramen.com) alongside the
+    # new one scoped to .oiramen.com. Both were valid, both got sent, and the
     # JS reading document.cookie and Django's own request.COOKIES parsing
     # weren't guaranteed to pick the same one of the two — producing a
     # persistent, unexplained "CSRF token from header incorrect" 403 on
@@ -672,7 +685,7 @@ EMAIL_PORT          = 587
 EMAIL_USE_TLS       = True
 EMAIL_HOST_USER     = os.getenv("EMAIL_USER", "")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_PASSWORD", "")
-DEFAULT_FROM_EMAIL  = os.getenv("EMAIL_USER", "noreply@rasova.net")
+DEFAULT_FROM_EMAIL  = os.getenv("EMAIL_USER", "noreply@oiramen.com")
 
 # -------------------------------------------------------
 # SESSION — long enough for a full 12-hour QSR shift.
@@ -813,3 +826,12 @@ CELERY_BEAT_SCHEDULE = {
         "schedule": crontab(minute=0, hour="*/2"),
     },
 }
+
+# Print the Oi Ramen logo at the top of customer bills on ESC/POS printers.
+# Set PRINT_RECEIPT_LOGO=0 if a printer model chokes on raster images.
+PRINT_RECEIPT_LOGO = os.getenv("PRINT_RECEIPT_LOGO", "1") != "0"
+
+# After login, send users to their restaurant's own subdomain
+# (<slug>.<BASE_URL domain>). Set SUBDOMAIN_LOGIN_REDIRECT=False while the site
+# has no wildcard domain (for example on a plain *.onrender.com address).
+SUBDOMAIN_LOGIN_REDIRECT = os.getenv("SUBDOMAIN_LOGIN_REDIRECT", "True") == "True"

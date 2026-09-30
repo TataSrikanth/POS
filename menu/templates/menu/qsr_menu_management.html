@@ -11,9 +11,9 @@
     html.dark { --shadow-hover: 0 10px 30px rgba(0,0,0,0.5); }
 
     .btn-gold { background: var(--accent-gold); border-color: var(--accent-gold); color: #fff; }
-    .btn-gold:hover { background: #b59250; border-color: #b59250; color: #fff; }
+    .btn-gold:hover { background: #C28226; border-color: #C28226; color: #fff; }
     .btn-gold-solid { background: var(--accent-gold); border-color: var(--accent-gold); color: #000; font-weight: 700; }
-    .btn-gold-solid:hover { background: #b59250; border-color: #b59250; color: #000; }
+    .btn-gold-solid:hover { background: #C28226; border-color: #C28226; color: #000; }
 
     .category-card {
         background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 0;
@@ -41,7 +41,7 @@
     .item-identity { display: flex; flex-direction: column; }
     .item-name { font-size: 1rem; font-weight: 600; color: var(--text-main); margin-bottom: 2px; cursor: pointer; border-bottom: 1px dashed var(--border-color); display: inline-block; width: max-content; }
     .item-name:hover { color: var(--accent-gold); }
-    .item-price { font-family: 'DM Serif Display', serif; font-weight: 700; color: var(--accent-gold); font-size: 1.2rem; font-style: italic; cursor: pointer; }
+    .item-price { font-family: 'Inter', sans-serif; font-weight: 700; color: var(--accent-gold); font-size: 1.2rem; font-style: italic; cursor: pointer; }
     .item-price:hover { opacity: 0.8; }
 
     .luxury-badge { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; padding: 2px 8px; border-radius: 0; margin-left: 8px; }
@@ -57,7 +57,7 @@
     .modal-content { background: var(--panel-bg); border-radius: 0; border: 1px solid var(--border-color); }
     .modal-header { border-bottom: 1px solid var(--border-color); padding: 1.5rem; }
     .modal-footer { border-top: 1px solid var(--border-color); padding: 1.2rem; }
-    .modal-title { font-family: 'DM Serif Display', serif; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+    .modal-title { font-family: 'Inter', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
     html.dark .btn-close { filter: invert(1) grayscale(100%) brightness(200%); }
 
     .form-select-luxury, .form-input-luxury {
@@ -86,7 +86,7 @@
     .category-section { scroll-margin-top: 150px; }
 
     .dropdown-item { color: var(--text-main); transition: var(--transition-smooth); }
-    .dropdown-item:hover { background-color: rgba(197, 160, 89, 0.1); color: var(--accent-gold); }
+    .dropdown-item:hover { background-color: rgba(216, 148, 47, 0.1); color: var(--accent-gold); }
     .dropdown-item.text-danger:hover { background-color: rgba(239, 68, 68, 0.1); color: #ef4444; }
 
     #qsr-toast { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); background: var(--text-main); color: var(--bg-color); padding: 0.75rem 1.5rem; font-size: 0.85rem; letter-spacing: 0.5px; z-index: 9999; display: none; white-space: nowrap; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
@@ -201,7 +201,7 @@
                         </div>
 
                         <!-- Recipe Block -->
-                        <div class="recipe-block p-3 mb-3 mx-2" id="recipe-block-{{item.id}}" style="display:none; background:rgba(197,160,89,0.05); border-left:2px solid var(--accent-gold);">
+                        <div class="recipe-block p-3 mb-3 mx-2" id="recipe-block-{{item.id}}" style="display:none; background:rgba(216, 148, 47,0.05); border-left:2px solid var(--accent-gold);">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <span style="font-size:0.75rem; text-transform:uppercase; font-weight:bold; color:var(--accent-gold);">Linked Inventory Recipe</span>
                                 <button class="btn btn-sm btn-outline-secondary py-0 px-2" style="font-size:0.7rem; border-color:var(--border-color); color:var(--text-main);" onclick="openRecipeModal('{{item.id}}')">+ Add Ingredient</button>
@@ -210,7 +210,7 @@
                                 {% for r in item.recipes.all %}
                                 <div class="d-flex justify-content-between align-items-center py-1 border-bottom" style="font-size:0.85rem; border-color:rgba(0,0,0,0.05) !important;">
                                     <span><i class="bi bi-box-seam me-2 text-muted" style="font-size:0.75rem;"></i>{{r.inventory_item.name}}</span>
-                                    <span class="text-muted" style="font-family:'Space Mono',monospace;">{{r.quantity_required}} {{r.unit}}</span>
+                                    <span class="text-muted" style="font-family:'Inter', ui-monospace, monospace;">{{r.quantity_required}} {{r.unit}}</span>
                                 </div>
                                 {% empty %}
                                 <div class="text-muted py-2" style="font-size:0.8rem; font-style:italic;">No ingredients linked. Inventory will not be deducted for this item.</div>
@@ -322,7 +322,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title"><i class="bi bi-stars me-2"></i>Import Recipe — <span id="recipeImportItemName"></span></h5>
+                <h5 class="modal-title"><i class="bi bi-stars me-2"></i>Import Recipe - <span id="recipeImportItemName"></span></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
@@ -332,7 +332,7 @@
                     <input type="file" id="recipeImportFile" class="form-control form-input-luxury"
                            accept="image/*,application/pdf,.doc,.docx,.xls,.xlsx,.csv,.txt,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel,text/csv,text/plain">
                 </div>
-                <div class="text-center my-2 text-muted small">— OR PASTE TEXT —</div>
+                <div class="text-center my-2 text-muted small">- OR PASTE TEXT -</div>
                 <textarea id="recipeImportText" class="form-control form-input-luxury" rows="6" placeholder="Example:&#10;2 buns&#10;150g Chicken Patty&#10;1 tbsp Mayonnaise"></textarea>
             </div>
             <div class="modal-footer pt-0 border-0">
@@ -540,7 +540,7 @@
                         showToast("Recipe import failed: " + (data.error || "unknown error"), "error");
                         btn.disabled = false; btn.innerText = "Extract Ingredients";
                     }
-                    // still "processing" — keep polling
+                    // still "processing" - keep polling
                 })
                 .catch(() => { clearInterval(interval); btn.disabled = false; btn.innerText = "Extract Ingredients"; });
         }, 2000);

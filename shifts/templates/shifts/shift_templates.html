@@ -10,7 +10,7 @@
         --smooth: var(--transition-smooth); --red: #ef4444;
     }
 
-    .section-title { font-family: 'DM Serif Display', serif; font-size: 1rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 1.5rem; }
+    .section-title { font-family: 'Inter', sans-serif; font-size: 1rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 1.5rem; }
     .card-lux { background: var(--panel); border: 1px solid var(--border); padding: 2rem; }
     .template-row { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; border-bottom: 1px dashed var(--border); }
     .template-row:last-child { border-bottom: none; }
@@ -19,10 +19,10 @@
     .template-row .btn-icon:hover { color: var(--red); }
     .form-field { margin-bottom: 1.2rem; }
     .form-field label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); display: block; margin-bottom: 0.4rem; }
-    .form-field input { width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--border); color: var(--text); padding: 0.4rem 0; font-size: 0.9rem; font-family: 'Outfit', sans-serif; outline: none; }
+    .form-field input { width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--border); color: var(--text); padding: 0.4rem 0; font-size: 0.9rem; font-family: 'Inter', sans-serif; outline: none; }
     .form-field input:focus { border-color: var(--gold); }
     .empty-state { text-align: center; padding: 3rem 1rem; color: var(--muted); }
-    .badge-pay { background: rgba(197,160,89,0.12); color: var(--gold); font-size: 0.68rem; letter-spacing: 1px; padding: 2px 7px; border-radius: 2px; }
+    .badge-pay { background: rgba(216, 148, 47,0.12); color: var(--gold); font-size: 0.68rem; letter-spacing: 1px; padding: 2px 7px; border-radius: 2px; }
 </style>
 {% endblock %}
 
@@ -34,7 +34,7 @@
             Shift Templates
         </h1>
     </a>
-    <p class="brand-subtitle">{{ request.user.tenant.name }} — {{ request.user.outlet.name }}</p>
+    <p class="brand-subtitle">{{ request.user.tenant.name }} - {{ request.user.outlet.name }}</p>
 </div>
 {% endblock %}
 
@@ -108,7 +108,7 @@
                 </div>
                 <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:1rem;">
                     <i class="bi bi-info-circle me-1"></i>
-                    For overnight shifts (e.g. 22:00–06:00), end time can be before start time — duration is calculated correctly.
+                    For overnight shifts (e.g. 22:00–06:00), end time can be before start time - duration is calculated correctly.
                 </div>
                 <button class="btn-luxury w-100" onclick="createTemplate()">
                     <i class="bi bi-plus-lg me-1"></i>Create Template

@@ -1,4 +1,4 @@
-# Rasova POS — Complete Deployment Runbook
+# Oi Ramen POS — Complete Deployment Runbook
 ### EC2 · Ubuntu · Nginx · Gunicorn · PostgreSQL · WhiteNoise · CI/CD
 *Every command is copy-pasteable. Follow in order. Never skip a step.*
 
@@ -128,7 +128,7 @@ nano /home/ubuntu/rasova/.env
 ```env
 SECRET_KEY=GENERATE_50_RANDOM_CHARS_HERE
 DEBUG=False
-ALLOWED_HOSTS=rasova.net,www.rasova.net,YOUR_ELASTIC_IP
+ALLOWED_HOSTS=oiramen.com,www.oiramen.com,YOUR_ELASTIC_IP
 
 DB_ENGINE=django.db.backends.postgresql
 DB_NAME=rasova_prod
@@ -139,7 +139,7 @@ DB_PORT=5432
 
 REDIS_URL=redis://127.0.0.1:6379/0
 
-BASE_URL=https://rasova.net
+BASE_URL=https://oiramen.com
 ```
 
 > **Generate SECRET_KEY:**
@@ -225,7 +225,7 @@ gunicorn --bind 127.0.0.1:8000 --workers 2 --timeout 120 --daemon core.wsgi:appl
 sudo tee /etc/nginx/sites-available/rasova << 'EOF'
 server {
     listen 80;
-    server_name rasova.net www.rasova.net YOUR_ELASTIC_IP;
+    server_name oiramen.com www.oiramen.com YOUR_ELASTIC_IP;
 
     client_max_body_size 20M;
 
@@ -278,7 +278,7 @@ sudo systemctl enable nginx
 ### 9.3 Wait for propagation (5–30 minutes)
 ```bash
 # Check from server if DNS has propagated
-nslookup rasova.net
+nslookup oiramen.com
 # Should show your Elastic IP
 ```
 
@@ -295,7 +295,7 @@ sudo apt install -y certbot python3-certbot-nginx
 
 ### 10.2 Get SSL certificate
 ```bash
-sudo certbot --nginx -d rasova.net -d www.rasova.net
+sudo certbot --nginx -d oiramen.com -d www.oiramen.com
 ```
 > Follow prompts. Enter email. Agree to terms.
 > When asked about redirect: choose **2 (Redirect)** — forces HTTPS.
@@ -449,7 +449,7 @@ Then restart gunicorn (see 12.1).
 **Fix:**
 ```bash
 nano /home/ubuntu/rasova/.env
-# Add the domain: ALLOWED_HOSTS=rasova.net,www.rasova.net,18.60.238.104
+# Add the domain: ALLOWED_HOSTS=oiramen.com,www.oiramen.com,18.60.238.104
 ```
 Restart gunicorn after saving.
 
@@ -475,7 +475,7 @@ python manage.py collectstatic --noinput
 ```
 WhiteNoise serves static files through gunicorn — no nginx `/static/` alias needed.
 
-### ❌ 404 on landing page `rasova.net/`
+### ❌ 404 on landing page `oiramen.com/`
 **Cause:** WhiteNoise not finding `public/index.html`.
 **Fix:**
 ```bash
@@ -522,7 +522,7 @@ Landing page:     /home/ubuntu/rasova/public/index.html
 Static files:     /home/ubuntu/rasova/staticfiles/ (after collectstatic)
 Branch to deploy: qsr
 GitHub repo:      github.com/Rajathtuesday/restaurant-pos
-Domain:           rasova.net
+Domain:           oiramen.com
 ```
 
 ---
@@ -543,4 +543,4 @@ Domain:           rasova.net
 
 ---
 
-*Rasova POS · Branch: `qsr` · Founder: Rajath · fortunecloudmentors@gmail.com*
+*Oi Ramen POS · Branch: `qsr` · Founder: Ram Teja · +91 99084 18810*

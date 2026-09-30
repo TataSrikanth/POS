@@ -6,14 +6,14 @@
 {% block extra_css %}
 <style>
     .dashboard-card { background: var(--panel-bg); border: 1px solid var(--border-color); }
-    .section-title { font-family: 'DM Serif Display', serif; font-size: 1rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 1.5rem; }
+    .section-title { font-family: 'Inter', sans-serif; font-size: 1rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 1.5rem; }
     .shift-table { width: 100%; border-collapse: collapse; }
     .shift-table th { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); padding: 0.8rem 1rem; border-bottom: 1px solid var(--border-color); text-align: left; }
     .shift-table td { padding: 0.9rem 1rem; border-bottom: 1px dashed var(--border-color); font-size: 0.9rem; vertical-align: middle; }
     .badge-active { background: rgba(16,185,129,0.12); color: #10b981; font-size: 0.65rem; letter-spacing: 1px; padding: 3px 8px; border-radius: 3px; text-transform: uppercase; }
     .badge-done { background: rgba(100,100,100,0.1); color: var(--text-muted); font-size: 0.65rem; letter-spacing: 1px; padding: 3px 8px; border-radius: 3px; text-transform: uppercase; }
     .clock-card { background: var(--panel-bg); border: 1px solid var(--accent-gold); padding: 2rem; text-align: center; max-width: 400px; margin: 0 auto 2.5rem; }
-    .clock-time { font-family: 'DM Serif Display', serif; font-size: 2.5rem; color: var(--accent-gold); }
+    .clock-time { font-family: 'Inter', sans-serif; font-size: 2.5rem; color: var(--accent-gold); }
     .form-control-shift { background: transparent; border: none; border-bottom: 1px solid var(--border-color); color: var(--text-main); border-radius: 0; padding: 0.4rem 0; font-size: 0.85rem; width: 100%; outline: none; }
     .form-control-shift:focus { border-color: var(--accent-gold); }
 </style>
@@ -27,7 +27,7 @@
             Shift Management
         </h1>
     </a>
-    <p class="brand-subtitle">{{ request.user.tenant.name }} — {{ request.user.outlet.name }}</p>
+    <p class="brand-subtitle">{{ request.user.tenant.name }} - {{ request.user.outlet.name }}</p>
 </div>
 {% endblock %}
 
@@ -67,7 +67,7 @@
     {% if request.user.role in "manager,owner" or request.user.is_superuser %}
     <div class="dashboard-card p-0 mb-5">
         <div class="p-3 pb-0">
-            <h5 class="section-title">Shifts — {{ view_date|date:"N j, Y" }}</h5>
+            <h5 class="section-title">Shifts - {{ view_date|date:"N j, Y" }}</h5>
         </div>
         <div class="table-responsive">
             <table class="shift-table">
@@ -83,7 +83,7 @@
                         <td><strong>{{ s.staff.get_full_name|default:s.staff.username }}</strong></td>
                         <td style="color:var(--text-muted); font-size:0.8rem; text-transform:uppercase; letter-spacing:1px;">{{ s.staff.role }}</td>
                         <td>{{ s.clocked_in_at|date:"H:i" }}</td>
-                        <td>{{ s.clocked_out_at|date:"H:i"|default:"—" }}</td>
+                        <td>{{ s.clocked_out_at|date:"H:i"|default:"-" }}</td>
                         <td>{{ s.duration_hours|default:"Active" }}{% if s.duration_hours %} hrs{% endif %}</td>
                         <td>₹{{ s.tips }}</td>
                         <td>

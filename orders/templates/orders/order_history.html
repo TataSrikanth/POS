@@ -21,7 +21,7 @@
   .filter-bar input:focus, .filter-bar select:focus { border-color: var(--accent-gold); }
   .filter-bar select option { background: var(--panel-bg); }
   .btn-filter { padding: 0.4rem 1rem; background: var(--accent-gold); border: none; color: #fff; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; font-family: inherit; }
-  .btn-filter:hover { background: #b59250; }
+  .btn-filter:hover { background: #C28226; }
   .btn-clear  { padding: 0.4rem 0.8rem; background: transparent; border: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.78rem; cursor: pointer; font-family: inherit; }
 
   /* ── Summary strip ──────────────────────────────────────────── */
@@ -33,7 +33,7 @@
     background: var(--panel-bg); border: 1px solid var(--border-color);
     padding: 0.5rem 1rem; font-size: 0.78rem;
   }
-  .sum-chip strong { font-size: 1rem; font-family: 'DM Serif Display', serif; color: var(--text-main); display: block; }
+  .sum-chip strong { font-size: 1rem; font-family: 'Inter', sans-serif; color: var(--text-main); display: block; }
   .sum-chip span   { color: var(--text-muted); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 1px; }
   .pay-bar { display: flex; gap: 6px; align-items: center; font-size: 0.75rem; }
   .pay-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
@@ -52,7 +52,7 @@
   .hist-table tr:hover td { background: var(--panel-bg); cursor: pointer; }
   .hist-table tr.cancelled td { color: var(--text-muted); text-decoration: line-through; text-decoration-color: rgba(100,100,100,0.3); }
 
-  .order-num { font-family: 'Space Mono', monospace; font-size: 0.78rem; color: var(--accent-gold); }
+  .order-num { font-family: 'Inter', ui-monospace, monospace; font-size: 0.78rem; color: var(--accent-gold); }
   .status-pill {
     display: inline-block; padding: 2px 8px; border-radius: 12px;
     font-size: 0.62rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 700;
@@ -145,7 +145,7 @@
     background: var(--panel-bg); border: 1px solid var(--border-color);
     padding: 1.5rem; width: 360px; max-width: 95vw;
   }
-  .refund-modal h4 { font-family:'DM Serif Display',serif;font-size:1.1rem;font-weight:400;margin:0 0 1rem; }
+  .refund-modal h4 { font-family:'Inter', sans-serif;font-size:1.1rem;font-weight:400;margin:0 0 1rem; }
   .refund-modal label { font-size:0.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);display:block;margin-bottom:3px;margin-top:0.75rem; }
   .refund-modal input, .refund-modal textarea {
     width:100%;background:transparent;border:1px solid var(--border-color);
@@ -340,7 +340,7 @@
           {% if order.created_by %}
             {{ order.created_by.first_name|default:order.created_by.username }}
           {% else %}
-            <span style="color:var(--text-muted);">—</span>
+            <span style="color:var(--text-muted);">-</span>
           {% endif %}
         </td>
         <td style="font-size:0.82rem;">{{ order.items.count }}</td>
@@ -399,7 +399,7 @@
     <div id="refundMaxAmt" style="font-size:0.95rem;font-weight:700;color:var(--accent-gold);margin-bottom:0.75rem;"></div>
     <label>Amount (₹)</label>
     <input type="number" id="refundAmount" min="1" step="0.01" placeholder="Enter amount">
-    <label style="margin-top:0.75rem;">Customer Complaint <span style="color:var(--text-muted);font-weight:400;font-size:0.75rem;">(optional — what the customer said)</span></label>
+    <label style="margin-top:0.75rem;">Customer Complaint <span style="color:var(--text-muted);font-weight:400;font-size:0.75rem;">(optional - what the customer said)</span></label>
     <textarea id="refundCustomerComplaint" rows="2" placeholder="e.g. Food arrived cold, Wrong order delivered..."></textarea>
     <label style="margin-top:0.75rem;">Manager Note <span style="color:#e74c3c;">*</span> <span style="color:var(--text-muted);font-weight:400;font-size:0.75rem;">(internal reason for approval)</span></label>
     <textarea id="refundReason" rows="2" placeholder="e.g. Verified complaint, approving refund..."></textarea>
@@ -416,7 +416,7 @@
   <div class="detail-panel-head">
     <div>
       <p style="font-size:0.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--accent-gold);margin:0;">Order Detail</p>
-      <h3 id="detailOrderNum" style="font-family:'DM Serif Display',serif;font-size:1.2rem;font-weight:400;margin:0;"></h3>
+      <h3 id="detailOrderNum" style="font-family:'Inter', sans-serif;font-size:1.2rem;font-weight:400;margin:0;"></h3>
     </div>
     <button class="close-btn" onclick="closeDetail()">×</button>
   </div>
@@ -464,7 +464,7 @@ function renderDetail(o) {
     <div class="detail-row"><span class="name">Date</span><span class="amt">${o.created_at}</span></div>
     <div class="detail-row"><span class="name">Location</span><span class="amt">${o.location}</span></div>
     <div class="detail-row"><span class="name">Source</span><span class="amt">${o.source.replace("_"," ")}</span></div>
-    <div class="detail-row"><span class="name">Waiter / Staff</span><span class="amt">${o.waiter || "—"}</span></div>
+    <div class="detail-row"><span class="name">Waiter / Staff</span><span class="amt">${o.waiter || "-"}</span></div>
     ${o.customer_name  ? `<div class="detail-row"><span class="name">Customer</span><span class="amt">${o.customer_name}</span></div>` : ""}
     ${o.customer_phone ? `<div class="detail-row"><span class="name">Phone</span><span class="amt">${o.customer_phone}</span></div>` : ""}
     ${o.duration_mins !== null ? `<div class="detail-row"><span class="name">Duration</span><span class="amt">${o.duration_mins} min</span></div>` : ""}
@@ -544,7 +544,7 @@ function renderDetail(o) {
     html += `</div>`;
   }
 
-  // Audit trail (owner/manager only — empty array for others)
+  // Audit trail (owner/manager only - empty array for others)
   if (o.events && o.events.length) {
     html += `<div class="detail-section"><div class="detail-section-title">Audit Trail</div>`;
     o.events.forEach(ev => {

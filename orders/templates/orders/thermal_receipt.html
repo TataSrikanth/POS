@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% load static %}<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -35,7 +35,7 @@ body {
 .row .label { flex: 1; }
 .row .value { white-space: nowrap; padding-left: 2mm; }
 
-/* Token number — large for QSR */
+/* Token number - large for QSR */
 .token-num {
   font-size: {{ token_font }}px;
   font-weight: bold;
@@ -77,7 +77,7 @@ body {
 
 {% if split_mode %}
 <!-- ══════════════════════════════════════════════════════════════
-     COUNTER BILLING MODE — one page per section + summary page
+     COUNTER BILLING MODE - one page per section + summary page
      Chrome --kiosk-printing prints all pages automatically.
      Each page-break becomes a separate slip from the printer.
      ══════════════════════════════════════════════════════════════ -->
@@ -85,6 +85,7 @@ body {
 <!-- Page 1: Summary bill (customer keeps) -->
 <div style="page-break-after: always;">
 {% with is_comp=order.is_bill_of_supply %}
+<div class="center"><img src="{% static 'brand/logo-mono.png' %}" alt="" style="width:26mm;height:auto;"></div>
 <div class="center bold" style="font-size:{{ big_font }}px;">{{ order.tenant.name }}</div>
 <div class="center small">{{ order.outlet.name }}</div>
 {% if order.outlet.gst_no %}<div class="center small">GSTIN: {{ order.outlet.gst_no }}</div>{% endif %}
@@ -95,7 +96,7 @@ body {
 <div class="row small"><span class="label">Date</span><span class="value">{{ order.created_at|date:"d/m/Y H:i" }}</span></div>
 <div class="sep"></div>
 
-<!-- FULL item list — customer keeps this as their complete bill -->
+<!-- FULL item list - customer keeps this as their complete bill -->
 {% for item in items %}
 <div class="item-line">
   <span class="item-qty">{{ item.quantity }}x</span>
@@ -115,7 +116,7 @@ body {
 {% if change_due and change_due > 0 %}<div class="row small"><span class="label">Change</span><span class="value">Rs.{{ change_due|floatformat:0 }}</span></div>{% endif %}
 <div class="sep-solid"></div>
 {% if is_comp %}<div class="center small">Bill of Supply</div>{% endif %}
-<div class="center small">Powered by Rasova POS</div>
+<div class="center small">Powered by Oi Ramen POS</div>
 {% endwith %}
 </div>
 
@@ -135,13 +136,14 @@ body {
 <div class="sep"></div>
 <div class="row bold"><span class="label">Total</span><span class="value">Rs.{{ group.total|floatformat:0 }}</span></div>
 <div class="sep-solid"></div>
-<div class="center small">Powered by Rasova POS</div>
+<div class="center small">Powered by Oi Ramen POS</div>
 </div>
 {% endfor %}
 
 {% else %}
 <!-- ── Normal single receipt ──────────────────────────────────── -->
 {% with is_comp=order.is_bill_of_supply %}
+<div class="center"><img src="{% static 'brand/logo-mono.png' %}" alt="" style="width:26mm;height:auto;"></div>
 <div class="center bold" style="font-size:{{ big_font }}px;">{{ order.tenant.name }}</div>
 <div class="center small">{{ order.outlet.name }}</div>
 {% if order.outlet.address %}<div class="center small">{{ order.outlet.address }}</div>{% endif %}
@@ -187,11 +189,11 @@ body {
 
 <div class="sep-solid"></div>
 <div class="center small">Thank you for visiting!</div>
-<div class="center small">Powered by Rasova POS</div>
+<div class="center small">Powered by Oi Ramen POS</div>
 {% endwith %}
 {% endif %}{# end split_mode else #}
 
-<!-- ── KOT Sections — only in normal mode, NOT in counter billing split mode ── -->
+<!-- ── KOT Sections - only in normal mode, NOT in counter billing split mode ── -->
 {% if not split_mode %}
 {% for kot in kots %}
 <div class="kot-section">

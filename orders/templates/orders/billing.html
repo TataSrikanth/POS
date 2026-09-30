@@ -36,9 +36,9 @@
   .mobile-category-nav::-webkit-scrollbar { display: none; }
   .category-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; color: var(--text-muted); margin-bottom: 1.5rem; font-weight: 600; }
   .category-list { list-style: none; padding: 0; margin: 0; }
-  .category-item { padding: 0.8rem 0; cursor: pointer; font-size: 1.1rem; color: var(--text-muted); transition: var(--transition-smooth); font-family: 'DM Serif Display', serif; position: relative; }
+  .category-item { padding: 0.8rem 0; cursor: pointer; font-size: 1.1rem; color: var(--text-muted); transition: var(--transition-smooth); font-family: 'Inter', sans-serif; position: relative; }
   .category-item:hover { color: var(--text-main); }
-  .category-item.active { color: var(--accent-gold); font-weight: 700; font-style: italic; }
+  .category-item.active { color: var(--accent-gold); font-weight: 700; }
   .category-sidebar .category-item.active::before { content: ''; position: absolute; left: -1.5rem; top: 50%; transform: translateY(-50%); width: 3px; height: 50%; background: var(--accent-gold); }
   .mobile-category-nav .category-item { display: inline-block; margin-right: 1.5rem; padding: 0.5rem 0; }
   .mobile-category-nav .category-item.active { border-bottom: 2px solid var(--accent-gold); }
@@ -50,12 +50,12 @@
 
   .menu-card { background: transparent; border: 1px solid var(--border-color); border-radius: 0; padding: 1.25rem; cursor: pointer; transition: var(--transition-smooth); height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
   .menu-card:hover { border-color: var(--accent-gold); background: var(--panel-bg); transform: translateY(-2px); }
-  .item-name { font-family: 'DM Serif Display', serif; font-size: 1.05rem; color: var(--text-main); margin-bottom: 0.5rem; line-height: 1.2; }
+  .item-name { font-family: 'Inter', sans-serif; font-size: 1.05rem; color: var(--text-main); margin-bottom: 0.5rem; line-height: 1.2; }
   .item-price { font-size: 0.9rem; color: var(--accent-gold); font-weight: 500; letter-spacing: 1px; }
 
   .context-sidebar { width: 380px; border-left: 1px solid var(--border-color); background: var(--panel-bg); display: flex; flex-direction: column; flex-shrink: 0; transition: transform 0.3s ease; }
   .context-tabs { display: flex; border-bottom: 1px solid var(--border-color); }
-  .context-tab { flex: 1; text-align: center; padding: 1rem 0; cursor: pointer; font-family: 'DM Serif Display', serif; font-size: 1rem; color: var(--text-muted); border-bottom: 2px solid transparent; }
+  .context-tab { flex: 1; text-align: center; padding: 1rem 0; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--text-muted); border-bottom: 2px solid transparent; }
   .context-tab.active { color: var(--text-main); border-bottom-color: var(--accent-gold); }
   .context-body { flex-grow: 1; padding: 1.5rem; overflow-y: auto; }
 
@@ -76,7 +76,7 @@
   .secondary-actions .btn-luxury { font-size: 0.72rem; padding: 0.5rem 1rem; color: var(--text-muted); }
 
   .cart-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 1rem 0; border-bottom: 1px dashed var(--border-color); }
-  .cart-item-name { font-family: 'DM Serif Display', serif; font-size: 0.95rem; color: var(--text-main); margin-bottom: 0.25rem; }
+  .cart-item-name { font-family: 'Inter', sans-serif; font-size: 0.95rem; color: var(--text-main); margin-bottom: 0.25rem; }
   .cart-item-note { font-size: 0.75rem; color: var(--accent-gold); font-style: italic; }
   .cart-controls { display: flex; align-items: center; gap: 10px; }
   .qty-controls { display: flex; align-items: center; border: 1px solid var(--border-color); }
@@ -84,7 +84,7 @@
   .qty-value { font-size: 0.85rem; width: 20px; text-align: center; }
   .cart-item-price { font-weight: 500; font-size: 0.85rem; width: 55px; text-align: right; color: var(--text-main); }
 
-  /* Veg / non-veg indicator — Indian standard */
+  /* Veg / non-veg indicator - Indian standard */
   .veg-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 5px; flex-shrink: 0; vertical-align: middle; position: relative; top: -1px; }
   .veg-dot.veg { background: #22c55e; }
   .veg-dot.nonveg { background: #ef4444; }
@@ -99,7 +99,7 @@
 
   .cart-summary { border-top: 1px solid var(--border-color); padding: 1.5rem; background: var(--panel-bg); }
   .summary-row { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
-  .summary-total { display: flex; justify-content: space-between; margin: 1rem 0 1.5rem; font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: var(--text-main); }
+  .summary-total { display: flex; justify-content: space-between; margin: 1rem 0 1.5rem; font-family: 'Inter', sans-serif; font-size: 1.3rem; color: var(--text-main); }
 
   .form-select-luxury, .form-control-minimal { background-color: transparent; border: 1px solid var(--border-color); color: var(--text-main); border-radius: 0; padding: 0.75rem 1rem; font-size: 0.9rem; width: 100%; }
   .form-select-luxury { margin-bottom: 1.5rem; }
@@ -110,7 +110,7 @@
 
   .modal-content { background: var(--bg-color); border-radius: 0; border: 1px solid var(--border-color); }
   .modal-header { border-bottom: 1px solid var(--border-color); padding: 1.5rem; }
-  .modal-title { font-family: 'DM Serif Display', serif; font-size: 1.3rem; }
+  .modal-title { font-family: 'Inter', sans-serif; font-size: 1.3rem; }
   .modal-body { padding: 1.5rem; }
   .modal-footer { border-top: 1px solid var(--border-color); padding: 1.5rem; }
 
@@ -174,7 +174,7 @@
   <a href="/dashboard/" style="text-decoration:none;color:inherit;">
     <h1 class="brand-title mb-0"><i class="bi bi-diamond-half me-2"></i>{{ request.user.tenant.name }}</h1>
   </a>
-  <p class="mb-0 text-muted" style="font-size:0.75rem;letter-spacing:1px;text-transform:uppercase;">POS Billing — {{ request.user.outlet.name }}</p>
+  <p class="mb-0 text-muted" style="font-size:0.75rem;letter-spacing:1px;text-transform:uppercase;">POS Billing - {{ request.user.outlet.name }}</p>
 </div>
 {% endblock %}
 
@@ -214,10 +214,10 @@
 
 <div id="printer-error-banner" style="display:none;">
   <i class="bi bi-printer-fill"></i>
-  <span id="printer-error-text">Kitchen printer is not responding — check the connection or call the manager.</span>
+  <span id="printer-error-text">Kitchen printer is not responding - check the connection or call the manager.</span>
   <span class="dismiss" onclick="this.parentElement.style.display='none'">✕</span>
 </div>
-<div id="offline-banner"><i class="bi bi-wifi-off"></i>&nbsp; Offline — orders will sync when reconnected</div>
+<div id="offline-banner"><i class="bi bi-wifi-off"></i>&nbsp; Offline - orders will sync when reconnected</div>
 
 <div class="workspace">
 
@@ -344,7 +344,7 @@
 <!-- MOBILE CART PAGE (full-viewport overlay, not a drawer -- see openCartMobile/closeCartMobile) -->
 <div class="mobile-cart-page" id="mobileCartPage" role="dialog" aria-modal="true" aria-label="Current Order">
   <div class="offcanvas-header">
-    <h5 class="m-0" style="font-family:'DM Serif Display',serif;">Current Order</h5>
+    <h5 class="m-0" style="font-family:'Inter', sans-serif;">Current Order</h5>
     <button type="button" class="btn-icon" onclick="closeCartMobile()" aria-label="Close order"><i class="bi bi-arrow-left"></i></button>
   </div>
   <div class="context-tabs">
@@ -443,18 +443,18 @@
 </div>
 
 {% if auto_kot_mode %}
-<!-- QSR inline payment modal — appears after order is created, before payment -->
+<!-- QSR inline payment modal - appears after order is created, before payment -->
 <div class="modal fade" id="qsrPayModal" tabindex="-1" data-bs-backdrop="static">
   <div class="modal-dialog modal-dialog-centered" style="max-width:380px;">
     <div class="modal-content" style="border-radius:0;background:var(--panel-bg);border:1px solid var(--border-color);">
       <div class="modal-header border-0 pb-0">
         <div>
           <p style="font-size:0.6rem;text-transform:uppercase;letter-spacing:3px;color:var(--accent-gold);margin:0;">QSR Counter</p>
-          <h5 class="modal-title" style="font-family:'DM Serif Display',serif;font-size:1.4rem;">Collect Payment</h5>
+          <h5 class="modal-title" style="font-family:'Inter', sans-serif;font-size:1.4rem;">Collect Payment</h5>
         </div>
       </div>
       <div class="modal-body pt-2">
-        <div style="font-size:2.2rem;font-family:'DM Serif Display',serif;text-align:center;padding:0.5rem 0 1rem;" id="qsrGrandTotal">₹ —</div>
+        <div style="font-size:2.2rem;font-family:'Inter', sans-serif;text-align:center;padding:0.5rem 0 1rem;" id="qsrGrandTotal">₹ -</div>
         <div style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.2rem;" id="qsrMethodBtns">
           <button class="qsr-method-btn" data-method="cash" onclick="selectQSRMethod(this)" style="padding:0.75rem;border:1px solid var(--border-color);background:transparent;color:var(--text-main);cursor:pointer;font-size:0.85rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;transition:all 0.15s;">
             <i class="bi bi-cash-coin me-2"></i>Cash
@@ -487,11 +487,11 @@
   </div>
 </div>
 
-<!-- QSR confirmation overlay — shown after successful payment + print queued -->
+<!-- QSR confirmation overlay - shown after successful payment + print queued -->
 <div id="qsrConfirm" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;display:none;align-items:center;justify-content:center;flex-direction:column;">
   <div style="text-align:center;color:#fff;">
     <div style="font-size:5rem;margin-bottom:1rem;">✓</div>
-    <div style="font-family:'DM Serif Display',serif;font-size:2rem;margin-bottom:0.5rem;">Paid</div>
+    <div style="font-family:'Inter', sans-serif;font-size:2rem;margin-bottom:0.5rem;">Paid</div>
     <div id="qsrConfirmNum" style="font-size:1rem;color:rgba(255,255,255,0.7);letter-spacing:2px;text-transform:uppercase;"></div>
     <div style="margin-top:1rem;font-size:0.8rem;color:rgba(255,255,255,0.5);">Slip printing… next customer</div>
     <div style="margin-top:0.5rem;font-size:0.75rem;color:rgba(255,255,255,0.35);" id="qsrChangeDue"></div>
@@ -777,12 +777,12 @@
   async function toggleParcel() {
     const orderId = qsrPendingOrderId || currentOrderId;
     if (!orderId) {
-      // No order yet — just toggle the visual indicator
+      // No order yet - just toggle the visual indicator
       _parcelOn = !_parcelOn;
       _syncParcelUI();
       return;
     }
-    // Order exists — call server to toggle
+    // Order exists - call server to toggle
     try {
       const d = await apiClient.post(
         "{% url 'toggle-parcel' 0 %}".replace('/0/', '/' + orderId + '/'), {}
@@ -810,7 +810,7 @@
     document.querySelectorAll(".parcel-btn").forEach(btn => {
       btn.style.borderColor = _parcelOn ? "var(--accent-gold)" : "var(--border-color)";
       btn.style.color       = _parcelOn ? "var(--accent-gold)" : "var(--text-muted)";
-      btn.style.background  = _parcelOn ? "rgba(197,160,89,0.06)" : "transparent";
+      btn.style.background  = _parcelOn ? "rgba(216, 148, 47,0.06)" : "transparent";
     });
     document.querySelectorAll(".parcel-btn-text").forEach(el =>
       el.textContent = _parcelOn
@@ -835,7 +835,7 @@
       .then(r => r.json())
       .then(d => {
         currentOrderId = d.order_id || null;
-        // Sync parcel state from server — handles session resume and table switches
+        // Sync parcel state from server - handles session resume and table switches
         if (d.order_id) {
           const serverParcelOn = !!d.parcel_on;
           _parcelOn = serverParcelOn;
@@ -845,7 +845,7 @@
           // updated here too, or it clobbers this with a stale value.
           if (d.parcel_amount) _parcelChargeAmount = d.parcel_amount;
         } else {
-          // No open order on this table — reset so parcel intent doesn't bleed across tables
+          // No open order on this table - reset so parcel intent doesn't bleed across tables
           _parcelOn = false;
           _parcelAppliedToOrder = null;
         }
@@ -856,7 +856,7 @@
         } else {
           d.items.forEach(i => {
             const statusClass = i.status === "ready" ? "status-ready" : (i.status === "preparing" ? "border-warning text-warning" : "");
-            html += `<div class="running-row d-flex flex-column align-items-start"><div class="d-flex justify-content-between w-100"><span style="font-family:'DM Serif Display',serif;">${i.quantity} × ${i.name || "Item"}</span><span class="status-badge ${statusClass}">${i.status}</span></div>${i.modifiers && i.modifiers.length > 0 ? `<div style="font-size:0.7rem;color:var(--accent-gold);font-style:italic;">+ ${i.modifiers.join(', ')}</div>` : ''}</div>`;
+            html += `<div class="running-row d-flex flex-column align-items-start"><div class="d-flex justify-content-between w-100"><span style="font-family:'Inter', sans-serif;">${i.quantity} × ${i.name || "Item"}</span><span class="status-badge ${statusClass}">${i.status}</span></div>${i.modifiers && i.modifiers.length > 0 ? `<div style="font-size:0.7rem;color:var(--accent-gold);font-style:italic;">+ ${i.modifiers.join(', ')}</div>` : ''}</div>`;
           });
           if (d.order_id) {
             html += `<div class="mt-4"><button class="btn-luxury w-100 border-danger text-danger" onclick="cancelOrder(${d.order_id})"><i class="bi bi-x-circle me-1"></i> Cancel Entire Order</button></div>`;
@@ -879,11 +879,11 @@
     const orderPayload = { cart, table_id: tableId, source, aggregator_id: aggId, customer_name: '', customer_phone: '' };
     if (currentOrderId) orderPayload.order_id = currentOrderId;
 
-    // Edge case: already offline before the cashier even hits submit — don't
+    // Edge case: already offline before the cashier even hits submit - don't
     // attempt the request at all, queue it straight away.
     if (!navigator.onLine) {
       offlineQueue.add(orderPayload)
-        .then(() => { ui.toast('Saved — will send to kitchen once back online', 'success'); clearCart(); })
+        .then(() => { ui.toast('Saved - will send to kitchen once back online', 'success'); clearCart(); })
         .catch(() => { showToast('Could not save order offline on this device. Please note it down manually.'); });
       resetSendBtn();
       return;
@@ -897,7 +897,7 @@
       .then(r => r.json())
       .then(d => {
         if (!d.success) { showToast(d.error); resetSendBtn(); return; }
-        // Order now exists server-side (d.order_id) — everything below this
+        // Order now exists server-side (d.order_id) - everything below this
         // line must NOT be retried via the offline queue, or it risks creating
         // a duplicate order. Its own .catch() below just stops the spinner;
         // staff can retry kitchen-send manually from the running order screen.
@@ -923,13 +923,13 @@
       })
       .catch(err => {
         // Only reachable for the initial create-order call (the inner chain
-        // above has its own catch) — no order_id exists yet, so it's safe to
+        // above has its own catch) - no order_id exists yet, so it's safe to
         // queue. err instanceof TypeError = genuine network failure (same
         // heuristic apiClient.request() already uses), as opposed to a server
         // error response, which should not be queued/retried blindly.
         if (err instanceof TypeError) {
           offlineQueue.add(orderPayload)
-            .then(() => { ui.toast('Connection dropped — order saved, will send to kitchen once back online', 'success'); clearCart(); })
+            .then(() => { ui.toast('Connection dropped - order saved, will send to kitchen once back online', 'success'); clearCart(); })
             .catch(() => { showToast('Could not save order offline on this device. Please note it down manually.'); });
         } else {
           showToast('Could not create order. Please try again.');
@@ -952,13 +952,13 @@
   const _stationPrinterIp = "{{ station_printer_ip }}";
 
   async function printViaAgent(orderId) {
-    // iOS — no agent, open receipt page for browser/AirPrint
+    // iOS - no agent, open receipt page for browser/AirPrint
     if (typeof rasovaPlatform !== 'undefined' && rasovaPlatform.ios) {
       window.open(`/orders/bill/${orderId}/?print=1`, '_blank');
       return;
     }
 
-    // Android — push to server-side print queue; agent polls and prints
+    // Android - push to server-side print queue; agent polls and prints
     // No WebSocket, no open port, survives background killing
     if (typeof rasovaPlatform !== 'undefined' && rasovaPlatform.android) {
       const resp = await fetch('/orders/agent/add-job/', {
@@ -973,7 +973,7 @@
       return; // agent will print within ~2 s
     }
 
-    // Desktop — existing WebSocket path (instant, no round-trip delay)
+    // Desktop - existing WebSocket path (instant, no round-trip delay)
     const qzResp = await fetch(`/orders/qz-data/${orderId}/`, { headers: { "X-CSRFToken": apiClient.getCsrf() } });
     const qzData = await qzResp.json();
     if (!qzData.success || !qzData.lines) throw new Error("receipt-data-failed");
@@ -1077,7 +1077,7 @@
     const source   = document.getElementById(isMobile ? "sourceSelectMobile" : "sourceSelectDesktop").value;
 
     try {
-      // Step 1: create order (items remain pending — no send-to-kitchen)
+      // Step 1: create order (items remain pending - no send-to-kitchen)
       const r1 = await fetch("{% url 'create-order' %}", {
         method: "POST",
         headers: { "Content-Type": "application/json", "X-CSRFToken": apiClient.getCsrf() },
@@ -1162,7 +1162,7 @@
     const payBtn = document.getElementById("qsrPayBtn");
 
     // Offline: only cash can be confirmed without a live gateway
-    // round-trip — same reasoning as recordPay() in bill.html.
+    // round-trip - same reasoning as recordPay() in bill.html.
     if (!navigator.onLine) {
       if (_qsrMethod !== 'cash') {
         showToast("You are offline. Only cash payments can be taken right now.");
@@ -1170,7 +1170,7 @@
       }
       try {
         await offlinePaymentQueue.add(qsrPendingOrderId, amount.toFixed(2));
-        ui.toast('Offline — cash payment saved, will sync when back online. Print the slip manually for now.', 'success');
+        ui.toast('Offline - cash payment saved, will sync when back online. Print the slip manually for now.', 'success');
         const modal = bootstrap.Modal.getInstance(document.getElementById("qsrPayModal"));
         if (modal) modal.hide();
         clearCart();
@@ -1199,17 +1199,17 @@
         const modal = bootstrap.Modal.getInstance(document.getElementById("qsrPayModal"));
         if (modal) modal.hide();
 
-        // Print via local Rasova Agent (agent bridges EC2 → local printer over TCP 9100)
+        // Print via local Oi Ramen Agent (agent bridges EC2 → local printer over TCP 9100)
         const orderId = qsrPendingOrderId;
         try {
           await printViaAgent(orderId);
         } catch(printErr) {
-          // Agent offline or no printer configured — fall back to browser print popup
+          // Agent offline or no printer configured - fall back to browser print popup
           const receiptUrl = `/thermal-receipt/${orderId}/`;
           const win = window.open(receiptUrl, '_blank', 'width=420,height=680,menubar=no,toolbar=no,location=no,status=no');
-          if (!win || win.closed) ui.toast('Popup blocked — <a href="' + receiptUrl + '" target="_blank">open receipt</a>', 'warning');
+          if (!win || win.closed) ui.toast('Popup blocked - <a href="' + receiptUrl + '" target="_blank">open receipt</a>', 'warning');
           if (printErr.message === 'agent-offline')
-            ui.toast('Agent not running — start rasova_agent.py on the billing laptop', 'warning');
+            ui.toast('Agent not running - start rasova_agent.py on the billing laptop', 'warning');
         }
 
         // Show full-screen confirmation briefly
@@ -1233,12 +1233,12 @@
         payBtn.innerHTML = '<i class="bi bi-printer me-2"></i>CONFIRM & PRINT SLIP';
       }
     } catch (e) {
-      // Connection dropped mid-request — same TypeError heuristic used
+      // Connection dropped mid-request - same TypeError heuristic used
       // elsewhere. Only cash is safe to queue after the fact.
       if (e instanceof TypeError && _qsrMethod === 'cash') {
         try {
           await offlinePaymentQueue.add(qsrPendingOrderId, amount.toFixed(2));
-          ui.toast('Connection dropped — cash payment saved, will sync once back online.', 'success');
+          ui.toast('Connection dropped - cash payment saved, will sync once back online.', 'success');
           const modal = bootstrap.Modal.getInstance(document.getElementById("qsrPayModal"));
           if (modal) modal.hide();
           clearCart();

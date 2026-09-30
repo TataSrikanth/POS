@@ -5,7 +5,7 @@
 <style>
 .page-body { max-width: 1000px; margin: 2rem auto; padding: 0 1.5rem; }
 .page-eyebrow { font-size: .65rem; text-transform: uppercase; letter-spacing: 4px; color: var(--accent-gold); margin-bottom: .5rem; }
-.page-title { font-family: 'DM Serif Display', serif; font-size: 1.8rem; margin-bottom: .25rem; }
+.page-title { font-family: 'Inter', sans-serif; font-size: 1.8rem; margin-bottom: .25rem; }
 .page-sub { color: var(--text-muted); font-size: .82rem; margin-bottom: 2rem; }
 .divider { height: 1px; background: var(--border-color); margin: 1.5rem 0; }
 
@@ -24,7 +24,7 @@
 
 .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
 .summary-card { background: var(--panel-bg); border: 1px solid var(--border-color); padding: 1rem; }
-.summary-num { font-family: 'DM Serif Display', serif; font-size: 1.6rem; color: var(--accent-gold); }
+.summary-num { font-family: 'Inter', sans-serif; font-size: 1.6rem; color: var(--accent-gold); }
 .summary-lbl { font-size: .62rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-top: .2rem; }
 
 .table { width: 100%; border-collapse: collapse; }
@@ -34,7 +34,7 @@
 .table td { padding: .75rem .5rem; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: .85rem; text-align: right; }
 .table td:first-child { text-align: left; font-weight: 500; }
 .table tr:last-child td { border-bottom: none; }
-.table tr:hover td { background: rgba(197,160,89,0.03); }
+.table tr:hover td { background: rgba(216, 148, 47,0.03); }
 
 .badge-ok   { color: #10b981; font-size:.75rem; font-weight:700; }
 .badge-warn { color: #f59e0b; font-size:.75rem; font-weight:700; }
@@ -77,7 +77,7 @@
 
   <div class="page-eyebrow">Inventory</div>
   <h1 class="page-title">Variance Report</h1>
-  <p class="page-sub">Expected closing stock vs actual. Negative variance = unexplained loss — spillage, theft, or unrecorded wastage.</p>
+  <p class="page-sub">Expected closing stock vs actual. Negative variance = unexplained loss - spillage, theft, or unrecorded wastage.</p>
 
   <div class="divider"></div>
 
@@ -115,9 +115,9 @@
   </div>
 
   <div class="legend">
-    <span><span class="dot" style="background:#10b981;"></span> Green — within ±3% (normal)</span>
-    <span><span class="dot" style="background:#f59e0b;"></span> Amber — ±3–8% gap (investigate)</span>
-    <span><span class="dot" style="background:#ef4444;"></span> Red — beyond ±8% (action needed)</span>
+    <span><span class="dot" style="background:#10b981;"></span> Green - within ±3% (normal)</span>
+    <span><span class="dot" style="background:#f59e0b;"></span> Amber - ±3–8% gap (investigate)</span>
+    <span><span class="dot" style="background:#ef4444;"></span> Red - beyond ±8% (action needed)</span>
     <span style="border-left:1px solid var(--border-color);padding-left:1rem;">Negative = deduction short vs orders &nbsp;·&nbsp; Positive = excess deduction (spillage / recipe drift)</span>
   </div>
 
@@ -152,7 +152,7 @@
       {% for r in rows %}
       <tr data-name="{{ r.item.name|lower }}" data-category="{{ r.item.category }}">
         <td>{{ r.item.name }}</td>
-        <td style="color:var(--text-muted);font-size:.8rem;">{{ r.item.category|default:"—" }}</td>
+        <td style="color:var(--text-muted);font-size:.8rem;">{{ r.item.category|default:"-" }}</td>
         <td style="color:var(--text-muted);font-size:.78rem;text-transform:uppercase;letter-spacing:1px;">{{ r.item.unit }}</td>
         <td style="color:var(--text-muted);">{{ r.recipe_expected|floatformat:2 }}</td>
         <td>{{ r.txn_consumed|floatformat:2 }}</td>
@@ -174,7 +174,7 @@
               <span class="badge-ok">{% if r.variance_pct > 0 %}+{% endif %}{{ r.variance_pct }}%</span>
             {% endif %}
           {% else %}
-            <span class="badge-zero">—</span>
+            <span class="badge-zero">-</span>
           {% endif %}
         </td>
         <td style="color:#ef4444;">{{ r.wastage|floatformat:2 }}</td>

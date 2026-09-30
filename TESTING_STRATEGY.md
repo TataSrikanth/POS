@@ -1,4 +1,4 @@
-# Rasova POS — Testing Strategy
+# Oi Ramen POS — Testing Strategy
 **What to test, why, how, with real code examples from this codebase.**
 
 ---
@@ -20,7 +20,7 @@
 Don't invert this pyramid. Unit tests are cheap, E2E tests are expensive.
 ```
 
-**What Rasova already has:** 17 unit/integration tests (`orders/tests/`), 0 coverage tooling, 0 pytest.  
+**What Oi Ramen already has:** 17 unit/integration tests (`orders/tests/`), 0 coverage tooling, 0 pytest.  
 **This document:** what to add and how.
 
 ---
@@ -65,7 +65,7 @@ fail_under = 70
 
 ---
 
-## Part 2 — Test Categories for Rasova
+## Part 2 — Test Categories for Oi Ramen
 
 | Category | What it tests | Speed | Needs DB |
 |---|---|---|---|

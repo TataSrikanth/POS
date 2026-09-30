@@ -5,11 +5,11 @@
 
 {% block extra_css %}
 <style>
-    .page-body { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
-    @media(max-width: 640px) { .page-body { grid-template-columns: 1fr; } }
+    .page-body { max-width: 1240px; margin: 0 auto; padding: 3rem 2rem; display: grid; grid-template-columns: minmax(280px, 360px) minmax(0, 1fr); gap: 3.5rem; align-items: start; }
+    @media(max-width: 900px) { .page-body { grid-template-columns: 1fr; } }
 
     .page-eyebrow { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 4px; color: var(--accent-gold); margin-bottom: 0.5rem; }
-    .page-title { font-family: 'DM Serif Display', serif; font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .page-title { font-family: 'Inter', sans-serif; font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; }
     .divider { width: 40px; height: 1px; background: var(--accent-gold); margin: 1.2rem 0; }
     .page-sub { color: var(--text-muted); font-size: 0.8rem; line-height: 1.6; margin-bottom: 2rem; }
 
@@ -18,17 +18,19 @@
     .setup-input:focus { border-bottom-color: var(--accent-gold); }
     .form-select { width: 100%; background: var(--panel-bg); border: 1px solid var(--border-color); color: var(--text-main); padding: 0.6rem; font-size: 0.85rem; outline: none; margin-bottom: 1.5rem; font-family: inherit; }
 
-    .btn-create { width: 100%; padding: 0.9rem; background: var(--accent-gold); border: none; color: #fff; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; font-weight: 700; cursor: pointer; margin-top: 0.5rem; transition: background 0.2s; }
+    .btn-create { width: 100%; padding: 0.9rem; background: var(--accent-gold); border: none; color: var(--accent-ink, #181715); border-radius: var(--border-radius, 10px); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; cursor: pointer; margin-top: 0.5rem; transition: background 0.2s; }
     .btn-create:hover { background: var(--accent-hover); }
 
-    .alert { padding: 0.8rem 1.2rem; margin-bottom: 1.5rem; font-size: 0.8rem; border-left: 3px solid var(--accent-gold); background: rgba(197,160,89,0.08); }
+    .alert { padding: 0.8rem 1.2rem; margin-bottom: 1.5rem; font-size: 0.8rem; border-left: 3px solid var(--accent-gold); background: rgba(216, 148, 47,0.08); }
     .alert-warning { border-left-color: #ef4444; background: rgba(239,68,68,0.08); }
 
     .staff-table { width: 100%; border-collapse: collapse; }
     .staff-table th { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); font-weight: 600; padding: 0.75rem 0; border-bottom: 1px solid var(--border-color); text-align: left; }
+    .staff-table th, .staff-table td { padding-right: 1rem; }
+    .staff-table td:first-child { font-weight: 600; white-space: nowrap; }
     .staff-table td { padding: 1rem 0; border-bottom: 1px solid var(--border-color); font-size: 0.85rem; vertical-align: middle; }
 
-    .role-badge { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1.5px; padding: 3px 8px; border: 1px solid var(--border-color); color: var(--text-muted); }
+    .role-badge { white-space: nowrap; border-radius: 6px; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 1.5px; padding: 3px 8px; border: 1px solid var(--border-color); color: var(--text-muted); }
     .role-badge.manager, .role-badge.owner { border-color: var(--accent-gold); color: var(--accent-gold); }
     .role-badge.chef { border-color: #f59e0b; color: #f59e0b; }
     .role-badge.waiter { border-color: #60a5fa; color: #60a5fa; }
@@ -40,6 +42,8 @@
     }
     .btn-reset-pw:hover { border-color: var(--accent-gold); color: var(--accent-gold); }
 
+    .staff-actions { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+    .btn-reset-pw { border-radius: 8px; white-space: nowrap; }
     .staff-table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 
     @media (max-width: 640px) {
@@ -58,7 +62,7 @@
             {{ request.user.tenant.name }}
         </h1>
     </a>
-    <p class="brand-subtitle">Setup — {{ request.user.outlet.name }}</p>
+    <p class="brand-subtitle">Setup - {{ request.user.outlet.name }}</p>
 </div>
 {% endblock %}
 
@@ -89,10 +93,10 @@
         <form method="post">
             {% csrf_token %}
             <label class="form-label">Username</label>
-            <input type="text" name="username" class="setup-input" placeholder="e.g. john_waiter" required>
+            <input type="text" name="username" class="setup-input" placeholder="e.g. john_waiter" autocomplete="off" required>
 
             <label class="form-label">Password</label>
-            <input type="password" name="password" class="setup-input" placeholder="Min 8 characters" required>
+            <input type="password" name="password" class="setup-input" placeholder="Min 8 characters" autocomplete="new-password" required>
 
             <label class="form-label">Role</label>
             <select name="role" class="form-select">
@@ -117,7 +121,7 @@
     <!-- RIGHT: CURRENT STAFF -->
     <div>
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
-            <p class="page-eyebrow" style="opacity:0;margin-bottom:0;">—</p>
+            <p class="page-eyebrow" style="opacity:0;margin-bottom:0;">-</p>
             <label style="display:flex;align-items:center;gap:6px;font-size:0.72rem;color:var(--text-muted);cursor:pointer;user-select:none;">
                 <input type="checkbox" id="showInactiveToggle" onchange="toggleInactiveVisibility()">
                 Show inactive
@@ -142,13 +146,13 @@
                     <td>{{ member.username }}{% if not member.is_active %} <span style="font-size:0.62rem;text-transform:uppercase;letter-spacing:1px;color:#ef4444;">Inactive</span>{% endif %}</td>
                     <td><span class="role-badge {{ member.role }}">{{ member.get_role_display }}</span></td>
                     <td style="color:var(--text-muted);font-size:0.75rem;">{{ member.outlet.name|default:"-" }}</td>
-                    <td style="display:flex;gap:6px;">
+                    <td><div class="staff-actions">
                         <button class="btn-reset-pw" onclick="editRole({{ member.id }}, '{{ member.username|escapejs }}', '{{ member.role }}')">Edit Role</button>
                         <button class="btn-reset-pw" onclick="editOutlet({{ member.id }}, '{{ member.username|escapejs }}', '{{ member.outlet_id|default_if_none:"" }}')">Edit Location</button>
                         <button class="btn-reset-pw" onclick="editPayRate({{ member.id }}, '{{ member.username|escapejs }}')">Edit Pay Rate</button>
                         <button class="btn-reset-pw" onclick="resetPassword({{ member.id }}, '{{ member.username|escapejs }}')">Reset Password</button>
                         <button class="btn-reset-pw" id="toggle-btn-{{ member.id }}" onclick="toggleActive({{ member.id }}, '{{ member.username|escapejs }}', {{ member.is_active|yesno:"true,false" }})">{% if member.is_active %}Deactivate{% else %}Reactivate{% endif %}</button>
-                    </td>
+                    </div></td>
                 </tr>
                 {% empty %}
                 <tr>

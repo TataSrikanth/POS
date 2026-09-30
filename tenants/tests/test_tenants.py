@@ -316,7 +316,7 @@ class SubscriptionSuspensionMiddlewareTest(TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls._allowed_hosts_override = override_settings(ALLOWED_HOSTS=["testserver", ".rasova.net"])
+        cls._allowed_hosts_override = override_settings(ALLOWED_HOSTS=["testserver", ".oiramen.com"])
         cls._allowed_hosts_override.enable()
 
     @classmethod
@@ -334,10 +334,10 @@ class SubscriptionSuspensionMiddlewareTest(TestCase):
         # Support staff in the owner's seat, so the page itself lets them in
         # and only the suspension middleware could stop them.
         self.superuser = User.objects.create_superuser(
-            username="suspend_admin", password="pass123", email="admin@rasova.net",
+            username="suspend_admin", password="pass123", email="admin@oiramen.com",
             role="owner", tenant=self.tenant, outlet=self.outlet,
         )
-        self.host = f"{self.tenant.slug}.rasova.net"
+        self.host = f"{self.tenant.slug}.oiramen.com"
 
     def _get(self, name="setup_wizard"):
         return self.client.get(reverse(name), HTTP_HOST=self.host)

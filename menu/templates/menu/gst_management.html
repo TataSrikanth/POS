@@ -1,6 +1,6 @@
 {% extends 'core/base.html' %}
 
-{% block title %}GST Rates — {{ request.user.tenant.name }}{% endblock %}
+{% block title %}GST Rates - {{ request.user.tenant.name }}{% endblock %}
 
 {% block extra_css %}
 <style>
@@ -87,7 +87,7 @@
     /* ── SELECT ── */
     .gst-select {
         background: var(--panel-bg); border: 1px solid var(--border-color); color: var(--text-main);
-        font-family: 'Outfit', sans-serif; font-size: 0.78rem; padding: 0.35rem 0.55rem;
+        font-family: 'Inter', sans-serif; font-size: 0.78rem; padding: 0.35rem 0.55rem;
         border-radius: 6px; cursor: pointer; outline: none; transition: border-color 0.2s;
     }
     .gst-select:focus { border-color: var(--accent-gold); }

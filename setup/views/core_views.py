@@ -912,7 +912,7 @@ def printer_setup(request):
         try:
             station.save(update_fields=["printer_ip", "printer_port", "paper_width_mm"])
         except Exception:
-            messages.error(request, "That printer IP doesn't look valid — use a form like 192.168.1.100.")
+            messages.error(request, "That printer IP doesn't look valid - use a form like 192.168.1.100.")
             return render(request, "setup/printer_setup.html",
                           {"outlet": outlet, "station": station, "saved": False})
 
@@ -962,12 +962,12 @@ def printer_test_print(request):
     return JsonResponse({
         "success": True,
         "job_id": job.pk,
-        "message": "Test queued — a receipt prints in a few seconds if your phone app is open and logged in.",
+        "message": "Test queued - a receipt prints in a few seconds if your phone app is open and logged in.",
     })
 
 
 def _build_test_receipt(station) -> bytes:
-    """Raw ESC/POS bytes for a 'RASOVA TEST PRINT' page, sized to the station."""
+    """Raw ESC/POS bytes for a 'OI RAMEN TEST PRINT' page, sized to the station."""
     ESC, GS = b"\x1b", b"\x1d"
     enc   = station.printer_encoding or "cp437"
     chars = station.chars_per_line
@@ -977,7 +977,7 @@ def _build_test_receipt(station) -> bytes:
     buf += ESC + b"@"                       # init
     buf += ESC + b"a" + b"\x01"             # center
     buf += GS  + b"!" + b"\x11"             # double width+height
-    buf += "RASOVA\n".encode(enc, errors="replace")
+    buf += "OI RAMEN\n".encode(enc, errors="replace")
     buf += GS  + b"!" + b"\x00"             # normal size
     buf += "TEST PRINT\n".encode(enc, errors="replace")
     buf += line
@@ -1064,7 +1064,7 @@ def outlet_settings(request):
             outlet.parcel_charge_amount = Decimal(request.POST.get("parcel_charge_amount", "0") or "0")
         except Exception:
             logger.warning(
-                "Could not parse parcel_charge_amount=%r for outlet %s — left unchanged",
+                "Could not parse parcel_charge_amount=%r for outlet %s - left unchanged",
                 request.POST.get("parcel_charge_amount"), outlet.id,
             )
         # Only on the form when the parcel_charge feature is on; a missing or

@@ -34,7 +34,7 @@
 
     /* How-it-works explainer */
     .ps-explain {
-        border: 1px solid var(--border-color); background: rgba(197,160,89,0.05);
+        border: 1px solid var(--border-color); background: rgba(216, 148, 47,0.05);
         border-left: 3px solid var(--accent-gold); padding: 1.1rem 1.3rem; margin-bottom: 1.5rem;
     }
     .ps-explain h5 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-gold); margin: 0 0 0.5rem; font-weight: 700; }
@@ -45,7 +45,7 @@
     .ip-input {
         width: 100%; background: transparent; border: none;
         border-bottom: 2px solid var(--border-color); color: var(--text-main);
-        padding: 0.6rem 0; font-size: 1.4rem; font-family: 'Space Mono', monospace;
+        padding: 0.6rem 0; font-size: 1.4rem; font-family: 'Inter', ui-monospace, monospace;
         letter-spacing: 2px; outline: none; text-align: center;
         transition: border-color 0.2s;
     }
@@ -55,14 +55,14 @@
     .field-input {
         width: 100%; background: transparent; border: none;
         border-bottom: 1px solid var(--border-color); color: var(--text-main);
-        padding: 0.5rem 0; font-size: 1rem; font-family: 'Space Mono', monospace;
+        padding: 0.5rem 0; font-size: 1rem; font-family: 'Inter', ui-monospace, monospace;
         outline: none; transition: border-color 0.2s;
     }
     .field-input:focus { border-bottom-color: var(--accent-gold); }
 
     .hint {
         margin-top: 1rem; padding: 0.75rem 1rem;
-        background: rgba(197,160,89,0.06); border-left: 2px solid var(--accent-gold);
+        background: rgba(216, 148, 47,0.06); border-left: 2px solid var(--accent-gold);
         font-size: 0.75rem; color: var(--text-muted); line-height: 1.7;
     }
     .hint strong { color: var(--text-main); }
@@ -75,8 +75,8 @@
         flex-direction: column; align-items: center; gap: 0.4rem; user-select: none;
     }
     .width-card:hover { border-color: var(--accent-gold); }
-    .width-card.selected { border-color: var(--accent-gold); background: rgba(197,160,89,0.07); }
-    .width-num { font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--accent-gold); line-height: 1; }
+    .width-card.selected { border-color: var(--accent-gold); background: rgba(216, 148, 47,0.07); }
+    .width-num { font-family: 'Inter', sans-serif; font-size: 2rem; color: var(--accent-gold); line-height: 1; }
     .width-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); font-weight: 700; }
     .width-badge { font-size: 0.6rem; padding: 1px 6px; background: rgba(16,185,129,0.1); color: #10b981; border-radius: 3px; }
 
@@ -92,13 +92,13 @@
     .btn-save {
         padding: 1rem; background: var(--accent-gold); border: none; color: #fff;
         font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px;
-        font-weight: 700; cursor: pointer; font-family: 'Outfit', sans-serif; transition: background 0.2s;
+        font-weight: 700; cursor: pointer; font-family: 'Inter', sans-serif; transition: background 0.2s;
     }
-    .btn-save:hover { background: #b59250; }
+    .btn-save:hover { background: #C28226; }
     .btn-test {
         padding: 1rem; background: transparent; border: 1px solid var(--border-color); color: var(--text-main);
         font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px;
-        font-weight: 700; cursor: pointer; font-family: 'Outfit', sans-serif; transition: all 0.2s;
+        font-weight: 700; cursor: pointer; font-family: 'Inter', sans-serif; transition: all 0.2s;
     }
     .btn-test:hover { border-color: var(--accent-gold); color: var(--accent-gold); }
     .btn-test:disabled { opacity: 0.5; cursor: not-allowed; }
@@ -110,7 +110,7 @@
         border: 1px solid #22c55e; background: rgba(34,197,94,0.06); margin-bottom: 1.25rem;
     }
     .success-banner i { font-size: 1.6rem; color: #22c55e; }
-    .success-banner h4 { font-family: 'DM Serif Display', serif; margin: 0.4rem 0 0.2rem; }
+    .success-banner h4 { font-family: 'Inter', sans-serif; margin: 0.4rem 0 0.2rem; }
     .success-banner p { font-size: 0.78rem; color: var(--text-muted); margin: 0; }
 </style>
 {% endblock %}
@@ -137,7 +137,7 @@
     <div class="success-banner">
         <i class="bi bi-check-circle-fill"></i>
         <h4>Saved</h4>
-        <p>Printer IP stored. Tap <strong>Test Print</strong> below to confirm — make sure the Rasova app is open and logged in on the counter device.</p>
+        <p>Printer IP stored. Tap <strong>Test Print</strong> below to confirm - make sure the Oi Ramen app is open and logged in on the counter device.</p>
     </div>
     {% endif %}
 
@@ -147,12 +147,12 @@
             <div style="display:flex; align-items:center; gap:1rem;">
                 <div class="ps-num" style="background:var(--accent-gold); border-color:var(--accent-gold); color:#fff; font-size:0.65rem;">APK</div>
                 <div>
-                    <div class="ps-step-title">Install Rasova on Android</div>
+                    <div class="ps-step-title">Install Oi Ramen on Android</div>
                     <div class="ps-step-sub">Scan to download · No Play Store needed</div>
                 </div>
             </div>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=https://rasova.net/android/rasova.apk&bgcolor=161616&color=c5a059&margin=4"
-                 alt="Scan to download Rasova Android app"
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=https://oiramen.com/android/rasova.apk&bgcolor=181715&color=D8942F&margin=4"
+                 alt="Scan to download Oi Ramen Android app"
                  style="border:1px solid var(--border-color); flex-shrink:0;">
         </div>
         <div class="ps-body" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.75rem; padding-top:1rem;">
@@ -175,16 +175,16 @@
                 <div class="ps-num" style="background:var(--accent-gold); border-color:var(--accent-gold); color:#fff; font-size:0.6rem;">URL</div>
                 <div>
                     <div class="ps-step-title">Connect App to This Restaurant</div>
-                    <div class="ps-step-sub">After installing — open app → tap "Scan QR Code" → scan this</div>
+                    <div class="ps-step-sub">After installing - open app → tap "Scan QR Code" → scan this</div>
                 </div>
             </div>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=https://{{ request.user.tenant.slug }}.rasova.net/login/&bgcolor=161616&color=c5a059&margin=4"
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=https://{{ request.user.tenant.slug }}.oiramen.com/login/&bgcolor=181715&color=D8942F&margin=4"
                  alt="Scan to connect app to this restaurant"
                  style="border:1px solid var(--border-color); flex-shrink:0;">
         </div>
         <div class="ps-body" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.75rem; padding-top:1rem;">
             <p style="font-size:0.75rem; color:var(--text-muted); margin:0; line-height:1.6;">
-                Points the app to <strong style="color:var(--text-main)">https://{{ request.user.tenant.slug }}.rasova.net/login/</strong>.<br>
+                Points the app to <strong style="color:var(--text-main)">https://{{ request.user.tenant.slug }}.oiramen.com/login/</strong>.<br>
                 Each phone only needs to scan this once.
             </p>
         </div>
@@ -194,7 +194,7 @@
     <div class="ps-explain">
         <h5><i class="bi bi-info-circle me-1"></i> How printing works</h5>
         <p>
-            Your <strong>Rasova app is the print agent</strong>. When you print a receipt, the app sends it
+            Your <strong>Oi Ramen app is the print agent</strong>. When you print a receipt, the app sends it
             over WiFi to your network printer at the IP below. Keep the app <strong>open and logged in</strong>
             on a device that stays on the counter, on the <strong>same WiFi</strong> as the printer.
         </p>
@@ -219,14 +219,14 @@
                        inputmode="decimal" autocomplete="off" spellcheck="false">
 
                 <div class="hint">
-                    <strong>How to find it:</strong> hold the printer's <strong>Feed</strong> button for ~3 seconds —
+                    <strong>How to find it:</strong> hold the printer's <strong>Feed</strong> button for ~3 seconds -
                     it prints a self-test page showing its current <strong>IP address</strong>.<br><br>
                     Or open your router's admin page (<strong>192.168.1.1</strong>) and look at the connected-devices list.
                 </div>
 
                 <!-- Advanced: port -->
                 <div class="adv-toggle" onclick="document.getElementById('advRow').classList.toggle('show')">
-                    <i class="bi bi-sliders"></i> Advanced — port
+                    <i class="bi bi-sliders"></i> Advanced - port
                 </div>
                 <div class="adv-row" id="advRow">
                     <label class="field-label">Printer port</label>
@@ -274,8 +274,8 @@
             <div class="ps-step-head">
                 <div class="ps-num">3</div>
                 <div>
-                    <div class="ps-step-title">Printer MAC <span style="color:var(--text-muted); font-weight:400; text-transform:none; letter-spacing:0;">— optional</span></div>
-                    <div class="ps-step-sub">Permanent ID — used to lock the IP in your router</div>
+                    <div class="ps-step-title">Printer MAC <span style="color:var(--text-muted); font-weight:400; text-transform:none; letter-spacing:0;">- optional</span></div>
+                    <div class="ps-step-sub">Permanent ID - used to lock the IP in your router</div>
                 </div>
             </div>
             <div class="ps-body">
@@ -326,7 +326,7 @@
         el.value = out;
     }
 
-    // Test print — queues a PrintJob the phone agent picks up (no direct socket)
+    // Test print - queues a PrintJob the phone agent picks up (no direct socket)
     async function testPrint() {
         const btn    = document.getElementById('testBtn');
         const result = document.getElementById('testResult');
@@ -358,7 +358,7 @@
             }
         } catch (e) {
             result.style.color = '#ef4444';
-            result.textContent = '✗ Network error — try again.';
+            result.textContent = '✗ Network error - try again.';
         } finally {
             btn.disabled = false;
         }

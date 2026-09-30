@@ -33,4 +33,4 @@ Disallow: /portal/
 Disallow: /agency/
 Disallow: /menu/
 
-Sitemap: https://rasova.net/sitemap.xml
+Sitemap: https://oiramen.com/sitemap.xml

@@ -131,7 +131,7 @@ def is_safe_host(host):
     used to gate --allow-remote before any HTTP load test fires a single
     request at it. Deliberately conservative: anything not obviously
     local/private is treated as unsafe (including real domains like
-    rasova.net) and requires an explicit opt-in."""
+    oiramen.com) and requires an explicit opt-in."""
     from urllib.parse import urlparse
     import ipaddress
     hostname = urlparse(host).hostname or ""

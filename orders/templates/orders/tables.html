@@ -38,7 +38,7 @@
   .table-card:hover { border-color: var(--accent-gold); transform: translateY(-4px); box-shadow: var(--shadow-hover); }
   .table-status-line { position: absolute; top: 0; left: 0; right: 0; height: 4px; border-top-left-radius: 8px; border-top-right-radius: 8px; }
   .table-header { display: flex; justify-content: space-between; align-items: flex-start; }
-  .table-name { font-family: 'DM Serif Display', serif; font-size: 1.6rem; color: var(--text-main); margin: 0; line-height: 1; }
+  .table-name { font-family: 'Inter', sans-serif; font-size: 1.6rem; color: var(--text-main); margin: 0; line-height: 1; }
   .table-status { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin-top: 0.4rem; }
   .table-timer { font-weight: 600; font-size: 0.9rem; background: rgba(115,115,115,0.1); padding: 0.2rem 0.6rem; border-radius: 12px; }
 
@@ -63,7 +63,7 @@
   }
   .btn-card-action:hover { background: var(--text-main); color: var(--panel-bg); }
   .btn-card-primary { background: var(--accent-gold); border-color: var(--accent-gold); color: #fff; }
-  .btn-card-primary:hover { background: #b59250; color: #fff; }
+  .btn-card-primary:hover { background: #C28226; color: #fff; }
 
   /* Metrics */
   .metric-card {
@@ -74,13 +74,13 @@
   }
   .metric-card::before { content: ''; position: absolute; top:0; left:0; width:4px; height:100%; background: var(--accent-gold); }
   .metric-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
-  .metric-val { font-family: 'DM Serif Display', serif; font-size: 2.5rem; font-weight: 700; color: var(--text-main); line-height: 1; }
+  .metric-val { font-family: 'Inter', sans-serif; font-size: 2.5rem; font-weight: 700; color: var(--text-main); line-height: 1; }
   .metric-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-top: 0.5rem; font-weight: 600; }
 
   /* Modal overrides */
   .modal-content { background: var(--bg-color); border-radius: 0; border: 1px solid var(--border-color); }
   .modal-header { border-bottom: 1px solid var(--border-color); padding: 1.5rem; }
-  .modal-title { font-family: 'DM Serif Display', serif; font-size: 1.3rem; }
+  .modal-title { font-family: 'Inter', sans-serif; font-size: 1.3rem; }
   .modal-body { padding: 1.5rem; }
   .modal-footer { border-top: 1px solid var(--border-color); padding: 1.5rem; }
   html.dark .btn-close { filter: invert(1); }
@@ -159,7 +159,7 @@
   <a href="/dashboard/" style="text-decoration:none;color:inherit;">
     <h1 class="brand-title mb-0"><i class="bi bi-diamond-half me-2" style="color:var(--accent-gold);"></i>{{ request.user.tenant.name }}</h1>
   </a>
-  <p class="mb-0 text-muted" style="font-size:0.75rem;letter-spacing:1px;text-transform:uppercase;">Floor Plan — {{ request.user.outlet.name }}</p>
+  <p class="mb-0 text-muted" style="font-size:0.75rem;letter-spacing:1px;text-transform:uppercase;">Floor Plan - {{ request.user.outlet.name }}</p>
 </div>
 {% endblock %}
 
@@ -315,7 +315,7 @@
           </table>
         </div>
         <hr class="my-2" style="border-color:var(--border-color);">
-        <h6 style="font-family:'DM Serif Display',serif;">Add New Table</h6>
+        <h6 style="font-family:'Inter', sans-serif;">Add New Table</h6>
         <div class="row g-2">
           <div class="col-5"><input type="text" id="newTableName" class="form-control form-select-luxury m-0" placeholder="Table Name (e.g. T-12)"></div>
           <div class="col-4"><input type="text" id="newTableSection" class="form-control form-select-luxury m-0" placeholder="Section (e.g. Patio)"></div>
@@ -642,7 +642,7 @@
       // Previously uncaught -- a non-JSON error response (e.g. a real 500)
       // failed silently here: no toast, no reload, nothing visible at all.
       console.error("Unmerge failed:", err);
-      showToast("Unmerge failed — please try again");
+      showToast("Unmerge failed - please try again");
     });
   }
 

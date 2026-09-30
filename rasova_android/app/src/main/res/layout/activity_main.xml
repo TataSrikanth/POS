@@ -17,20 +17,20 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
-        android:background="#0a0a0a">
+        android:background="#181715">
 
-        <View
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="#C9A84C"
-            android:rotation="45" />
+        <ImageView
+            android:layout_width="84dp"
+            android:layout_height="84dp"
+            android:src="@drawable/logo_badge"
+            android:contentDescription="Oi Ramen" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="RASOVA"
-            android:textColor="#C9A84C"
+            android:text="OI RAMEN"
+            android:textColor="#D8942F"
             android:textSize="18sp"
             android:letterSpacing="0.3"
             android:fontFamily="sans-serif-medium" />
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             style="?android:attr/progressBarStyle"
-            android:indeterminateTint="#C9A84C" />
+            android:indeterminateTint="#D8942F" />
 
     </LinearLayout>
 
@@ -53,21 +53,21 @@
         android:orientation="vertical"
         android:gravity="center"
         android:padding="40dp"
-        android:background="#0a0a0a"
+        android:background="#181715"
         android:visibility="gone">
 
-        <View
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="#C9A84C"
-            android:rotation="45" />
+        <ImageView
+            android:layout_width="84dp"
+            android:layout_height="84dp"
+            android:src="@drawable/logo_badge"
+            android:contentDescription="Oi Ramen" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="RASOVA"
-            android:textColor="#C9A84C"
+            android:text="OI RAMEN"
+            android:textColor="#D8942F"
             android:textSize="18sp"
             android:letterSpacing="0.3"
             android:fontFamily="sans-serif-medium" />
@@ -86,7 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:hint="your-restaurant.rasova.net"
+            android:hint="your-restaurant.oiramen.com"
             android:inputType="textUri"
             android:textColor="#ffffff"
             android:textColorHint="#555555"
@@ -100,7 +100,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1.5dp"
-            android:background="#C9A84C" />
+            android:background="#D8942F" />
 
         <Button
             android:id="@+id/connectButton"
@@ -108,8 +108,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="CONNECT"
-            android:textColor="#0a0a0a"
-            android:backgroundTint="#C9A84C"
+            android:textColor="#181715"
+            android:backgroundTint="#D8942F"
             android:letterSpacing="0.15"
             android:fontFamily="sans-serif-medium"
             android:onClick="onConnectClicked" />
@@ -128,7 +128,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="SCAN QR CODE"
-            android:textColor="#C9A84C"
+            android:textColor="#D8942F"
             android:backgroundTint="#1c1c1c"
             android:letterSpacing="0.15"
             android:fontFamily="sans-serif-medium"
@@ -138,7 +138,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="Scan the QR code from Setup → Printer in your Rasova dashboard"
+            android:text="Scan the QR code from Setup → Printer in your Oi Ramen dashboard"
             android:textColor="#444444"
             android:textSize="11sp"
             android:gravity="center"

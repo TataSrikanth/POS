@@ -12,7 +12,7 @@ class Command(BaseCommand):
 
         print("Creating test tenant...")
 
-        tenant = Tenant.objects.create(name="Test Restaurant")
+        tenant = Tenant.objects.create(name="Oi Ramen")
         outlet = Outlet.objects.create(name="Main Outlet", tenant=tenant, gst_no=SAMPLE_GSTIN)
 
         owner = User.objects.create_user(

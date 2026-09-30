@@ -153,7 +153,7 @@ def update_outlet_from_post(outlet, post):
         # previous value instead of erroring — that's an intentional
         # best-effort default, but it was invisible when it happened.
         logger.warning(
-            "Could not parse parcel_charge_amount=%r for outlet %s — left unchanged",
+            "Could not parse parcel_charge_amount=%r for outlet %s - left unchanged",
             post.get("parcel_charge_amount"), outlet.id,
         )
     if "parcel_gst_rate" in post:

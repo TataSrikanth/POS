@@ -36,14 +36,14 @@ def _subdomain_redirect(user, path):
     Build an absolute URL to the user's subdomain.
     Returns None in DEBUG mode (no subdomains locally).
     """
-    if settings.DEBUG:
+    if settings.DEBUG or not getattr(settings, "SUBDOMAIN_LOGIN_REDIRECT", True):
         return None
     tenant = user.tenant
     if not tenant or not tenant.slug:
         return None
-    base = settings.BASE_URL.rstrip("/")           # e.g. https://rasova.net
+    base = settings.BASE_URL.rstrip("/")           # e.g. https://oiramen.com
     proto, rest = base.split("://", 1)
-    domain = rest.lstrip("www.").split("/")[0]     # rasova.net
+    domain = rest.lstrip("www.").split("/")[0]     # oiramen.com
     return f"{proto}://{tenant.slug}.{domain}{path}"
 
 

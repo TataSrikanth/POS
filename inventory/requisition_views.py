@@ -147,7 +147,7 @@ def create_requisition(request):
         "success": True,
         "requisition_id": req.id,
         "route":   req.route,
-        "message": f"Requisition #{req.id} raised — routed to {req.get_route_display()}.",
+        "message": f"Requisition #{req.id} raised - routed to {req.get_route_display()}.",
     })
 
 
@@ -176,7 +176,7 @@ def auto_generate_requisition(request):
     if not low_items.exists():
         return JsonResponse({
             "success": True,
-            "message": "All stock levels are above threshold — no requisition needed.",
+            "message": "All stock levels are above threshold - no requisition needed.",
             "created": False,
         })
 
@@ -203,7 +203,7 @@ def auto_generate_requisition(request):
         req.save()
 
     logger.info(
-        "Auto-generated requisition #%s for outlet %s — %d items, route: %s",
+        "Auto-generated requisition #%s for outlet %s - %d items, route: %s",
         req.id, outlet.name, req.items.count(), req.route,
     )
     return JsonResponse({
@@ -212,7 +212,7 @@ def auto_generate_requisition(request):
         "requisition_id": req.id,
         "item_count": req.items.count(),
         "route":   req.route,
-        "message": f"Requisition #{req.id} created with {req.items.count()} low-stock items — routed to {req.get_route_display()}.",
+        "message": f"Requisition #{req.id} created with {req.items.count()} low-stock items - routed to {req.get_route_display()}.",
     })
 
 
@@ -361,7 +361,7 @@ def convert_to_batch(request, req_id):
         "success":      True,
         "batch_id":     batch.id,
         "batch_number": batch_number,
-        "message":      f"Batch {batch_number} created — go to Central Kitchen to dispatch.",
+        "message":      f"Batch {batch_number} created - go to Central Kitchen to dispatch.",
     })
 
 
@@ -479,7 +479,7 @@ def convert_to_po(request, req_id):
             # Nothing was ordered (no item had a preferred supplier). No rows
             # were written, so returning here leaves the DB untouched.
             return JsonResponse(
-                {"error": "No items have a preferred supplier set — nothing to order. "
+                {"error": "No items have a preferred supplier set - nothing to order. "
                           "Set a preferred supplier on the items first.",
                  "skipped_items": skipped_items},
                 status=400,
@@ -529,7 +529,7 @@ def cancel_requisition(request, req_id):
         requesting_outlet=request.user.outlet,
     )
     if req.status in ("fulfilled", "ordered", "in_production"):
-        return JsonResponse({"error": "Cannot cancel — already being processed."}, status=400)
+        return JsonResponse({"error": "Cannot cancel - already being processed."}, status=400)
     req.status = "cancelled"
     req.save(update_fields=["status"])
     return JsonResponse({"success": True, "message": "Requisition cancelled."})

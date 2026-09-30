@@ -1,4 +1,4 @@
-# Rasova - Restaurant POS Platform
+# Oi Ramen - Restaurant POS Platform
 
 > Cloud-based POS and restaurant management system for Indian restaurants.  
 > Django 6.0 · PostgreSQL · Celery + Redis · Multi-tenant SaaS · ESC/POS thermal printing.
@@ -7,9 +7,9 @@ See [`CHANGELOG.md`](CHANGELOG.md) for what's changed recently.
 
 ---
 
-## What Is Rasova
+## What Is Oi Ramen
 
-Rasova is a full-stack restaurant management platform built for Indian restaurants - fine dining, QSR counters, and cafés. It handles the complete order lifecycle: table management, kitchen tickets, billing, thermal printing, inventory, reports, and an order history with a full audit trail.
+Oi Ramen is a full-stack restaurant management platform built for Indian restaurants - fine dining, QSR counters, and cafés. It handles the complete order lifecycle: table management, kitchen tickets, billing, thermal printing, inventory, reports, and an order history with a full audit trail.
 
 Two things that make it different from existing Indian POS software:
 
@@ -141,7 +141,7 @@ f:\pos\
 ├── accounts/           User auth, roles, login, dashboard, superuser panel
 │   └── views/          auth_views, dashboard_views, feature_views, superuser_views
 ├── agency/             Multi-client agency management
-├── billing/            Rasova's own subscription billing: invoices, Razorpay payment links, WhatsApp and email delivery
+├── billing/            Oi Ramen's own subscription billing: invoices, Razorpay payment links, WhatsApp and email delivery
 ├── core/               Settings, middleware, decorators, Celery app, features
 ├── crm/                Guest profiles, loyalty, reservations
 ├── finance/            Expense tracking
@@ -306,7 +306,7 @@ R2_BACKUP_RETAIN_DAYS=30          # nightly dumps are kept this long
 R2_BASE_BACKUP_RETAIN_WEEKS=4     # weekly base backups, and the WAL after them, are kept this long
 R2_STORAGE_WARN_GB=8              # the health check warns above this total (the R2 free tier is 10)
 
-# Subscription billing (Rasova's own Razorpay account, not a restaurant's)
+# Subscription billing (Oi Ramen's own Razorpay account, not a restaurant's)
 RASOVA_RAZORPAY_KEY_ID=
 RASOVA_RAZORPAY_KEY_SECRET=
 RASOVA_RAZORPAY_WEBHOOK_SECRET=
@@ -346,7 +346,7 @@ Bucket setup, the one-time server steps, the restore procedure and troubleshooti
 
 ## Thermal Printing Architecture
 
-Rasova supports two printing modes:
+Oi Ramen supports two printing modes:
 
 **Browser printing** (zero local installation):
 ```
@@ -489,7 +489,7 @@ Business logic lives in `orders/services/` - 9 service modules, none of which kn
 ## License
 
 Proprietary. All rights reserved.  
-© 2026 Rasova. Built in Bengaluru.
+© 2026 Oi Ramen. Built in Bengaluru.
 
 ---
 

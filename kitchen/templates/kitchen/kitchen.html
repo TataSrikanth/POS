@@ -1,10 +1,10 @@
 {% extends 'core/base.html' %}
 
-{% block title %}Kitchen Display — {{ request.user.tenant.name }}{% endblock %}
+{% block title %}Kitchen Display - {{ request.user.tenant.name }}{% endblock %}
 
 {% block extra_css %}
 <style>
-    /* Kitchen is ALWAYS dark — readable under bright/hot kitchen conditions */
+    /* Kitchen is ALWAYS dark - readable under bright/hot kitchen conditions */
     :root {
         --bg-color:    #050505;
         --panel-bg:    #111111;
@@ -12,7 +12,7 @@
         --text-main:   #f5f5f5;
         --text-muted:  #888888;
         --border-color: #262626;
-        --c-fresh:  #d4af37;
+        --c-fresh:  #D8942F;
         --c-warn:   #f59e0b;
         --c-urgent: #ef4444;
     }
@@ -43,7 +43,7 @@
         background: transparent;
         border: none;
         color: var(--text-muted);
-        font-family: 'DM Serif Display', serif;
+        font-family: 'Inter', sans-serif;
         font-size: 1.05rem;
         cursor: pointer;
         transition: var(--transition-smooth);
@@ -53,7 +53,7 @@
         min-height: 44px;
     }
     .station-btn:hover { color: var(--text-main); }
-    .station-btn.active { color: var(--c-fresh); border-bottom-color: var(--c-fresh); font-style: italic; }
+    .station-btn.active { color: var(--c-fresh); border-bottom-color: var(--c-fresh); }
 
     /* ── Orders grid ─────────────────────────────────── */
     .orders-grid { padding: 1.5rem; }
@@ -87,8 +87,8 @@
         align-items: flex-start;
     }
     .table-name {
-        font-family: 'DM Serif Display', serif;
-        font-size: 2rem;      /* 32px — readable at 2m */
+        font-family: 'Inter', sans-serif;
+        font-size: 2rem;      /* 32px - readable at 2m */
         font-weight: 700;
         color: var(--text-main);
         line-height: 1;
@@ -103,9 +103,9 @@
         letter-spacing: 2px;
         text-transform: uppercase;
     }
-    .timer { font-size: 1.6rem; font-weight: 700; font-family: 'DM Serif Display', serif; }
+    .timer { font-size: 1.6rem; font-weight: 700; font-family: 'Inter', sans-serif; }
 
-    /* BUMP — mark entire KOT done, big enough for a knuckle tap */
+    /* BUMP - mark entire KOT done, big enough for a knuckle tap */
     .btn-bump {
         width: 100%; padding: 1rem; background: transparent;
         border: none; border-top: 1px solid var(--border-color);
@@ -114,7 +114,7 @@
         transition: background .2s;
         min-height: 56px;
     }
-    .btn-bump:hover { background: rgba(212,175,55,.12); }
+    .btn-bump:hover { background: rgba(216, 148, 47,.12); }
     .card-fresh  .timer { color: var(--c-fresh); }
     .card-warn   .timer { color: var(--c-warn); }
     .card-urgent .timer { color: var(--c-urgent); }
@@ -130,7 +130,7 @@
     }
     .item-row:last-child { border-bottom: none; padding-bottom: 0; }
     .item-qty {
-        font-family: 'DM Serif Display', serif;
+        font-family: 'Inter', sans-serif;
         color: var(--c-fresh);
         font-size: 1.25rem;
         margin-right: 12px;
@@ -141,7 +141,7 @@
     .item-note { display: block; margin-top: 0.3rem; font-size: 0.75rem; color: var(--c-warn); font-style: italic; }
     .action-cell { margin-left: 0.75rem; min-width: 100px; display: flex; justify-content: flex-end; }
 
-    /* ── Action buttons — BIG for kitchen gloves ─────── */
+    /* ── Action buttons - BIG for kitchen gloves ─────── */
     .btn-status {
         background: transparent;
         font-size: 0.8rem;
@@ -174,7 +174,7 @@
         text-align: center; padding: 5rem 2rem; width: 100%; color: var(--text-muted);
     }
     .empty-state i { font-size: 3rem; margin-bottom: 1rem; display: block; }
-    .empty-state h3 { font-family: 'DM Serif Display', serif; }
+    .empty-state h3 { font-family: 'Inter', sans-serif; }
 
     /* ── Mobile ──────────────────────────────────────── */
     @media (max-width: 576px) {
@@ -201,7 +201,7 @@
         {{ request.user.tenant.name }}
     </h1>
 </a>
-<p class="brand-subtitle">Kitchen Display — {{ request.user.outlet.name }}</p>
+<p class="brand-subtitle">Kitchen Display - {{ request.user.outlet.name }}</p>
 {% endblock %}
 
 {% block header_right %}
@@ -247,7 +247,7 @@
 
 {% block extra_js %}
 <script>
-    /* Kitchen always starts dark — force it regardless of global theme pref */
+    /* Kitchen always starts dark - force it regardless of global theme pref */
     document.documentElement.classList.add('dark');
 
     // Item names, per-item notes, and table names are staff-entered free
@@ -329,7 +329,7 @@
                         </div>`;
                     }).join('');
                     const allDone = kot.items.every(i => i.status === 'ready' || i.status === 'served');
-                    const bumpBtn = allDone ? '' : `<button class="btn-bump" onclick="bumpKot(${kot.id})"><i class="bi bi-check2-all me-2"></i>BUMP — All Ready</button>`;
+                    const bumpBtn = allDone ? '' : `<button class="btn-bump" onclick="bumpKot(${kot.id})"><i class="bi bi-check2-all me-2"></i>BUMP - All Ready</button>`;
                     return `<div class="col-12 col-md-6 col-xl-4 col-xxl-3">
                         <div class="order-card ${cc}">
                             <div class="order-header">
@@ -380,7 +380,7 @@
     function clearAllKitchen() {
         ui.confirm(
             'Clear every ticket off this screen?',
-            'This marks every item currently shown as served — for wiping out stale or orphaned tickets, not for real service. This cannot be undone.',
+            'This marks every item currently shown as served - for wiping out stale or orphaned tickets, not for real service. This cannot be undone.',
             'Yes, clear all'
         ).then(result => {
             if (!result.isConfirmed) return;
@@ -392,7 +392,7 @@
                 if (d.success) { ui.toast(`Cleared ${d.count} item(s)`, 'success'); loadKitchen(); }
                 else ui.toast(d.error || 'Could not clear', 'error');
             })
-            .catch(() => ui.toast('Network error — nothing cleared', 'error'));
+            .catch(() => ui.toast('Network error - nothing cleared', 'error'));
         });
     }
 

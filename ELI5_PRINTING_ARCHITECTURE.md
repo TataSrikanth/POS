@@ -1,4 +1,4 @@
-# Rasova Printing Architecture
+# Oi Ramen Printing Architecture
 ## Complete Guide — Multi-Tenant, Multi-Kitchen, Cloud + Local
 **Every edge case. Every failure mode. Monday-ready.**
 
@@ -224,7 +224,7 @@ The easiest way to find correct IP: hold FEED + power on printer → self-test p
 ### 5.4 DHCP reassigns printer IP after router restart
 ```
 Problem: Printer was at 192.168.1.100. Router rebooted. Now it's at 192.168.1.105.
-        Rasova still has 192.168.1.100 in Setup → all prints fail.
+        Oi Ramen still has 192.168.1.100 in Setup → all prints fail.
 
 Fix: Set a STATIC (DHCP reservation) IP for the printer in the router settings.
     Most routers: Admin panel → DHCP → "Reserve IP" → enter printer's MAC address → assign fixed IP.
@@ -451,7 +451,7 @@ Add to Windows Task Scheduler → "At startup" → runs in background.
 Create `/etc/systemd/system/rasova-worker.service`:
 ```ini
 [Unit]
-Description=Rasova Print Worker
+Description=Oi Ramen Print Worker
 After=network.target
 
 [Service]
@@ -541,7 +541,7 @@ Each restaurant's local worker reaches Redis via VPN.
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                         RASOVA PRINTING                                  │
+│                         OI RAMEN PRINTING                                  │
 │                                                                          │
 │  CLOUD (Hyderabad)          INTERNET           LOCAL (Restaurant)        │
 │  ┌───────────────┐                           ┌───────────────────────┐   │

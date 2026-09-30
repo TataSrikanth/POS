@@ -163,7 +163,7 @@ class AIService:
             raise Exception(
                 "Couldn't read that file. Please upload a photo (JPG/PNG), a PDF, "
                 "a Word document (.docx), an Excel sheet (.xlsx), or plain text/CSV. "
-                "(iPhone HEIC photos aren't supported — screenshot the menu instead.)"
+                "(iPhone HEIC photos aren't supported - screenshot the menu instead.)"
             )
 
     def _extract_docx(self, file_bytes):

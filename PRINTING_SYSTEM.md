@@ -1,4 +1,4 @@
-# Rasova Printing System
+# Oi Ramen Printing System
 ### Everything we built — explained simply, with micro steps
 
 ---
@@ -9,7 +9,7 @@
 2. [Parcel Charge — The Bug and the Fix](#2-parcel-charge)
 3. [The Thermal Printer — How It Connects](#3-the-thermal-printer)
 4. [The Receipt — Making It Short](#4-the-receipt-layout)
-5. [Rasova Agent — The Bridge](#5-rasova-agent)
+5. [Oi Ramen Agent — The Bridge](#5-rasova-agent)
 6. [Old Way vs New Way of Printing](#6-old-vs-new)
 7. [The Android Problem — Why the App Kept Dying](#7-the-android-problem)
 8. [The Fix — Polling Architecture](#8-the-fix-polling)
@@ -36,7 +36,7 @@
                                     [Thermal Printer at counter]
 ```
 
-The Django app (Rasova POS) lives on an **EC2 server** far away in the cloud.
+The Django app (Oi Ramen POS) lives on an **EC2 server** far away in the cloud.
 The **thermal printer** lives inside the cafe, connected to the local WiFi.
 
 **The Problem:** The cloud server can never directly reach the local printer.
@@ -159,7 +159,7 @@ Hello\n         ← Print the word "Hello" and go to next line
 \x1D\x56\x00    ← "Cut the paper here"
 ```
 
-The Rasova server generates these bytes for each bill and sends them to the printer.
+The Oi Ramen server generates these bytes for each bill and sends them to the printer.
 
 ### Printer Configuration
 
@@ -190,7 +190,7 @@ The old code was printing:
 - Date on a third separate line
 - The word "TOTAL" in double-height letters again
 - "Thank you for your visit!" on one line
-- "Powered by Rasova POS" on another line
+- "Powered by Oi Ramen POS" on another line
 - Two blank lines before the cut (`\n\n`)
 
 Think of it like writing an address by using a marker instead of a pen —
@@ -230,7 +230,7 @@ BEFORE (60mm):                    AFTER (35mm):
   Paid via  CASH
   --------------------------------
   Thank you for your visit!
-  Powered by Rasova POS
+  Powered by Oi Ramen POS
 
 
   (two blank lines)
@@ -244,7 +244,7 @@ BEFORE (60mm):                    AFTER (35mm):
 | GSTIN + SAC | Two separate lines | One line: `GSTIN:xxx  SAC:996331` | ~2mm |
 | Bill info | 3 separate lines (Bill, Table, Date) | One line: `NO.184  TBL:5  27/05 18:23` | ~4mm |
 | Total | Double-height bold | Bold, normal size | ~2mm |
-| Footer | "Thank you for your visit!" + "Powered by Rasova POS" + `\n\n` | "Thank you! Visit again." only | ~4mm |
+| Footer | "Thank you for your visit!" + "Powered by Oi Ramen POS" + `\n\n` | "Thank you! Visit again." only | ~4mm |
 | Address | Truncated to one line | Word-wrapped properly to fit width | cleaner |
 | Parcel charge label | "Parcel Charge" | "Parcel" | fits better |
 
@@ -286,11 +286,11 @@ Token/table + station name are now combined on one line. Trailing blank line rem
 
 ---
 
-## 5. Rasova Agent
+## 5. Oi Ramen Agent
 
 ### What is it?
 
-The Rasova Agent is a small program that runs on a device inside the cafe
+The Oi Ramen Agent is a small program that runs on a device inside the cafe
 (laptop, phone, Raspberry Pi, Android phone).
 
 Think of it as a **post office worker** sitting inside the cafe:
@@ -304,7 +304,7 @@ Think of it as a **post office worker** sitting inside the cafe:
 
 | Way | Who runs it | Best for |
 |-----|------------|---------|
-| **Native Android APK** | Background service inside the Rasova app | Android phones — zero setup |
+| **Native Android APK** | Background service inside the Oi Ramen app | Android phones — zero setup |
 | **Python Polling (Termux)** | `rasova_agent.py --poll <url>` | Advanced Android / Raspberry Pi |
 | **Python WebSocket** | `rasova_agent.py` (desktop) | Windows/Mac PC at the counter |
 
@@ -335,7 +335,7 @@ If the printer gets a new IP from the router (DHCP), the Python agent tries to f
 
 | Platform | Config | Logs |
 |----------|--------|------|
-| Windows | `C:\Users\YourName\AppData\Roaming\Rasova\agent_config.json` | same folder, `agent.log` |
+| Windows | `C:\Users\YourName\AppData\Roaming\Oi Ramen\agent_config.json` | same folder, `agent.log` |
 | Android/Linux | `~/.rasova/agent_config.json` | `~/.rasova/agent.log` |
 
 ---
@@ -356,7 +356,7 @@ Browser → fetch("/orders/print-bill/") → EC2 server
 
 **Android (Native APK — recommended):**
 ```
-Rasova App → print button → POST /orders/agent/add-job/ (queues job on EC2)
+Oi Ramen App → print button → POST /orders/agent/add-job/ (queues job on EC2)
 Background PrintService → polls EC2 every 2s → TCP 9100 → Printer ✓
 ```
 
@@ -438,7 +438,7 @@ Step 8: Agent tells EC2: "Job done" — EC2 marks it complete
 | Field | What it stores | Example |
 |-------|---------------|---------|
 | `id` | Auto-number | `42` |
-| `tenant` | Which business | `Rasova Cafe` |
+| `tenant` | Which business | `Oi Ramen Cafe` |
 | `outlet` | Which branch | `Café Counter` |
 | `status` | `pending` / `done` / `failed` | `pending` |
 | `payload.data_b64` | ESC/POS bytes as base64 | `G0BbYQFIZWxsbw==` |
@@ -489,43 +489,43 @@ https://your-site.com/orders/agent/a3f9e2b1-4c5d-4e6f-8a7b-9c0d1e2f3a4b/
 ### The UX Problem with Two Icons
 
 Before this change, Android staff had to manage TWO things:
-1. The **Rasova PWA shortcut** (the browser shortcut for taking orders)
+1. The **Oi Ramen PWA shortcut** (the browser shortcut for taking orders)
 2. **Termux** (a developer terminal app for running the print agent)
 
 Staff would ask: "Which one do I open?", "Can I delete Termux?",
-"Why are there two Rasova-related things?"
+"Why are there two Oi Ramen-related things?"
 
 Non-technical staff (cashiers, QSR counter staff) would give up. **This is now solved.**
 
 ### The Solution — One App
 
-The **Rasova Android APK** is one app that:
-1. Shows the full Rasova POS website inside it (using a WebView — a browser built into the app)
+The **Oi Ramen Android APK** is one app that:
+1. Shows the full Oi Ramen POS website inside it (using a WebView — a browser built into the app)
 2. Has a background printing service built in that polls EC2 and prints automatically
 3. Starts automatically when the phone boots
 4. Cannot be killed by Android's battery optimizer
 
 ```
 Staff home screen:
-  [Rasova] ← one icon, one app, does everything
+  [Oi Ramen] ← one icon, one app, does everything
 
 What happens when staff opens it:
   ┌────────────────────────────────────┐
   │  (full screen — no browser bar)    │
   │                                    │
-  │  Login to Rasova POS               │
+  │  Login to Oi Ramen POS               │
   │  Username: ___________             │
   │  Password: ___________             │
   │  [Log In]                          │
   │                                    │
-  │  Notification: "Rasova Printing ✓" │
+  │  Notification: "Oi Ramen Printing ✓" │
   └────────────────────────────────────┘
 ```
 
 ### How the magic happens — ELI5
 
 The app secretly adds a label to its browser: `RasovaPOS-Android/1.0`.
-It's like a person wearing a name tag that says "I'm the Rasova app".
+It's like a person wearing a name tag that says "I'm the Oi Ramen app".
 
 When the staff logs in, Django's JavaScript looks at the name tag:
 - "Oh, this is the native app!" → calls `Android.startPrinting(url)`
@@ -603,7 +603,7 @@ while (true) {
 
 **ELI5:** PrintService is like a loyal employee who works 24/7, checks
 the notice board (EC2 queue) every 2 seconds, and delivers any new letters
-(receipts) directly to the printer. Android sees the notification "Rasova
+(receipts) directly to the printer. Android sees the notification "Oi Ramen
 Printing Active" and knows: this is important, don't kill it. Just like
 a phone call — Android never kills an active phone call.
 
@@ -668,8 +668,8 @@ REQUEST_IGNORE_BATTERY_OPTIMIZATIONS ← show the "don't kill me" dialog
 PWA = Progressive Web App. It lets a website behave like a real phone app
 without being downloaded from the Play Store.
 
-When Rasova POS runs in Chrome on Android, the browser shows:
-> "Install Rasova POS — Add to home screen"
+When Oi Ramen POS runs in Chrome on Android, the browser shows:
+> "Install Oi Ramen POS — Add to home screen"
 
 After installing, the app:
 - Gets its own icon on the home screen
@@ -678,7 +678,7 @@ After installing, the app:
 
 ### How the install banner behaves now
 
-| Where you open Rasova | What happens |
+| Where you open Oi Ramen | What happens |
 |----------------------|-------------|
 | Inside the **native APK** | No install banner (it's already installed!) |
 | In **Chrome on Android** (not the APK) | "Add to home screen — tap Install, then set up printing in Termux" |
@@ -705,7 +705,7 @@ window.rasovaPlatform = {
   ios:           true/false,  // iPhone or iPad
   windows:       true/false,  // Windows PC
   mac:           true/false,  // Mac
-  nativeAndroid: true/false,  // Running inside the Rasova Android APK
+  nativeAndroid: true/false,  // Running inside the Oi Ramen Android APK
   standalone:    true/false,  // Installed PWA (running from home screen)
   agentHost:     "..."        // Where to connect the WebSocket agent (desktop only)
 }
@@ -722,7 +722,7 @@ This is invisible to users but visible to the website's JavaScript.
 When `nativeAndroid` is true, the website knows:
 - Printing is handled by the native service — no Termux, no setup needed
 - Post-install sheet is skipped
-- Offline hint says "open Rasova app and allow battery optimization" (not "open Termux")
+- Offline hint says "open Oi Ramen app and allow battery optimization" (not "open Termux")
 
 ### Auto-configure printing after login
 
@@ -772,7 +772,7 @@ Desktop (Windows/Mac):
 ┌─────────────────────────────────────────────────────────┐
 │                    Staff's Android Phone                 │
 │                                                         │
-│  Rasova App (WebView): "Print Bill for Order #42"       │
+│  Oi Ramen App (WebView): "Print Bill for Order #42"       │
 │       ↓ HTTPS POST                                      │
 │  /orders/agent/add-job/   { order_id: 42 }              │
 └─────────────────────────────────────────────────────────┘
@@ -791,7 +791,7 @@ Desktop (Windows/Mac):
 └─────────────────────────────────────────────────────────┘
                     ↑ polls every 2 seconds
 ┌─────────────────────────────────────────────────────────┐
-│     PrintService (background, inside Rasova APK)        │
+│     PrintService (background, inside Oi Ramen APK)        │
 │                                                         │
 │  GET /orders/agent/<key>/jobs/                          │
 │  ← [{ id:99, data_b64:"...", host:"192...", port:9100 }]│
@@ -839,7 +839,7 @@ Older than 5 min → not served to agent (TTL expired)
 
 ### What is a tenant?
 
-In Rasova, a "tenant" is a business (e.g. "Malenadu Brahmins Cafe").
+In Oi Ramen, a "tenant" is a business (e.g. "Malenadu Brahmins Cafe").
 One tenant can have multiple outlets (branches).
 
 The database has data for many tenants. It's critical that Tenant A
@@ -893,9 +893,9 @@ not a full table scan.
 **One-time setup. After this: zero manual work ever.**
 
 **Step 1: Get the APK file**
-1. Open Rasova POS on any browser
+1. Open Oi Ramen POS on any browser
 2. Go to **Setup → Printing**
-3. Find the "Download Rasova Android App" button
+3. Find the "Download Oi Ramen Android App" button
 4. Tap it — the `.apk` file will start downloading
 5. Wait for the download to finish (you'll see a notification or progress at the bottom)
 
@@ -911,13 +911,13 @@ not a full table scan.
 9. Tap **Open**
 
 **Step 3: First login**
-1. The app opens showing the Rasova login screen — same as the browser version
+1. The app opens showing the Oi Ramen login screen — same as the browser version
 2. Enter your username and password
 3. Tap **Log In**
-4. A popup appears: "Allow Rasova to run without battery restrictions?"
+4. A popup appears: "Allow Oi Ramen to run without battery restrictions?"
 5. Tap **Allow** — this is the battery optimization dialog
 6. You are now on the main POS screen
-7. In the notification bar at the top, you should see "Rasova Printing Active"
+7. In the notification bar at the top, you should see "Oi Ramen Printing Active"
 
 **That's it. Printing now works forever.**
 
@@ -929,7 +929,7 @@ not a full table scan.
 **Verification — test that it survives a reboot:**
 1. Turn your phone OFF
 2. Turn it back ON
-3. Do NOT open the Rasova app
+3. Do NOT open the Oi Ramen app
 4. Create a test order on a different device (or the same phone after a minute)
 5. Tap Print Bill — it should still print (the service auto-started on boot)
 
@@ -978,7 +978,7 @@ Use this if you can't install the APK (e.g. phone is too old, needs Raspberry Pi
    (adjust the path if you put it somewhere else)
 
 **Step 4: Get your outlet's polling URL**
-1. Open Rasova POS in Chrome on the phone
+1. Open Oi Ramen POS in Chrome on the phone
 2. Go to **Setup → Printing**
 3. Find the "Android Polling URL" — it looks like:
    ```
@@ -1028,15 +1028,15 @@ Use this if you can't install the APK (e.g. phone is too old, needs Raspberry Pi
 
 **Step 3: Place the agent file**
 1. Copy `rasova_agent.py` to a permanent location, e.g.:
-   `C:\Rasova\rasova_agent.py`
-   (Create the `Rasova` folder first if it doesn't exist)
+   `C:\Oi Ramen\rasova_agent.py`
+   (Create the `Oi Ramen` folder first if it doesn't exist)
 
 **Step 4: Install as a Windows auto-start service**
 1. Open **Command Prompt as Administrator**
    (right-click on cmd → Run as Administrator)
 2. Navigate to the folder:
    ```
-   cd C:\Rasova
+   cd C:\Oi Ramen
    ```
 3. Run:
    ```
@@ -1049,7 +1049,7 @@ Use this if you can't install the APK (e.g. phone is too old, needs Raspberry Pi
 2. After login, open **Task Manager** (Ctrl+Shift+Esc)
 3. Go to **Details** tab
 4. Look for `python.exe` — it should be there running silently
-5. Open Rasova POS → Setup → Kitchen Stations → click **Test Print**
+5. Open Oi Ramen POS → Setup → Kitchen Stations → click **Test Print**
 
 ---
 
@@ -1059,10 +1059,10 @@ Use this if you can't install the APK (e.g. phone is too old, needs Raspberry Pi
    - Option A: Print a self-test page (hold the printer's feed button while powering on)
      — the IP is printed on the test page
    - Option B: Log into your WiFi router → look at connected devices
-   - Option C (if agent is running on Windows): In Rasova → Setup → Kitchen Stations
+   - Option C (if agent is running on Windows): In Oi Ramen → Setup → Kitchen Stations
      → click **🔍 Discover** — it scans the network and fills the IP automatically
 
-2. In Rasova → **Setup → Kitchen Stations**
+2. In Oi Ramen → **Setup → Kitchen Stations**
 3. Find your station → enter the IP address in the "Printer IP" field
 4. Set paper width (80mm for most printers)
 5. Click **Save**

@@ -158,7 +158,7 @@ def send_subscription_invoice(invoice, payment_link_url: str = "") -> bool:
 
 def _build_subscription_message(invoice, payment_link_url: str) -> str:
     lines = [
-        "*Rasova Subscription Invoice*",
+        "*Oi Ramen Subscription Invoice*",
         "",
         f"*{invoice.tenant.name}*",
         f"Period: {invoice.period_start} to {invoice.period_end}",
@@ -166,7 +166,7 @@ def _build_subscription_message(invoice, payment_link_url: str) -> str:
     ]
     if payment_link_url:
         lines += ["", f"Pay online: {payment_link_url}"]
-    lines.append("\nRasova · rasova.net")
+    lines.append("\nOi Ramen · oiramen.com")
     return "\n".join(lines)
 
 
@@ -204,7 +204,7 @@ def _build_message(order, bill_url: str) -> str:
     if bill_url:
         lines += ["", f"View bill: {bill_url}"]
 
-    lines.append("\nPowered by Rasova POS")
+    lines.append("\nPowered by Oi Ramen POS")
     return "\n".join(l for l in lines if l is not None)
 
 

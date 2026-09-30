@@ -5,9 +5,9 @@
 {% block extra_css %}
 <style>
     .dashboard-card { background: var(--panel-bg); border: 1px solid var(--border-color); padding: 2rem; margin-bottom: 2rem; }
-    .section-title { font-family: 'DM Serif Display', serif; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 1.5rem; }
+    .section-title { font-family: 'Inter', sans-serif; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 1.5rem; }
     .stat-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 0.5rem; display: block; }
-    .stat-val { font-family: 'Space Mono', monospace; font-size: 1.4rem; color: var(--text-main); }
+    .stat-val { font-family: 'Inter', ui-monospace, monospace; font-size: 1.4rem; color: var(--text-main); }
     .table-luxury { width: 100%; }
     .table-luxury th { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); padding: 1rem; border-bottom: 1px solid var(--border-color); }
     .table-luxury td { padding: 1rem; border-bottom: 1px dashed var(--border-color); font-size: 0.9rem; }
@@ -26,7 +26,7 @@
             Cash Sessions & EOD
         </h1>
     </a>
-    <p class="brand-subtitle">{{ request.user.tenant.name }} — {{ request.user.outlet.name }}</p>
+    <p class="brand-subtitle">{{ request.user.tenant.name }} - {{ request.user.outlet.name }}</p>
 </div>
 {% endblock %}
 
@@ -80,7 +80,7 @@
                 <tr>
                     <td><strong>{{ s.opened_at|date:"M d, Y" }}</strong></td>
                     <td>{{ s.opened_at|date:"H:i" }} ({{ s.opened_by.username }})</td>
-                    <td>{{ s.closed_at|date:"H:i"|default:"—" }}</td>
+                    <td>{{ s.closed_at|date:"H:i"|default:"-" }}</td>
                     <td>₹{{ s.cash_sales }}</td>
                     <td>
                         <span class="{% if s.discrepancy < 0 %}discrepancy-neg{% else %}discrepancy-pos{% endif %}">

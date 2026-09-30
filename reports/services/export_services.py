@@ -41,7 +41,7 @@ def _place_of_supply(outlet):
         code = outlet.gst_no[:2]
         if code in GST_STATE_CODES:
             return GST_STATE_CODES[code]
-    return "Unknown — set outlet GSTIN"
+    return "Unknown - set outlet GSTIN"
 
 def generate_orders_csv(tenant, outlet, start_date, end_date):
     """Generates a detailed CSV of all orders in the given date range."""

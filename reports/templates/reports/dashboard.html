@@ -38,7 +38,7 @@
     color: var(--text-muted); margin-bottom: 1rem; display: block;
   }
   .metric-value {
-    font-family: 'DM Serif Display', serif; font-size: 2.75rem;
+    font-family: 'Inter', sans-serif; font-size: 2.75rem;
     font-weight: 400; color: var(--text-main); line-height: 1; margin: 0;
   }
 
@@ -59,7 +59,7 @@
   }
   .table-minimal td { border-bottom: 1px solid var(--border-color); padding: 1.2rem 0; font-size: 0.95rem; }
   .table-minimal tbody tr:last-child td { border-bottom: none; }
-  .text-value { font-family: 'DM Serif Display', serif; font-style: italic; color: var(--accent-gold); }
+  .text-value { font-family: 'Inter', sans-serif; font-style: italic; color: var(--accent-gold); }
 
   .context-info {
     font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px;
@@ -319,7 +319,7 @@
       <!-- Revenue -->
       <div style="border:1px solid var(--border-color);padding:1rem;text-align:center;">
         <div style="font-size:0.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:0.4rem;">Revenue</div>
-        <div style="font-family:'DM Serif Display',serif;font-size:1.5rem;">₹{{ c.revenue|floatformat:0 }}</div>
+        <div style="font-family:'Inter', sans-serif;font-size:1.5rem;">₹{{ c.revenue|floatformat:0 }}</div>
         <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:0.3rem;">vs ₹{{ p.revenue|floatformat:0 }}</div>
         {% if d.revenue is not None %}
           {% if d.revenue >= 0 %}
@@ -333,7 +333,7 @@
       <!-- Orders -->
       <div style="border:1px solid var(--border-color);padding:1rem;text-align:center;">
         <div style="font-size:0.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:0.4rem;">Orders</div>
-        <div style="font-family:'DM Serif Display',serif;font-size:1.5rem;">{{ c.orders }}</div>
+        <div style="font-family:'Inter', sans-serif;font-size:1.5rem;">{{ c.orders }}</div>
         <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:0.3rem;">vs {{ p.orders }}</div>
         {% if d.orders is not None %}
           {% if d.orders >= 0 %}
@@ -347,7 +347,7 @@
       <!-- Avg Order Value -->
       <div style="border:1px solid var(--border-color);padding:1rem;text-align:center;">
         <div style="font-size:0.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:0.4rem;">Avg Order</div>
-        <div style="font-family:'DM Serif Display',serif;font-size:1.5rem;">₹{{ c.avg_order|floatformat:0 }}</div>
+        <div style="font-family:'Inter', sans-serif;font-size:1.5rem;">₹{{ c.avg_order|floatformat:0 }}</div>
         <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:0.3rem;">vs ₹{{ p.avg_order|floatformat:0 }}</div>
         {% if d.avg_order is not None %}
           {% if d.avg_order >= 0 %}
@@ -361,7 +361,7 @@
       <!-- Discounts -->
       <div style="border:1px solid var(--border-color);padding:1rem;text-align:center;">
         <div style="font-size:0.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);margin-bottom:0.4rem;">Discounts Given</div>
-        <div style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:{% if c.discounts > p.discounts %}#ef4444{% else %}#10b981{% endif %};">
+        <div style="font-family:'Inter', sans-serif;font-size:1.5rem;color:{% if c.discounts > p.discounts %}#ef4444{% else %}#10b981{% endif %};">
           ₹{{ c.discounts|floatformat:0 }}
         </div>
         <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:0.3rem;">vs ₹{{ p.discounts|floatformat:0 }}</div>
@@ -389,7 +389,7 @@
         <div style="font-size:0.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);">
           {% if gst_inclusive %}Revenue (incl. GST){% else %}Gross Revenue{% endif %}
         </div>
-        <div style="font-family:'DM Serif Display',serif;font-size:1.3rem;">₹{{ pl.gross_revenue|floatformat:0 }}</div>
+        <div style="font-family:'Inter', sans-serif;font-size:1.3rem;">₹{{ pl.gross_revenue|floatformat:0 }}</div>
         {% if gst_inclusive %}<div style="font-size:0.65rem;color:var(--text-muted);">GST inside the price</div>{% endif %}
       </div>
 
@@ -397,7 +397,7 @@
         <div style="font-size:0.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);">
           {% if gst_inclusive %}GST (back-calculated){% else %}GST Collected{% endif %}
         </div>
-        <div style="font-family:'DM Serif Display',serif;font-size:1.3rem;color:var(--text-muted);">₹{{ pl.gst_collected|floatformat:0 }}</div>
+        <div style="font-family:'Inter', sans-serif;font-size:1.3rem;color:var(--text-muted);">₹{{ pl.gst_collected|floatformat:0 }}</div>
         <div style="font-size:0.65rem;color:var(--text-muted);">
           {% if gst_inclusive %}embedded in your prices{% else %}not your income{% endif %}
         </div>
@@ -407,29 +407,29 @@
         <div style="font-size:0.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);">
           {% if gst_inclusive %}Your Income (excl. GST){% else %}Net Revenue (excl. GST){% endif %}
         </div>
-        <div style="font-family:'DM Serif Display',serif;font-size:1.3rem;color:#3b82f6;">₹{{ pl.net_revenue|floatformat:0 }}</div>
+        <div style="font-family:'Inter', sans-serif;font-size:1.3rem;color:#3b82f6;">₹{{ pl.net_revenue|floatformat:0 }}</div>
         {% if gst_inclusive %}<div style="font-size:0.65rem;color:var(--text-muted);">= Revenue − back-calc GST</div>{% endif %}
       </div>
 
       <div style="padding:0.75rem;border-left:3px solid var(--border-color);">
         <div style="font-size:0.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);">Discounts Given</div>
-        <div style="font-family:'DM Serif Display',serif;font-size:1.3rem;color:#f97316;">₹{{ pl.discounts|floatformat:0 }}</div>
+        <div style="font-family:'Inter', sans-serif;font-size:1.3rem;color:#f97316;">₹{{ pl.discounts|floatformat:0 }}</div>
       </div>
 
       {% if pl.cogs > 0 %}
       <div style="padding:0.75rem;border-left:3px solid var(--border-color);">
         <div style="font-size:0.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);">Cost of Goods Sold</div>
-        <div style="font-family:'DM Serif Display',serif;font-size:1.3rem;color:#ef4444;">₹{{ pl.cogs|floatformat:0 }}</div>
+        <div style="font-family:'Inter', sans-serif;font-size:1.3rem;color:#ef4444;">₹{{ pl.cogs|floatformat:0 }}</div>
       </div>
 
       <div style="padding:0.75rem;border-left:3px solid #10b981;">
         <div style="font-size:0.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);">Gross Profit</div>
-        <div style="font-family:'DM Serif Display',serif;font-size:1.3rem;color:#10b981;">₹{{ pl.gross_profit|floatformat:0 }}</div>
+        <div style="font-family:'Inter', sans-serif;font-size:1.3rem;color:#10b981;">₹{{ pl.gross_profit|floatformat:0 }}</div>
       </div>
 
       <div style="padding:0.75rem;border-left:3px solid #10b981;background:rgba(16,185,129,0.05);">
         <div style="font-size:0.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);">Gross Margin</div>
-        <div style="font-family:'DM Serif Display',serif;font-size:1.6rem;color:#10b981;font-weight:700;">{{ pl.gross_margin_pct }}%</div>
+        <div style="font-family:'Inter', sans-serif;font-size:1.6rem;color:#10b981;font-weight:700;">{{ pl.gross_margin_pct }}%</div>
       </div>
       {% else %}
       <div style="padding:0.75rem;border-left:3px solid var(--border-color);grid-column:span 2;">
@@ -455,15 +455,15 @@
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:0.75rem;">
         <div style="padding:0.75rem;border-left:3px solid #f97316;">
           <div style="font-size:0.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);">Operating Expenses</div>
-          <div style="font-family:'DM Serif Display',serif;font-size:1.3rem;color:#f97316;">₹{{ net_pl.operating_expenses|floatformat:0 }}</div>
+          <div style="font-family:'Inter', sans-serif;font-size:1.3rem;color:#f97316;">₹{{ net_pl.operating_expenses|floatformat:0 }}</div>
         </div>
         <div style="padding:0.75rem;border-left:3px solid {% if net_pl.net_profit >= 0 %}#10b981{% else %}#ef4444{% endif %};background:{% if net_pl.net_profit >= 0 %}rgba(16,185,129,0.05){% else %}rgba(239,68,68,0.05){% endif %};">
           <div style="font-size:0.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);">Net Profit</div>
-          <div style="font-family:'DM Serif Display',serif;font-size:1.6rem;font-weight:700;color:{% if net_pl.net_profit >= 0 %}#10b981{% else %}#ef4444{% endif %};">₹{{ net_pl.net_profit|floatformat:0 }}</div>
+          <div style="font-family:'Inter', sans-serif;font-size:1.6rem;font-weight:700;color:{% if net_pl.net_profit >= 0 %}#10b981{% else %}#ef4444{% endif %};">₹{{ net_pl.net_profit|floatformat:0 }}</div>
         </div>
         <div style="padding:0.75rem;border-left:3px solid var(--border-color);">
           <div style="font-size:0.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);">Net Margin</div>
-          <div style="font-family:'DM Serif Display',serif;font-size:1.3rem;">{{ net_pl.net_margin_pct }}%</div>
+          <div style="font-family:'Inter', sans-serif;font-size:1.3rem;">{{ net_pl.net_margin_pct }}%</div>
         </div>
       </div>
       {% if net_pl.expense_breakdown %}
@@ -477,7 +477,7 @@
     </div>
     {% else %}
     <div style="font-size:0.7rem;color:var(--text-muted);margin-top:0.75rem;">
-      * This is gross margin only, not net profit — operating expenses aren't factored in here. Ask your admin to enable the Net Profit report to track rent, salaries, and other costs against gross margin.
+      * This is gross margin only, not net profit - operating expenses aren't factored in here. Ask your admin to enable the Net Profit report to track rent, salaries, and other costs against gross margin.
     </div>
     {% endif %}
   </div>
@@ -564,7 +564,7 @@
   {% else %}
   <div class="card-elegant text-center py-5 mb-5">
     <i class="bi bi-shield-lock-fill mb-3" style="font-size:2.5rem;color:var(--accent-gold);"></i>
-    <h5 style="font-family:'DM Serif Display',serif;">Channel Privacy Protection</h5>
+    <h5 style="font-family:'Inter', sans-serif;">Channel Privacy Protection</h5>
     <p class="text-muted small mx-auto" style="max-width:500px;">Specific operational data (itemized sales, table turnover, and staff ranking) is suppressed for non-owner roles to protect restaurant privacy.</p>
   </div>
   {% endif %}
@@ -573,7 +573,7 @@
   <div class="offcanvas offcanvas-end" tabindex="-1" id="opsMenu"
     style="background:var(--panel-bg);color:var(--text-main);border-left:1px solid var(--border-color);">
     <div class="offcanvas-header" style="border-bottom:1px solid var(--border-color);">
-      <h5 style="font-family:'DM Serif Display',serif;font-size:1.4rem;margin:0;">
+      <h5 style="font-family:'Inter', sans-serif;font-size:1.4rem;margin:0;">
         <i class="bi bi-grid me-2" style="color:var(--accent-gold);"></i> Operations
       </h5>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" style="filter:invert(var(--invert-val,0));"></button>
@@ -621,7 +621,7 @@
   let chartGridColor = dark ? '#262626' : '#eaeaea';
 
   Chart.defaults.color = chartTextColor;
-  Chart.defaults.font.family = "'Outfit', sans-serif";
+  Chart.defaults.font.family = "'Inter', sans-serif";
   Chart.defaults.font.size = 11;
 
   const paymentsRaw = JSON.parse(document.getElementById('payments-data').textContent);
@@ -629,8 +629,8 @@
 
   if (document.getElementById('paymentChart')) {
     const paymentColors = dark
-      ? ['#ffffff', '#d4af37', '#555555', '#333333']
-      : ['#111111', '#c5a059', '#aaaaaa', '#e0e0e0'];
+      ? ['#ffffff', '#D8942F', '#555555', '#333333']
+      : ['#111111', '#D8942F', '#aaaaaa', '#e0e0e0'];
 
     new Chart(document.getElementById('paymentChart'), {
       type: 'doughnut',
@@ -650,7 +650,7 @@
         plugins: {
           legend: {
             position: 'bottom',
-            labels: { padding: 20, usePointStyle: true, boxWidth: 8, font: { family: "'Outfit', sans-serif", size: 10, weight: '500' } }
+            labels: { padding: 20, usePointStyle: true, boxWidth: 8, font: { family: "'Inter', sans-serif", size: 10, weight: '500' } }
           }
         },
         cutout: '80%'
@@ -662,13 +662,13 @@
     const ctx = document.getElementById('salesChart').getContext('2d');
     let grad = ctx.createLinearGradient(0, 0, 0, 350);
     if (dark) {
-      grad.addColorStop(0, 'rgba(212,175,55,0.4)');
-      grad.addColorStop(1, 'rgba(212,175,55,0)');
+      grad.addColorStop(0, 'rgba(216, 148, 47,0.4)');
+      grad.addColorStop(1, 'rgba(216, 148, 47,0)');
     } else {
       grad.addColorStop(0, 'rgba(17,17,17,0.15)');
       grad.addColorStop(1, 'rgba(17,17,17,0)');
     }
-    const lineColor = dark ? '#d4af37' : '#111111';
+    const lineColor = dark ? '#D8942F' : '#111111';
 
     new Chart(document.getElementById('salesChart'), {
       type: 'line',
@@ -698,8 +698,8 @@
             backgroundColor: dark ? '#ffffff' : '#111111',
             titleColor: dark ? '#111111' : '#ffffff',
             bodyColor:  dark ? '#111111' : '#ffffff',
-            titleFont: { family: "'DM Serif Display', serif", size: 14 },
-            bodyFont:  { family: "'Outfit', sans-serif", size: 13 },
+            titleFont: { family: "'Inter', sans-serif", size: 14 },
+            bodyFont:  { family: "'Inter', sans-serif", size: 13 },
             padding: 12,
             displayColors: false,
             cornerRadius: 0,

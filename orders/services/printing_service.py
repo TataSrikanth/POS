@@ -16,11 +16,28 @@ with printer_encoding="utf-8" and actually supports UTF-8, you can swap
 the currency symbol, but CP437 is the safe default.
 """
 
+import functools
 import logging
 
+from django.conf import settings
 from django.utils import timezone
 
 logger = logging.getLogger("pos.orders")
+
+
+@functools.lru_cache(maxsize=4)
+def _receipt_logo(width_dots):
+    """The black-and-white Oi Ramen logo as a 1-bit image `width_dots` wide,
+    or None if the file or PIL is missing. Cached: it is the same every print."""
+    try:
+        from PIL import Image
+        src = Image.open(settings.BASE_DIR / "static" / "brand" / "logo-mono.png").convert("L")
+        h = round(src.height * width_dots / src.width)
+        return src.resize((width_dots, h), Image.LANCZOS).point(lambda v: 0 if v < 140 else 255).convert("1")
+    except Exception as e:   # a missing logo must never stop a bill printing
+        logger.warning("Receipt logo unavailable: %s", e)
+        return None
+
 
 
 class ConsolePrinter:
@@ -212,6 +229,26 @@ class PrintingService:
         p.set(align="right", bold=False)
         p.text(f"{timezone.localtime(order.created_at).strftime('%d/%m %H:%M')}\n")
 
+    def _print_logo(self, p):
+        """Print the Oi Ramen logo at the top of a customer slip.
+
+        Only printers that can do raster images (python-escpos Network/Usb/Dummy)
+        have an `image` method; the console/recording printers do not, so this is
+        a no-op there. Any failure is logged and swallowed so the bill still
+        prints. Switch off with PRINT_RECEIPT_LOGO=0."""
+        image = getattr(p, "image", None)
+        if image is None or not getattr(settings, "PRINT_RECEIPT_LOGO", True):
+            return
+        img = _receipt_logo(160 if self.W <= 32 else 200)
+        if img is None:
+            return
+        try:
+            p.set(align="center")
+            image(img, impl="bitImageRaster")
+            p.text("\n")
+        except Exception as e:
+            logger.warning("Receipt logo print failed: %s", e)
+
     # ------------------------------------------------------------------
     # BILL BODY  (shared by print_bill and print_bill_with_kots)
     # ------------------------------------------------------------------
@@ -223,6 +260,7 @@ class PrintingService:
         bill_margin = profile.bill_inner_margin if profile else 4
 
         # ── HEADER — centered, Font A ───────────────────────────────────
+        self._print_logo(p)
         p.set(align="center", bold=True,  font='a')
         p.text(f"{str(order.tenant.name)[:W]}\n")
 
@@ -310,7 +348,7 @@ class PrintingService:
         # ── FOOTER — Font B, centered ────────────────────────────────────
         p.set(align="center", bold=False, font='b')
         p.text("Thank you for visiting!\n")
-        p.text("Powered by Rasova POS\n")
+        p.text("Powered by Oi Ramen POS\n")
 
     # ------------------------------------------------------------------
     # SPLIT BILL BY CATEGORY  (Counter Billing Mode)
@@ -366,6 +404,7 @@ class PrintingService:
         W = self.W
         is_comp = order.is_bill_of_supply   # as the bill was totalled, not today's setting
 
+        self._print_logo(p)
         p.set(align="center", bold=True, double_width=True, double_height=True)
         p.text(f"{str(order.tenant.name)[:W//2]}\n")
         p.set(bold=False, double_width=False, double_height=False)
@@ -430,7 +469,7 @@ class PrintingService:
 
         p.text(self._sep() + "\n")
         p.set(align="center")
-        p.text("Powered by Rasova\n")
+        p.text("Powered by Oi Ramen\n")
         p.text("\n")
 
     def _print_category_slip(self, p, order, group):
@@ -465,7 +504,7 @@ class PrintingService:
                              self._currency(group["total"])) + "\n")
         p.set(bold=False)
         p.set(align="center")
-        p.text("Powered by Rasova\n")
+        p.text("Powered by Oi Ramen\n")
         p.text("\n")
 
     # ------------------------------------------------------------------
@@ -509,6 +548,7 @@ class PrintingService:
         W = self.W
 
         # Restaurant name + compliance header
+        self._print_logo(p)
         p.set(align="center", bold=True, double_width=False, double_height=False)
         p.text(f"{str(order.tenant.name)[:W]}\n")
         p.set(bold=False)
@@ -633,7 +673,7 @@ class PrintingService:
         try:
             W = self.W
             p.set(align="center", bold=True, double_width=True, double_height=True)
-            p.text("RASOVA POS\n")
+            p.text("OI RAMEN POS\n")
             p.set(bold=False, double_width=False, double_height=False)
             p.text("-- TEST PRINT --\n")
             p.text("-" * W + "\n")

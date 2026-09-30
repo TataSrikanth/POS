@@ -42,7 +42,7 @@
   }
   .audit-row { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px dashed var(--border-color); font-size: 0.85rem; }
   .audit-row:last-child { border-bottom: none; }
-  .audit-row .count { font-family: 'Space Mono', monospace; color: var(--accent-gold); }
+  .audit-row .count { font-family: 'Inter', ui-monospace, monospace; color: var(--accent-gold); }
   .audit-empty { color: var(--text-muted); font-size: 0.8rem; padding: 0.5rem 0; }
   .coverage-note { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.75rem; }
 </style>
@@ -90,7 +90,7 @@
 
 <div class="page-wrap">
   <h1 class="section-title">Discount / Void Audit</h1>
-  <p class="section-sub">Who's discounting, comping, and voiding — {{ start_date }} to {{ end_date }}</p>
+  <p class="section-sub">Who's discounting, comping, and voiding - {{ start_date }} to {{ end_date }}</p>
 
   <div class="audit-grid">
     <div class="audit-card">

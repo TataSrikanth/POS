@@ -12,7 +12,7 @@
   .scan-input {
     width: 100%; background: transparent; border: none;
     border-bottom: 2px solid var(--accent-gold);
-    color: var(--text-main); font-size: 1.1rem; font-family: 'Space Mono', monospace;
+    color: var(--text-main); font-size: 1.1rem; font-family: 'Inter', ui-monospace, monospace;
     padding: 0.5rem 0; outline: none; text-align: center; letter-spacing: 2px;
   }
   .scan-result {
@@ -28,7 +28,7 @@
     padding: 1.25rem; margin-bottom: 0.75rem;
     border-left: 3px solid var(--accent-gold);
   }
-  .tc-batch { font-family: 'Space Mono', monospace; font-size: 0.78rem; color: var(--accent-gold); }
+  .tc-batch { font-family: 'Inter', ui-monospace, monospace; font-size: 0.78rem; color: var(--accent-gold); }
   .tc-from  { font-size: 0.72rem; color: var(--text-muted); }
   .tc-items { font-size: 0.85rem; margin: 0.5rem 0; }
 
@@ -40,7 +40,7 @@
   .s-transit { background: rgba(59,130,246,.12); color: #3b82f6; }
 
   .btn-recv { font-size: 0.72rem; padding: 0.45rem 1rem; border: 1px solid var(--accent-gold); background: var(--accent-gold); color: #fff; cursor: pointer; font-family: inherit; }
-  .btn-recv:hover { background: #b59250; }
+  .btn-recv:hover { background: #C28226; }
 </style>
 {% endblock %}
 
@@ -138,7 +138,7 @@ async function lookupBarcode() {
     box.style.display = "block";
     box.innerHTML = `
       <div style="font-size:0.72rem;color:#10b981;margin-bottom:0.5rem;">Barcode found</div>
-      <strong>${d.item_name}</strong> — ${d.quantity} ${d.unit}<br>
+      <strong>${d.item_name}</strong> - ${d.quantity} ${d.unit}<br>
       <span style="font-size:0.75rem;color:var(--text-muted);">Batch: ${d.batch_number} · From: ${d.from_outlet}</span>
       <div style="margin-top:0.75rem;">
         <button class="btn-recv" onclick="confirmReceive(${d.transfer_id}, '${d.batch_number}')">

@@ -1,71 +1,74 @@
 /* ============================================================
-   LUXURY THEME — Fine Dining / Premium
-   Black, white, and gold. Sharp edges. Serif headings.
-   Google Fonts: Outfit (body) · DM Serif Display (headings) · Space Mono (code)
+   OI RAMEN THEME - golden mustard, warm near-black, white.
+   Rounded corners, Inter throughout.
+   Google Font: Inter (body, headings, numbers)
+   (File keeps the name "luxury" because tenant.theme defaults to it.)
    ============================================================ */
 
 /* ── Design Tokens ───────────────────────────────────────── */
 :root {
     color-scheme: light;
 
-    --accent-gold:       #c5a059;
-    --accent-hover:      #b59250;
-    --bg-color:          #fafafa;
+    --accent-gold:       #D8942F;   /* brand golden mustard */
+    --accent-hover:      #C28226;
+    --accent-ink:        #181715;   /* text on top of the accent (white fails contrast on gold) */
+    --bg-color:          #faf7f2;
     --panel-bg:          #ffffff;
-    --text-main:         #111111;
-    --text-muted:        #737373;
-    --border-color:      #eaeaea;
-    --border-radius:     0px;
-    --shadow-soft:       0 2px 8px rgba(0,0,0,0.04);
-    --shadow-hover:      0 8px 24px rgba(0,0,0,0.10);
+    --text-main:         #181715;
+    --text-muted:        #6e685f;
+    --border-color:      #ebe5da;
+    --border-radius:     10px;
+    --shadow-soft:       0 2px 8px rgba(24,23,21,0.05);
+    --shadow-hover:      0 8px 24px rgba(24,23,21,0.12);
     --transition-smooth: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     --min-tap-target:    48px;
     --danger:            #ef4444;
     --success:           #10b981;
 
     /* ── Font families ── */
-    --font-display:  'DM Serif Display', Georgia, serif;
-    --font-mono:     'Space Mono', 'Courier New', monospace;
+    --font-main:     'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-display:  'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-mono:     'Inter', ui-monospace, 'Cascadia Mono', Consolas, monospace;
 
     /* ── Type scale (base 16px) ──
        Use these variables instead of hardcoding px/rem in templates.
        All values readable on a tablet at arm's length. */
-    --text-2xs: 0.7rem;    /* 11.2px — use only for legal/tiny labels  */
-    --text-xs:  0.78rem;   /* 12.5px — table headers, chips            */
-    --text-sm:  0.875rem;  /* 14px   — secondary body, hints           */
-    --text-base:1rem;      /* 16px   — main body text                  */
-    --text-lg:  1.125rem;  /* 18px   — slightly prominent body         */
-    --text-xl:  1.25rem;   /* 20px   — small headings                  */
-    --text-2xl: 1.5rem;    /* 24px   — section headings                */
-    --text-3xl: 1.875rem;  /* 30px   — page headings                   */
-    --text-4xl: 2.25rem;   /* 36px   — hero numbers (metrics, totals)  */
+    --text-2xs: 0.7rem;    /* 11.2px - use only for legal/tiny labels  */
+    --text-xs:  0.78rem;   /* 12.5px - table headers, chips            */
+    --text-sm:  0.875rem;  /* 14px   - secondary body, hints           */
+    --text-base:1rem;      /* 16px   - main body text                  */
+    --text-lg:  1.125rem;  /* 18px   - slightly prominent body         */
+    --text-xl:  1.25rem;   /* 20px   - small headings                  */
+    --text-2xl: 1.5rem;    /* 24px   - section headings                */
+    --text-3xl: 1.875rem;  /* 30px   - page headings                   */
+    --text-4xl: 2.25rem;   /* 36px   - hero numbers (metrics, totals)  */
 }
 
 /* ── Dark mode ───────────────────────────────────────────── */
 html.dark {
     color-scheme: dark;
 
-    --bg-color:    #000000;
-    --panel-bg:    #0a0a0a;
-    --text-main:   #ffffff;
-    --text-muted:  #888888;
-    --border-color:#262626;
-    --accent-gold: #d4af37;
-    --accent-hover:#e5c45e;
+    --bg-color:    #110f0d;
+    --panel-bg:    #181715;
+    --text-main:   #f6f2ea;
+    --text-muted:  #a39c90;
+    --border-color:#2e2b27;
+    --accent-gold: #D8942F;
+    --accent-hover:#E6A445;
     --shadow-soft: 0 4px 15px rgba(0,0,0,0.3);
     --shadow-hover:0 10px 30px rgba(0,0,0,0.5);
 }
 
 /* ── Base Typography ─────────────────────────────────────── */
 html {
-    font-size: 16px;                 /* explicit root — prevents browser scaling */
+    font-size: 16px;                 /* explicit root - prevents browser scaling */
     -webkit-text-size-adjust: 100%;  /* no iPhone auto-inflate on rotation       */
 }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-main);
-    font-family: var(--font-main, 'Outfit', sans-serif);
+    font-family: var(--font-main);
     font-size: var(--text-base);     /* 16px */
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -73,7 +76,7 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
-/* ── Heading Scale — DM Serif Display ───────────────────── */
+/* ── Heading Scale - Inter ──────────────────────────────── */
 h1, h2, h3, h4, h5, h6,
 .serif-text,
 .brand-title,
@@ -81,7 +84,8 @@ h1, h2, h3, h4, h5, h6,
 .metric-value,
 .section-title {
     font-family: var(--font-display);
-    font-weight: 400;                /* Serif Display looks best at regular weight */
+    font-weight: 700;
+    letter-spacing: -0.01em;
     line-height: 1.2;
 }
 
@@ -92,11 +96,12 @@ h4, .h4 { font-size: var(--text-lg);   } /* 18px */
 h5, .h5 { font-size: var(--text-base); } /* 16px */
 h6, .h6 { font-size: var(--text-sm);   } /* 14px */
 
-/* Monospace — for order numbers, barcodes, IDs */
+/* Monospace - for order numbers, barcodes, IDs */
 .mono-text,
 code,
 pre,
-.font-mono { font-family: var(--font-mono); }
+.font-mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.metric-value, .table td { font-variant-numeric: tabular-nums; }
 
 /* ── Header / Nav ────────────────────────────────────────── */
 .pos-header {
@@ -114,8 +119,8 @@ pre,
 
 .brand-title {
     font-family: var(--font-display);
-    font-size: 1.4rem;               /* was not defined — now clear */
-    font-weight: 400;
+    font-size: 1.4rem;
+    font-weight: 700;
     color: var(--text-main);
     text-decoration: none;
     display: flex;
@@ -126,12 +131,12 @@ pre,
 .brand-title:hover { color: var(--accent-gold); }
 
 .brand-subtitle {
-    font-size: var(--text-xs);       /* 12.5px — was 0.72rem = 11.5px */
+    font-size: var(--text-xs);       /* 12.5px - was 0.72rem = 11.5px */
     text-transform: uppercase;
     letter-spacing: 2px;
     color: var(--text-muted);
     margin: 3px 0 0 0;
-    font-family: var(--font-main, 'Outfit', sans-serif);
+    font-family: var(--font-main);
 }
 
 /* ── Button System ───────────────────────────────────────── */
@@ -140,11 +145,11 @@ pre,
     background: transparent;
     color: var(--text-main);
     padding: 0.6rem 1.1rem;
-    font-size: var(--text-xs);       /* 12.5px — was 0.75rem = 12px */
+    font-size: var(--text-xs);       /* 12.5px - was 0.75rem = 12px */
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.06em;
     font-weight: 600;
-    border-radius: 0;
+    border-radius: var(--border-radius);
     transition: var(--transition-smooth);
     display: inline-flex;
     align-items: center;
@@ -152,7 +157,7 @@ pre,
     text-decoration: none;
     cursor: pointer;
     min-height: var(--min-tap-target);
-    font-family: var(--font-main, 'Outfit', sans-serif);
+    font-family: var(--font-main);
 }
 .btn-luxury:hover {
     border-color: var(--text-main);
@@ -163,7 +168,7 @@ pre,
 .btn-accent {
     background: var(--accent-gold);
     border-color: var(--accent-gold);
-    color: #fff !important;
+    color: var(--accent-ink) !important;
 }
 .btn-luxury.btn-luxury-primary:hover,
 .btn-accent:hover { opacity: 0.9; }
@@ -186,7 +191,7 @@ pre,
 
 /* ── Cards ───────────────────────────────────────────────── */
 .card {
-    border-radius: 0;
+    border-radius: var(--border-radius);
     border-color: var(--border-color);
     background: var(--panel-bg);
 }
@@ -197,10 +202,10 @@ pre,
     background: var(--panel-bg);
     border-color: var(--border-color);
     color: var(--text-main);
-    border-radius: 0;
+    border-radius: var(--border-radius);
     min-height: var(--min-tap-target);
-    font-size: var(--text-base);     /* 16px — was often unset, defaulting tiny */
-    font-family: var(--font-main, 'Outfit', sans-serif);
+    font-size: var(--text-base);     /* 16px - was often unset, defaulting tiny */
+    font-family: var(--font-main);
 }
 .form-control:focus, .form-select:focus {
     border-color: var(--accent-gold);
@@ -237,7 +242,7 @@ option {
     font-size: var(--text-base);
     padding: 0.5rem 0;
     width: 100%;
-    font-family: var(--font-main, 'Outfit', sans-serif);
+    font-family: var(--font-main);
 }
 .form-input-luxury:focus {
     outline: none;
@@ -249,7 +254,7 @@ option {
 .table th {
     border-color: var(--border-color);
     color: var(--text-muted);
-    font-size: var(--text-xs);       /* 12.5px — was 0.7rem = 11.2px */
+    font-size: var(--text-xs);       /* 12.5px - was 0.7rem = 11.2px */
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: 600;
@@ -258,16 +263,16 @@ option {
 
 /* ── Badges ──────────────────────────────────────────────── */
 .badge {
-    border-radius: 0;
+    border-radius: 6px;
     letter-spacing: 0.5px;
-    font-size: var(--text-xs);       /* 12.5px — was 0.65rem = 10.4px */
+    font-size: var(--text-xs);       /* 12.5px - was 0.65rem = 10.4px */
     text-transform: uppercase;
-    font-family: var(--font-main, 'Outfit', sans-serif);
+    font-family: var(--font-main);
 }
 
 /* ── Modals ──────────────────────────────────────────────── */
 .modal-content {
-    border-radius: 0;
+    border-radius: calc(var(--border-radius) + 4px);
     border: 1px solid var(--border-color);
     background: var(--panel-bg);
     color: var(--text-main);
@@ -290,7 +295,7 @@ option {
 .dropdown-menu {
     background: var(--panel-bg);
     border-color: var(--border-color);
-    border-radius: 0;
+    border-radius: var(--border-radius);
     font-size: var(--text-sm);
 }
 .dropdown-item {
@@ -305,7 +310,7 @@ option {
 /* ── Scrollbars (thin, luxury) ───────────────────────────── */
 ::-webkit-scrollbar { width: 4px; height: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 0; }
+::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent-gold); }
 
 /* ── Utility helpers ─────────────────────────────────────── */
@@ -331,7 +336,7 @@ option {
 ::placeholder { color: var(--text-muted) !important; opacity: 0.7 !important; }
 
 /* ── Alerts / toasts ─────────────────────────────────────── */
-.alert { border-radius: 0; font-size: var(--text-sm); }
+.alert { border-radius: var(--border-radius); font-size: var(--text-sm); }
 
 /* ── Navigation active states ────────────────────────────── */
 .nav-link { color: var(--text-muted); font-size: var(--text-sm); }
@@ -349,3 +354,16 @@ option {
   scrollbar-width: none;
 }
 .report-subnav-left::-webkit-scrollbar { display: none; }
+
+/* ── Brand mark ──────────────────────────────────────────────
+   Every screen's header uses <i class="bi bi-diamond-half"> as its logo
+   placeholder. Swap the glyph for the Oi Ramen badge here, once, instead of
+   editing ~30 templates. Sized in em so it follows each header's font-size. */
+.bi.bi-diamond-half::before {
+    content: "";
+    display: inline-block;
+    width: 1.9em;
+    height: 1.9em;
+    vertical-align: middle;
+    background: url("../../brand/logo.png") center / contain no-repeat;
+}

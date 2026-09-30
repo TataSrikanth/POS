@@ -720,7 +720,7 @@ def cancel_purchase_order(request, po_id):
         return JsonResponse({"error": "Purchase order not found"}, status=404)
 
     if po.status in ("received", "partially_received"):
-        return JsonResponse({"error": f"Cannot cancel a '{po.status}' PO — stock has already been received against it"}, status=400)
+        return JsonResponse({"error": f"Cannot cancel a '{po.status}' PO - stock has already been received against it"}, status=400)
 
     if po.status == "cancelled":
         return JsonResponse({"error": "PO is already cancelled"}, status=400)

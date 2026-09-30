@@ -14,7 +14,7 @@ import weasyprint
 from django.template.loader import render_to_string
 
 
-def render_invoice_pdf(invoice, payment_link_url="", base_url="https://rasova.net/"):
+def render_invoice_pdf(invoice, payment_link_url="", base_url="https://oiramen.com/"):
     html_string = render_to_string(
         "billing/invoice.html",
         {"invoice": invoice, "payment_link_url": payment_link_url},

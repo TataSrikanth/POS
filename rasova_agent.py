@@ -749,7 +749,7 @@ async def main():
 
     async with websockets.serve(
         handle_client, HOST, PORT,
-        origins={"https://rasova.net", "https://*.rasova.net"},
+        origins={"https://oiramen.com", "https://*.oiramen.com"},
         ping_interval=30,
         ping_timeout=10,
     ):
@@ -863,7 +863,7 @@ def install_autostart_termux_poll(poll_url: str):
 
     script = (
         "#!/data/data/com.termux/files/usr/bin/sh\n"
-        "# Rasova Agent — auto-generated boot script\n"
+        "# Rasova Agent - auto-generated boot script\n"
         "# termux-wake-lock prevents Android from pausing the CPU\n"
         "termux-wake-lock\n"
         f"POLL_URL='{poll_url}'\n"

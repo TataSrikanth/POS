@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Feedback — {{ tenant.name }}</title>
+<title>Feedback - {{ tenant.name }}</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   body {
@@ -22,7 +22,7 @@
     padding: 2rem 1.6rem;
     text-align: center;
   }
-  .logo { font-family: 'Georgia', serif; font-size: 1.6rem; color: #c5a059; margin-bottom: .3rem; }
+  .logo { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.6rem; color: #D8942F; margin-bottom: .3rem; }
   .sub { font-size: .78rem; color: #8a8278; margin-bottom: 1.6rem; }
 
   .stars { display: flex; justify-content: center; gap: .4rem; margin-bottom: 1.4rem; direction: rtl; }
@@ -33,7 +33,7 @@
   }
   .stars input:checked ~ label,
   .stars label:hover,
-  .stars label:hover ~ label { color: #c5a059; }
+  .stars label:hover ~ label { color: #D8942F; }
 
   .field { text-align: left; margin-bottom: 1.1rem; }
   .field label { display: block; font-size: .62rem; text-transform: uppercase; letter-spacing: 1.5px; color: #6a655e; margin-bottom: .4rem; }
@@ -41,19 +41,19 @@
     width: 100%; background: transparent; border: 1px solid #232323; color: #e8e2d8;
     padding: .6rem .7rem; font-size: .88rem; font-family: inherit; outline: none;
   }
-  .field input:focus, .field textarea:focus { border-color: #c5a059; }
+  .field input:focus, .field textarea:focus { border-color: #D8942F; }
   .field textarea { resize: vertical; min-height: 70px; }
 
   .error { color: #ef4444; font-size: .78rem; margin-bottom: 1rem; }
 
   .submit-btn {
-    width: 100%; padding: .85rem; background: #c5a059; border: none; color: #0a0a0a;
+    width: 100%; padding: .85rem; background: #D8942F; border: none; color: #0a0a0a;
     font-size: .78rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700;
     cursor: pointer; margin-top: .4rem;
   }
   .submit-btn:hover { background: #d4b06c; }
 
-  .thanks-icon { font-size: 2.4rem; color: #c5a059; margin-bottom: .8rem; }
+  .thanks-icon { font-size: 2.4rem; color: #D8942F; margin-bottom: .8rem; }
   .thanks-msg { font-size: .95rem; color: #d8d2c8; margin-bottom: .3rem; }
   .thanks-sub { font-size: .78rem; color: #6a655e; }
 
@@ -69,7 +69,7 @@
 
   {% elif already_submitted %}
     <div class="thanks-icon">&#9733;</div>
-    <p class="thanks-msg">You already rated this visit {{ feedback.rating }}/5 — thank you!</p>
+    <p class="thanks-msg">You already rated this visit {{ feedback.rating }}/5 - thank you!</p>
 
   {% elif just_submitted %}
     <div class="thanks-icon">&#10003;</div>
@@ -105,7 +105,7 @@
     </form>
   {% endif %}
 
-  <div class="footer">Powered by Rasova POS</div>
+  <div class="footer">Powered by Oi Ramen POS</div>
 </div>
 </body>
 </html>

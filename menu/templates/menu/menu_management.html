@@ -20,9 +20,9 @@
   .brand-title i { color: var(--accent-gold); font-size: 1.2rem; }
 
   .btn-gold { background: var(--accent-gold); border-color: var(--accent-gold); color: #fff; }
-  .btn-gold:hover { background: #b59250; border-color: #b59250; color: #fff; }
+  .btn-gold:hover { background: #C28226; border-color: #C28226; color: #fff; }
   .btn-gold-solid { background: var(--accent-gold); border-color: var(--accent-gold); color: #000; font-weight: 700; }
-  .btn-gold-solid:hover { background: #b59250; border-color: #b59250; color: #000; }
+  .btn-gold-solid:hover { background: #C28226; border-color: #C28226; color: #000; }
 
   .category-card {
     background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 0;
@@ -37,21 +37,41 @@
   .menu-item-row:last-child { border-bottom: none; }
   .item-identity { display: flex; flex-direction: column; }
   .item-name { font-size: 0.95rem; font-weight: 500; color: var(--text-main); margin-bottom: 2px; }
-  .item-price { font-family: 'DM Serif Display', serif; font-weight: 700; color: var(--accent-gold); font-size: 1.1rem; font-style: italic; }
+  .item-price { font-family: 'Inter', sans-serif; font-weight: 700; color: var(--accent-gold); font-size: 1.1rem; }
 
   .luxury-badge { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; padding: 2px 8px; border-radius: 0; margin-left: 8px; }
   .badge-station  { background: rgba(31,41,55,0.1); color: var(--text-main); border: 1px solid var(--border-color); }
   .badge-disabled { background: rgba(239,68,68,0.1); color: #ef4444; border: 1px solid #ef4444; }
-  .badge-platform { background: rgba(197,160,89,0.1); color: var(--accent-gold); border: 1px solid var(--accent-gold); font-size: 0.55rem; cursor: pointer; }
+  .badge-platform { background: rgba(216, 148, 47,0.1); color: var(--accent-gold); border: 1px solid var(--accent-gold); font-size: 0.55rem; cursor: pointer; }
   .badge-platform.off { background: transparent; color: var(--text-muted); border-color: var(--border-color); }
 
   .recipe-block { padding-left: 1rem; margin-top: 8px; border-left: 1px solid var(--accent-gold); font-size: 0.8rem; color: var(--text-muted); }
-  .recipe-item { margin-bottom: 4px; font-family: 'Space Mono', monospace; }
+  .recipe-item { margin-bottom: 4px; font-family: 'Inter', ui-monospace, monospace; }
+
+  /* Icon buttons on each item/category. These two classes were used in the
+     markup but never defined anywhere, so the browser drew default grey boxes. */
+  .btn-group-luxury { display: flex; gap: 6px; flex-shrink: 0; margin-left: auto; }
+  .menu-item-row > .d-flex { flex-wrap: wrap; row-gap: 10px; column-gap: 12px; }
+  .menu-item-row .item-identity { flex: 1 1 240px; min-width: 0; }
+  .btn-action-icon {
+    width: 36px; height: 36px; padding: 0;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: transparent; color: var(--text-muted);
+    border: 1px solid var(--border-color); border-radius: 8px;
+    font-size: 1rem; line-height: 1; cursor: pointer; transition: var(--transition-smooth);
+  }
+  .btn-action-icon:hover { color: var(--accent-ink, #181715); background: var(--accent-gold); border-color: var(--accent-gold); }
+  .btn-action-icon.btn-delete:hover { color: #fff; background: #ef4444; border-color: #ef4444; }
+  .category-card { border-radius: var(--border-radius, 10px); }
+  @media (max-width: 575px) {
+    .category-card { padding: 1.5rem 1.1rem; }
+    .menu-item-row .btn-group-luxury { margin-left: 0; width: 100%; }
+  }
 
   .modal-content { background: var(--panel-bg); border-radius: 0; border: 1px solid var(--border-color); box-shadow: var(--shadow-hover); }
   .modal-header { border-bottom: 1px solid var(--border-color); padding: 1.5rem; }
   .modal-footer { border-top: 1px solid var(--border-color); padding: 1.2rem; }
-  .modal-title { font-family: 'DM Serif Display', serif; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+  .modal-title { font-family: 'Inter', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
 
   .form-select-luxury, .form-input-luxury {
     background-color: transparent !important; border: none;
@@ -94,8 +114,8 @@
   }
   .mobile-nav-drawer.open .mobile-nav-panel { transform: translateX(0); }
   .mobile-nav-drawer.open { display: block; }
-  .mobile-nav-panel .drawer-title { font-family: 'DM Serif Display',serif; font-size: 1.15rem; color: var(--text-main); margin-bottom: 0.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-color); }
-  .mobile-nav-panel a, .mobile-nav-panel button.drawer-btn { display: flex; align-items: center; gap: 0.75rem; padding: 0.85rem 0; border-bottom: 1px solid var(--border-color); color: var(--text-main); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.5px; background: transparent; border-top: none; border-left: none; border-right: none; width: 100%; text-align: left; cursor: pointer; font-family: 'Outfit',sans-serif; }
+  .mobile-nav-panel .drawer-title { font-family: 'Inter', sans-serif; font-size: 1.15rem; color: var(--text-main); margin-bottom: 0.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-color); }
+  .mobile-nav-panel a, .mobile-nav-panel button.drawer-btn { display: flex; align-items: center; gap: 0.75rem; padding: 0.85rem 0; border-bottom: 1px solid var(--border-color); color: var(--text-main); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.5px; background: transparent; border-top: none; border-left: none; border-right: none; width: 100%; text-align: left; cursor: pointer; font-family: 'Inter',sans-serif; }
   .mobile-nav-panel a:last-child, .mobile-nav-panel button.drawer-btn:last-child { border-bottom: none; }
   .mobile-nav-panel a i, .mobile-nav-panel button.drawer-btn i { color: var(--accent-gold); font-size: 1rem; width: 20px; }
   .mobile-nav-panel a:hover, .mobile-nav-panel button.drawer-btn:hover { color: var(--accent-gold); }
@@ -113,9 +133,9 @@
 {% block header_left %}
 <div class="d-flex flex-column">
   <a href="/dashboard/" style="text-decoration:none;color:inherit;">
-    <h4 class="brand-title mb-0" style="font-family:'DM Serif Display',serif;"><i class="bi bi-diamond-half me-2"></i>{{ request.user.tenant.name }}</h4>
+    <h4 class="brand-title mb-0" style="font-family:'Inter', sans-serif;"><i class="bi bi-diamond-half me-2"></i>{{ request.user.tenant.name }}</h4>
   </a>
-  <p class="mb-0 text-muted" style="font-size:0.75rem;letter-spacing:1px;text-transform:uppercase;">Menu Management — {{ request.user.outlet.name }}</p>
+  <p class="mb-0 text-muted" style="font-size:0.75rem;letter-spacing:1px;text-transform:uppercase;">Menu Management - {{ request.user.outlet.name }}</p>
 </div>
 {% endblock %}
 
@@ -174,14 +194,14 @@
 {% if request.user.outlet.gst_inclusive %}
 <div class="container-fluid mx-auto px-4 mt-3" style="max-width:1400px;padding:0 2rem;">
   <div style="background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.25);border-left:3px solid #10b981;padding:0.6rem 1rem;font-size:0.82rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;">
-    <span><i class="bi bi-check-circle-fill me-2" style="color:#10b981;"></i><strong>GST Inclusive Pricing</strong> — the prices you set here are what customers pay. GST is back-calculated inside those prices.</span>
+    <span><i class="bi bi-check-circle-fill me-2" style="color:#10b981;"></i><strong>GST Inclusive Pricing</strong> - the prices you set here are what customers pay. GST is back-calculated inside those prices.</span>
     <a href="/setup/outlet/" style="font-size:0.72rem;color:#10b981;text-decoration:none;white-space:nowrap;">Change in Settings →</a>
   </div>
 </div>
 {% else %}
 <div class="container-fluid mx-auto px-4 mt-3" style="max-width:1400px;padding:0 2rem;">
-  <div style="background:rgba(197,160,89,.07);border:1px solid rgba(197,160,89,.2);border-left:3px solid var(--accent-gold);padding:0.6rem 1rem;font-size:0.82rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;">
-    <span><i class="bi bi-info-circle me-2" style="color:var(--accent-gold);"></i><strong>GST Exclusive Pricing</strong> — prices shown here are base prices. GST is added on top when billing.</span>
+  <div style="background:rgba(216, 148, 47,.07);border:1px solid rgba(216, 148, 47,.2);border-left:3px solid var(--accent-gold);padding:0.6rem 1rem;font-size:0.82rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;">
+    <span><i class="bi bi-info-circle me-2" style="color:var(--accent-gold);"></i><strong>GST Exclusive Pricing</strong> - prices shown here are base prices. GST is added on top when billing.</span>
     <a href="/setup/outlet/" style="font-size:0.72rem;color:var(--accent-gold);text-decoration:none;white-space:nowrap;">Change in Settings →</a>
   </div>
 </div>
@@ -240,7 +260,7 @@
             </div>
             <div class="recipe-block">
               {% for r in item.recipes.all %}
-              <div class="recipe-item">• {{ r.inventory_item.name }} — {{ r.quantity_required }} {{ r.inventory_item.unit }}</div>
+              <div class="recipe-item">• {{ r.inventory_item.name }} - {{ r.quantity_required }} {{ r.inventory_item.unit }}</div>
               {% empty %}
               <div class="recipe-item text-muted" style="font-style:italic;font-size:0.7rem;">No recipe defined</div>
               {% endfor %}
@@ -365,7 +385,7 @@
           <input type="file" id="aiMenuFile" class="form-control"
                  accept="image/*,application/pdf,.doc,.docx,.xls,.xlsx,.csv,.txt,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel,text/csv,text/plain">
         </div>
-        <div class="text-center my-2 text-muted small">— OR PASTE TEXT —</div>
+        <div class="text-center my-2 text-muted small">- OR PASTE TEXT -</div>
         <textarea id="aiMenuText" class="form-control form-input-luxury" rows="8" placeholder="Example:&#10;APPETIZERS&#10;Spring Rolls 120&#10;Paneer Tikka 250"></textarea>
       </div>
       <div class="modal-footer pt-0 border-0">
@@ -410,7 +430,7 @@
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title"><i class="bi bi-stars me-2"></i>Import Recipe with AI — <span id="recipeImportItemName"></span></h5>
+        <h5 class="modal-title"><i class="bi bi-stars me-2"></i>Import Recipe with AI - <span id="recipeImportItemName"></span></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
@@ -420,7 +440,7 @@
           <input type="file" id="recipeImportFile" class="form-control"
                  accept="image/*,application/pdf,.doc,.docx,.xls,.xlsx,.csv,.txt,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel,text/csv,text/plain">
         </div>
-        <div class="text-center my-2 text-muted small">— OR PASTE TEXT —</div>
+        <div class="text-center my-2 text-muted small">- OR PASTE TEXT -</div>
         <textarea id="recipeImportText" class="form-control form-input-luxury" rows="6" placeholder="Example:&#10;2 cups Basmati Rice&#10;500g Chicken&#10;1 tbsp Ginger Garlic Paste&#10;Salt to taste"></textarea>
       </div>
       <div class="modal-footer pt-0 border-0">
@@ -510,7 +530,7 @@
         return;
       }
       if (data.queued && data.task_id) {
-        // Async path — poll until done
+        // Async path - poll until done
         btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>AI is processing…';
         pollAiImport(data.task_id, btn);
       } else if (data.success) {
@@ -539,7 +559,7 @@
             alert("AI import failed: " + (data.error || "unknown error"));
             btn.disabled = false; btn.innerText = "Process with Smart AI";
           }
-          // still "processing" — keep polling
+          // still "processing" - keep polling
         })
         .catch(() => { clearInterval(interval); btn.disabled = false; btn.innerText = "Process with Smart AI"; });
     }, 2000);
@@ -603,7 +623,7 @@
             alert("Recipe import failed: " + (data.error || "unknown error"));
             btn.disabled = false; btn.innerText = "Extract Ingredients";
           }
-          // still "processing" — keep polling
+          // still "processing" - keep polling
         })
         .catch(() => { clearInterval(interval); btn.disabled = false; btn.innerText = "Extract Ingredients"; });
     }, 2000);

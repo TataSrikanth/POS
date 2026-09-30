@@ -210,7 +210,7 @@ def add_batch_item(request, batch_id):
     )
     if batch.transfers.filter(status__in=["in_transit", "received"]).exists():
         return JsonResponse(
-            {"error": "Cannot add items — batch has already been dispatched."},
+            {"error": "Cannot add items - batch has already been dispatched."},
             status=400
         )
 
@@ -242,7 +242,7 @@ def add_batch_item(request, batch_id):
         })
     except (InventoryItem.DoesNotExist, KeyError, ValueError):
         logger.exception("Error adding batch item")
-        return JsonResponse({"error": "Could not add that item — check the item and quantity."}, status=400)
+        return JsonResponse({"error": "Could not add that item - check the item and quantity."}, status=400)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -347,7 +347,7 @@ def dispatch_batch(request, batch_id):
     except ValidationError as e:
         msg = e.messages[0] if getattr(e, "messages", None) else str(e)
         return JsonResponse(
-            {"error": f"Cannot dispatch — not enough stock at the kitchen to move this batch. {msg}"},
+            {"error": f"Cannot dispatch - not enough stock at the kitchen to move this batch. {msg}"},
             status=400,
         )
     except IncompatibleUnitsError as e:
@@ -355,7 +355,7 @@ def dispatch_batch(request, batch_id):
         # some lines and skip others, which would break the "total inventory
         # stays constant" guarantee a 'move' batch exists to provide.
         return JsonResponse(
-            {"error": f"Cannot dispatch — a batch item's unit doesn't match its inventory item. {e}"},
+            {"error": f"Cannot dispatch - a batch item's unit doesn't match its inventory item. {e}"},
             status=400,
         )
 
@@ -491,7 +491,7 @@ def confirm_receive(request, transfer_id):
         if transfer.status == "received":
             return JsonResponse({
                 "success": True,
-                "message": "Already received — no changes made.",
+                "message": "Already received - no changes made.",
                 "already_done": True,
             })
 
@@ -522,7 +522,7 @@ def confirm_receive(request, transfer_id):
                     qty_to_add = convert_quantity(batch_item.quantity, batch_item.unit, inv_item.unit)
                 except IncompatibleUnitsError as e:
                     logger.error(
-                        "[UNIT MISMATCH] Transfer %s item '%s': %s. Received as 0 — "
+                        "[UNIT MISMATCH] Transfer %s item '%s': %s. Received as 0 - "
                         "fix the batch item's unit and re-receive manually.",
                         transfer.id, inv_item.name, e,
                     )

@@ -5,7 +5,7 @@
 <style>
 .page-body { max-width: 900px; margin: 2rem auto; padding: 0 1.5rem; }
 .page-eyebrow { font-size: .65rem; text-transform: uppercase; letter-spacing: 4px; color: var(--accent-gold); margin-bottom: .5rem; }
-.page-title { font-family: 'DM Serif Display', serif; font-size: 1.8rem; margin-bottom: .25rem; }
+.page-title { font-family: 'Inter', sans-serif; font-size: 1.8rem; margin-bottom: .25rem; }
 .page-sub { color: var(--text-muted); font-size: .82rem; margin-bottom: 2rem; }
 .divider { height: 1px; background: var(--border-color); margin: 1.5rem 0; }
 
@@ -24,7 +24,7 @@
 
 .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
 .summary-card { background: var(--panel-bg); border: 1px solid var(--border-color); padding: 1rem; }
-.summary-num { font-family: 'DM Serif Display', serif; font-size: 1.6rem; color: var(--accent-gold); }
+.summary-num { font-family: 'Inter', sans-serif; font-size: 1.6rem; color: var(--accent-gold); }
 .summary-lbl { font-size: .62rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-top: .2rem; }
 
 .table { width: 100%; border-collapse: collapse; }
@@ -32,7 +32,7 @@
             font-weight: 700; padding: .75rem .5rem; border-bottom: 1px solid var(--border-color); text-align: left; }
 .table td { padding: .75rem .5rem; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: .85rem; }
 .table tr:last-child td { border-bottom: none; }
-.table tr:hover td { background: rgba(197,160,89,0.03); }
+.table tr:hover td { background: rgba(216, 148, 47,0.03); }
 
 .bar-wrap { width: 120px; background: var(--border-color); height: 6px; border-radius: 3px; display: inline-block; vertical-align: middle; }
 .bar-fill { height: 100%; border-radius: 3px; background: var(--accent-gold); }
@@ -70,7 +70,7 @@
 
   <div class="page-eyebrow">Inventory</div>
   <h1 class="page-title">Consumption Report</h1>
-  <p class="page-sub">What your kitchen used today — auto-calculated from orders and recipes.</p>
+  <p class="page-sub">What your kitchen used today - auto-calculated from orders and recipes.</p>
 
   <div class="divider"></div>
 
@@ -126,11 +126,11 @@
       {% with item=row.item consumed=row.consumed %}
       <tr data-name="{{ item.name|lower }}" data-category="{{ item.category }}">
         <td style="font-weight:600;">{{ item.name }}</td>
-        <td style="color:var(--text-muted);font-size:.8rem;">{{ item.category|default:"—" }}</td>
-        <td style="font-family:'Space Mono',monospace;color:var(--accent-gold);">
+        <td style="color:var(--text-muted);font-size:.8rem;">{{ item.category|default:"-" }}</td>
+        <td style="font-family:'Inter', ui-monospace, monospace;color:var(--accent-gold);">
           {{ consumed|floatformat:3 }}
         </td>
-        <td style="font-family:'Space Mono',monospace;
+        <td style="font-family:'Inter', ui-monospace, monospace;
           {% if item.stock <= item.low_stock_threshold %}color:#ef4444;font-weight:700;{% endif %}">
           {{ item.stock|floatformat:3 }}
           {% if item.stock <= item.low_stock_threshold %}

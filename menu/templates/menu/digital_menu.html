@@ -11,8 +11,9 @@
     <link rel="icon" href="{{ tenant.logo.url }}">
     <link rel="apple-touch-icon" href="{{ tenant.logo.url }}">
     {% else %}
-    <link rel="icon" type="image/svg+xml" href="{% static 'favicon.svg' %}">
-    <link rel="apple-touch-icon" href="{% static 'icon-512.svg' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'brand/favicon-32.png' %}">
+    <link rel="shortcut icon" href="{% static 'brand/favicon.ico' %}">
+    <link rel="apple-touch-icon" href="{% static 'brand/apple-touch-icon.png' %}">
     {% endif %}
 
     <!-- Open Graph / Social Media / AI Previews -->
@@ -48,7 +49,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #fafafa;
@@ -56,7 +57,7 @@
             --text-main: #111111;
             --text-muted: #737373;
             --border-color: #eaeaea;
-            --accent-gold: #c5a059;
+            --accent-gold: #D8942F;
             --veg-color: #16a34a;
             --nonveg-color: #dc2626;
             --transition-smooth: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -67,17 +68,17 @@
             --text-main: #f5f5f5;
             --text-muted: #888888;
             --border-color: #262626;
-            --accent-gold: #d4af37;
+            --accent-gold: #D8942F;
         }
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
             padding-bottom: 80px; /* space for cart bar */
             transition: var(--transition-smooth);
         }
-        .serif-text { font-family: 'DM Serif Display', serif; }
+        .serif-text { font-family: 'Inter', sans-serif; }
         .text-accent-gold { color: var(--accent-gold); }
         
         /* HEADER */
@@ -90,8 +91,17 @@
             top: 0;
             z-index: 1020;
         }
+        /* Brand mark: header icon placeholder becomes the Oi Ramen badge. */
+        .bi.bi-diamond-half::before {
+            content: "" !important;
+            display: inline-block;
+            width: 1.9em;
+            height: 1.9em;
+            vertical-align: middle;
+            background: url("{% static 'brand/logo.png' %}") center / contain no-repeat;
+        }
         .brand-title {
-            font-family: 'DM Serif Display', serif;
+            font-family: 'Inter', sans-serif;
             font-size: 1.5rem;
             margin-bottom: 0.2rem;
             color: var(--text-main);
@@ -113,7 +123,7 @@
             padding: 0.75rem 1rem 0.75rem 2.5rem;
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Inter', sans-serif;
             background: var(--panel-bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23737373' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/%3E%3C/svg%3E") no-repeat 12px center;
         }
         .search-input:focus { outline: none; border-color: var(--accent-gold); }
@@ -365,7 +375,7 @@
             width: 40px; height: 4px; background: #ddd;
             border-radius: 2px; margin: 0 auto 1.5rem;
         }
-        .cart-title { font-family: 'DM Serif Display', serif; font-size: 1.5rem; margin-bottom: 1rem; }
+        .cart-title { font-family: 'Inter', sans-serif; font-size: 1.5rem; margin-bottom: 1rem; }
         
         .cart-item-row {
             display: flex; justify-content: space-between; align-items: center;
@@ -426,7 +436,7 @@
             max-height: 80vh; overflow-y: auto;
         }
         .modifier-modal.active { transform: translateY(0); }
-        .modifier-item-title { font-family: 'DM Serif Display', serif; font-size: 1.2rem; margin-bottom: 1rem; }
+        .modifier-item-title { font-family: 'Inter', sans-serif; font-size: 1.2rem; margin-bottom: 1rem; }
         .modifier-group-section { margin-bottom: 1.5rem; }
         .modifier-group-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
         .modifier-req-badge { font-size: 0.7rem; padding: 2px 8px; border-radius: 12px; font-weight: 600; background: var(--border-color); color: var(--text-muted); }
@@ -451,7 +461,7 @@
         }
         .cart-modifier-names { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem; }
 
-        /* ORDER STATUS PILL — a small floating button, same idea as the
+        /* ORDER STATUS PILL - a small floating button, same idea as the
            sticky cart bar below, shown once a guest has placed at least one
            order for this table. Replaces the old full-width banner that
            used to sit under the header and push the whole menu down for
@@ -484,7 +494,7 @@
         @keyframes statusPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
         .order-status-pill-label { font-size: 0.82rem; font-weight: 600; color: var(--text-main); white-space: nowrap; }
 
-        /* STATUS SHEET — slide-up drawer, copied from the cart modal's own
+        /* STATUS SHEET - slide-up drawer, copied from the cart modal's own
            overlay/transform pattern so both feel like one consistent app
            instead of two different popup styles. */
         .status-sheet-overlay {
@@ -501,7 +511,7 @@
             max-height: 80vh; overflow-y: auto;
         }
         .status-sheet.active { transform: translateY(0); }
-        .status-sheet-title { font-family: 'DM Serif Display', serif; font-size: 1.3rem; margin: 0; }
+        .status-sheet-title { font-family: 'Inter', sans-serif; font-size: 1.3rem; margin: 0; }
         .status-sheet-table { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.15rem; }
         .status-stages { display: flex; justify-content: space-between; position: relative; margin: 1.4rem 0 1.6rem; }
         .status-stages::before {
@@ -511,7 +521,7 @@
         .status-stage { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; z-index: 1; background: var(--bg-color); padding: 0 0.3rem; }
         .status-stage .dot { width: 18px; height: 18px; border-radius: 50%; background: var(--border-color); border: 2px solid var(--border-color); }
         .status-stage.done .dot { background: var(--veg-color); border-color: var(--veg-color); }
-        .status-stage.active .dot { background: var(--bg-color); border-color: var(--accent-gold); box-shadow: 0 0 0 4px rgba(197,160,89,0.2); }
+        .status-stage.active .dot { background: var(--bg-color); border-color: var(--accent-gold); box-shadow: 0 0 0 4px rgba(216, 148, 47,0.2); }
         .status-stage .t { font-size: 0.68rem; color: var(--text-muted); font-weight: 600; }
         .status-stage.done .t, .status-stage.active .t { color: var(--text-main); }
         .status-sheet-item-row {
@@ -593,7 +603,7 @@
 
     <div class="mini-toast" id="miniToast"></div>
 
-    <!-- ORDER STATUS PILL — hidden until this table has a placed order.
+    <!-- ORDER STATUS PILL - hidden until this table has a placed order.
          Floats bottom-right instead of sitting inline under the header;
          tapping it opens the status sheet below. -->
     <div class="order-status-pill hidden" id="orderStatusPill" onclick="openStatusSheet()">
@@ -602,7 +612,7 @@
         <span class="order-status-pill-label" id="orderStatusPillLabel">Order status</span>
     </div>
 
-    <!-- STATUS SHEET — slide-up drawer, same mechanics as the cart modal -->
+    <!-- STATUS SHEET - slide-up drawer, same mechanics as the cart modal -->
     <div class="status-sheet-overlay" id="statusSheetOverlay" onclick="closeStatusSheet()"></div>
     <div class="status-sheet" id="statusSheet">
         <div class="modal-drag-handle"></div>
@@ -748,7 +758,7 @@
         <textarea id="specialInstructions" class="special-instructions" rows="2" placeholder="📝 Special instructions (e.g. less spicy)"></textarea>
 
         <div class="prep-time-banner mt-3 p-2 text-center" id="etaBanner" style="background: #fdf6e3; border: 1px solid #fde08b; border-radius: 8px; font-size: 0.85rem; color: #92400e; font-weight: 600;">
-            <i class="bi bi-clock-history me-1" style="color:#c5a059;"></i> Estimated time: <span id="etaText">—</span>
+            <i class="bi bi-clock-history me-1" style="color:#D8942F;"></i> Estimated time: <span id="etaText">-</span>
         </div>
 
         <div class="d-flex gap-2 mt-3">
@@ -1243,14 +1253,14 @@
                 btn.style.background = '#16a34a';
                 setTimeout(() => location.reload(), 1200);
             } else if (!ok && (data.error || '').includes('does not belong')) {
-                // Very rare: stale/mismatched stored id — drop it and retry once.
+                // Very rare: stale/mismatched stored id - drop it and retry once.
                 clearStoredOrderId();
-                alert("Starting a new order for this table — please tap Place Order again.");
+                alert("Starting a new order for this table - please tap Place Order again.");
                 btn.disabled = false;
                 btn.innerHTML = 'PLACE ORDER <i class="bi bi-arrow-right"></i>';
             } else if (!ok && (data.error || '').includes('already been billed')) {
                 clearStoredOrderId();
-                alert("Your table's bill is already being prepared — please ask a waiter for more items.");
+                alert("Your table's bill is already being prepared - please ask a waiter for more items.");
                 btn.disabled = false;
                 btn.innerHTML = 'PLACE ORDER <i class="bi bi-arrow-right"></i>';
             } else {
@@ -1386,11 +1396,11 @@
             const data = await res.json();
             renderOrderStatus(data);
             // Once the order is no longer open/billing (paid, closed, cancelled),
-            // stop treating it as "the active order for this table" — the next
+            // stop treating it as "the active order for this table" - the next
             // Place Order press should start a fresh one, not try to merge in.
             // Polling itself keeps going for QSR orders (token_display set)
             // until the token is actually collected, or the order was
-            // cancelled — payment and kitchen prep both happen after
+            // cancelled - payment and kitchen prep both happen after
             // can_add_more already flips false.
             if (!data.can_add_more) clearStoredOrderId();
             const done = data.order_status === 'cancelled'
@@ -1402,7 +1412,7 @@
                 resetOrderStatusUI();
                 if (_statusPollTimer) clearInterval(_statusPollTimer);
             }
-        } catch (e) { /* network blip — try again next tick */ }
+        } catch (e) { /* network blip - try again next tick */ }
     }
 
     function startOrderStatusPolling() {

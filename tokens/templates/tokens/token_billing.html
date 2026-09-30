@@ -1,14 +1,14 @@
 {% extends 'core/base.html' %}
 {% load static %}
 
-{% block title %}Token Billing {% if token %}— {{ token.display_number }}{% endif %} | {{ request.user.tenant.name }}{% endblock %}
+{% block title %}Token Billing {% if token %}- {{ token.display_number }}{% endif %} | {{ request.user.tenant.name }}{% endblock %}
 
 {% block extra_css %}
 <style>
     /* ── Desktop: locked viewport, internal scroll ─────────────────── */
     :root { --header-h: 65px; }
 
-    /* ── Large text mode — one class on <html> scales everything ── */
+    /* ── Large text mode - one class on <html> scales everything ── */
     html.large-text .menu-card   { min-height: 100px; }
     html.large-text .item-name   { font-size: 1.15rem !important; }
     html.large-text .item-price  { font-size: 1.1rem  !important; }
@@ -67,7 +67,7 @@
     }
     .panel-handle:hover,
     .panel-handle.dragging {
-        background: rgba(197,160,89,0.25);
+        background: rgba(216, 148, 47,0.25);
         border-left-color: var(--accent-gold);
     }
     @media (max-width: 991px) { .panel-handle { display: none !important; } }
@@ -87,11 +87,11 @@
         font-size: 0.95rem;
         color: var(--text-muted);
         transition: var(--transition-smooth);
-        font-family: 'DM Serif Display', serif;
+        font-family: 'Inter', sans-serif;
         position: relative;
     }
     .category-item:hover { color: var(--text-main); }
-    .category-item.active { color: var(--accent-gold); font-weight: 700; font-style: italic; }
+    .category-item.active { color: var(--accent-gold); font-weight: 700; }
     .category-sidebar .category-item.active::before {
         content: '';
         position: absolute;
@@ -152,7 +152,7 @@
         border: 1.5px solid var(--border-color);
         color: var(--text-main);
         padding: 0.9rem 1.2rem;
-        font-size: 1rem;           /* 16px — no iOS zoom */
+        font-size: 1rem;           /* 16px - no iOS zoom */
         box-shadow: none !important;
         margin-bottom: 1rem;
         width: 100%;
@@ -172,7 +172,7 @@
         color: var(--accent-gold);
     }
 
-    /* ── Menu item card — touch-optimized ────────────────────────── */
+    /* ── Menu item card - touch-optimized ────────────────────────── */
     .menu-card {
         background: var(--panel-bg);
         border: 1.5px solid var(--border-color);
@@ -191,13 +191,13 @@
     }
     .menu-card:active {
         border-color: var(--accent-gold);
-        background: rgba(197,160,89,0.06);
+        background: rgba(216, 148, 47,0.06);
         transform: scale(0.97);
     }
     @media (hover: hover) {
-        .menu-card:hover { border-color: var(--accent-gold); background: rgba(197,160,89,0.04); }
+        .menu-card:hover { border-color: var(--accent-gold); background: rgba(216, 148, 47,0.04); }
     }
-    /* Cart badge — shows how many of this item are in cart */
+    /* Cart badge - shows how many of this item are in cart */
     .menu-card .cart-badge {
         position: absolute;
         top: -8px; right: -8px;
@@ -214,7 +214,7 @@
         box-shadow: 0 2px 6px rgba(0,0,0,0.2);
         z-index: 2;
     }
-    .menu-card.in-cart { border-color: rgba(197,160,89,0.5); }
+    .menu-card.in-cart { border-color: rgba(216, 148, 47,0.5); }
     .menu-card.in-cart .cart-badge { display: flex; }
     .item-name {
         font-size: 1rem;
@@ -270,7 +270,7 @@
         text-align: center;
         padding: 1rem 0.5rem;
         cursor: pointer;
-        font-family: 'DM Serif Display', serif;
+        font-family: 'Inter', sans-serif;
         font-size: 0.85rem;
         color: var(--text-muted);
         border-bottom: 3px solid transparent;
@@ -280,7 +280,7 @@
     }
     .context-tab.active { color: var(--text-main); border-bottom-color: var(--accent-gold); }
 
-    /* min-height:0 is required for flex children — without it, a flex item won't
+    /* min-height:0 is required for flex children - without it, a flex item won't
        shrink below its content size even with overflow-y:auto set, so the checkout
        button gets pushed off screen in both the desktop sidebar and mobile offcanvas. */
     .context-body { flex-grow: 1; min-height: 0; padding: 1.25rem; overflow-y: auto; }
@@ -294,7 +294,7 @@
         border-bottom: 1px dashed var(--border-color);
     }
     .cart-item-name {
-        font-family: 'DM Serif Display', serif;
+        font-family: 'Inter', sans-serif;
         font-size: 0.9rem;
         color: var(--text-main);
         margin-bottom: 0.2rem;
@@ -342,12 +342,12 @@
         display: flex;
         justify-content: space-between;
         margin: 0.9rem 0 1.25rem;
-        font-family: 'DM Serif Display', serif;
+        font-family: 'Inter', sans-serif;
         font-size: 1.4rem;
         color: var(--text-main);
     }
 
-    /* ── Checkout button — UNMISSABLE ──────────────────────────────── */
+    /* ── Checkout button - UNMISSABLE ──────────────────────────────── */
     .btn-checkout {
         background: var(--accent-gold);
         border: none;
@@ -416,7 +416,7 @@
         color: var(--text-main);
     }
     .modal-header, .modal-footer { border-color: var(--border-color); padding: 1.25rem; }
-    .modal-title { font-family: 'DM Serif Display', serif; font-size: 1.2rem; }
+    .modal-title { font-family: 'Inter', sans-serif; font-size: 1.2rem; }
     .modal-body { padding: 1.25rem; }
     .form-control-minimal {
         background-color: transparent;
@@ -453,7 +453,7 @@
     }
     @media (max-width: 991px) { .fab-cart { display: flex; align-items: center; justify-content: center; gap: 8px; } }
     @media (min-width: 992px) { .offcanvas-luxury { display: none !important; } }
-    /* On large desktop monitors there's no Android nav bar — full height */
+    /* On large desktop monitors there's no Android nav bar - full height */
     @media (min-width: 1200px) {
         .context-sidebar {
             height: calc(100vh - var(--header-h));
@@ -493,10 +493,10 @@
     }
     .active-order-item:hover { background: var(--bg-color); color: var(--text-main); }
     .active-order-item.current {
-        background: linear-gradient(90deg, rgba(197,160,89,0.1) 0%, transparent 100%);
+        background: linear-gradient(90deg, rgba(216, 148, 47,0.1) 0%, transparent 100%);
         border-left: 3px solid var(--accent-gold);
     }
-    .aoi-token { font-family: 'DM Serif Display', serif; font-size: 1.2rem; min-width: 44px; text-align: center; }
+    .aoi-token { font-family: 'Inter', sans-serif; font-size: 1.2rem; min-width: 44px; text-align: center; }
     .aoi-details { flex: 1; min-width: 0; }
     .aoi-customer { font-size: 0.75rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .aoi-amount { font-size: 0.82rem; font-weight: 600; white-space: nowrap; }
@@ -521,7 +521,7 @@
         {{ request.user.tenant.name }}
     </h1>
 </a>
-<p class="brand-subtitle">POS Billing — {{ request.user.outlet.name }}</p>
+<p class="brand-subtitle">POS Billing - {{ request.user.outlet.name }}</p>
 {% endblock %}
 
 {% block header_right %}
@@ -645,11 +645,11 @@
             </div>
         </div>
 
-        <!-- Current Order view — scrollable, checkout pinned below -->
+        <!-- Current Order view - scrollable, checkout pinned below -->
         <div class="context-body" id="cartView">
             <div class="text-center mb-3">
-                <div id="orderTokenDisplay" style="font-family:'DM Serif Display',serif; font-size:1.8rem; color:var(--accent-gold); line-height:1;">
-                    {% if token %}{{ token.display_number }}{% else %}—{% endif %}
+                <div id="orderTokenDisplay" style="font-family:'Inter', sans-serif; font-size:1.8rem; color:var(--accent-gold); line-height:1;">
+                    {% if token %}{{ token.display_number }}{% else %}-{% endif %}
                 </div>
                 <div id="orderStatusDisplay" style="font-size:0.65rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-top:2px;">
                     {{ order.get_status_display }}
@@ -691,7 +691,7 @@
                         <div class="aoi-customer">{{ t.order.created_at|date:"g:i A" }}</div>
                     </div>
                     <div style="text-align:right;">
-                        <div class="aoi-amount">{% if t.order.grand_total %}₹{{ t.order.grand_total|floatformat:0 }}{% else %}—{% endif %}</div>
+                        <div class="aoi-amount">{% if t.order.grand_total %}₹{{ t.order.grand_total|floatformat:0 }}{% else %}-{% endif %}</div>
                         {% if t.order.status == 'billing' %}
                         <div class="aoi-badge" style="background:#10b981;color:#fff;">Pay</div>
                         {% elif t.order.status == 'paid' or t.order.status == 'closed' %}
@@ -718,7 +718,7 @@
                         <div class="aoi-customer">{{ t.order.created_at|date:"g:i A" }} · {{ t.order.aggregator_order_id|default:"-" }}</div>
                     </div>
                     <div>
-                        <div class="aoi-amount">{% if t.order.grand_total %}₹{{ t.order.grand_total|floatformat:0 }}{% else %}—{% endif %}</div>
+                        <div class="aoi-amount">{% if t.order.grand_total %}₹{{ t.order.grand_total|floatformat:0 }}{% else %}-{% endif %}</div>
                         <div class="aoi-badge online">Online</div>
                     </div>
                 </a>
@@ -733,7 +733,7 @@
             </div>
         </div>
 
-        <!-- Cart summary pinned at bottom — always visible, items scroll above -->
+        <!-- Cart summary pinned at bottom - always visible, items scroll above -->
         <div class="cart-summary" id="cartSummaryBlock">
             {% if 'loyalty_points' in tenant_features %}
             <div style="margin-bottom:0.9rem;">
@@ -803,10 +803,10 @@
 
     <div class="offcanvas-body d-flex flex-column p-0">
 
-        <!-- Cart items — scrollable, checkout pinned below -->
+        <!-- Cart items - scrollable, checkout pinned below -->
         <div class="context-body flex-grow-1" id="cartViewMobile">
             <div class="text-center mb-3">
-                <div id="orderTokenDisplayMobile" style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--accent-gold);">
+                <div id="orderTokenDisplayMobile" style="font-family:'Inter', sans-serif;font-size:1.5rem;color:var(--accent-gold);">
                     {% if token %}{{ token.display_number }}{% endif %}
                 </div>
             </div>
@@ -1185,7 +1185,7 @@
         });
         document.querySelectorAll('.view-total').forEach(e => e.textContent = '₹' + t.roundedTotal);
 
-        // FAB badge — total item count
+        // FAB badge - total item count
         const totalQty = cart.reduce((s, i) => s + i.quantity, 0);
         const badge = document.getElementById('fabBadge');
         if (badge) { badge.textContent = totalQty; badge.style.display = totalQty ? 'flex' : 'none'; }
@@ -1195,7 +1195,7 @@
     function dec(i) { cart[i].quantity--; if (cart[i].quantity <= 0) cart.splice(i, 1); renderCart(); syncCardBadges(); }
     function clearCart() { cart = []; renderCart(); syncCardBadges(); }
 
-    /* ── Direct add — single tap adds 1 immediately ─────────────── */
+    /* ── Direct add - single tap adds 1 immediately ─────────────── */
     function addDirectly(id, name, price, gst, isVeg) {
         const existing = cart.find(c => c.id === id);
         if (existing) {
@@ -1209,7 +1209,7 @@
         const card = document.getElementById('card-' + id);
         if (card) {
             card.style.borderColor = 'var(--accent-gold)';
-            card.style.background  = 'rgba(197,160,89,0.10)';
+            card.style.background  = 'rgba(216, 148, 47,0.10)';
             setTimeout(() => {
                 card.style.borderColor = '';
                 card.style.background  = '';
@@ -1271,7 +1271,7 @@
                 if (requestId !== _runningOrderRequestId) return; // superseded by a newer request
 
                 ['orderTokenDisplay', 'orderTokenDisplayMobile'].forEach(id => {
-                    const el = document.getElementById(id); if (el) el.textContent = d.token_display || '—';
+                    const el = document.getElementById(id); if (el) el.textContent = d.token_display || '-';
                 });
                 const titleEl = document.getElementById('orderTokenDisplayMobileTitle');
                 if (titleEl) titleEl.textContent = 'Order ' + (d.token_display || '');
@@ -1318,7 +1318,7 @@
                             : `<span class="status-badge ${sc}">${statusLabels[i.status] || i.status}</span>`;
                         return `<div class="running-row d-flex flex-column">
                             <div class="d-flex justify-content-between align-items-center w-100" style="gap:10px;">
-                                <span style="font-family:'DM Serif Display',serif;flex:1;">${i.quantity} × ${i.name}</span>
+                                <span style="font-family:'Inter', sans-serif;flex:1;">${i.quantity} × ${i.name}</span>
                                 <span style="color:var(--text-muted);font-size:0.85rem;flex-shrink:0;">₹${i.total}</span>
                                 ${statusCell}
                             </div>
@@ -1439,11 +1439,11 @@
 
         const orderPayload = { cart, order_id: currentOrderId, source: 'counter', aggregator_id: '', customer_name: '', customer_phone: loyaltyPhone };
 
-        // Edge case: already offline before the cashier even hits submit —
+        // Edge case: already offline before the cashier even hits submit -
         // don't attempt the request at all, queue it straight away.
         if (!navigator.onLine) {
             offlineQueue.add(orderPayload)
-                .then(() => { ui.toast('Saved — will sync once back online', 'success'); clearCart(); })
+                .then(() => { ui.toast('Saved - will sync once back online', 'success'); clearCart(); })
                 .catch(() => { ui.toast('Could not save order offline on this device. Please note it down manually.', 'error'); });
             resetSendBtn();
             return;
@@ -1464,12 +1464,12 @@
             if (oc) oc.hide();
         })
         .catch(err => {
-            // Only reachable for the create-order call itself — no order_id
+            // Only reachable for the create-order call itself - no order_id
             // exists yet, safe to queue. TypeError = genuine network failure
             // (same heuristic apiClient.request() already uses elsewhere).
             if (err instanceof TypeError) {
                 offlineQueue.add(orderPayload)
-                    .then(() => { ui.toast('Connection dropped — order saved, will sync once back online', 'success'); clearCart(); })
+                    .then(() => { ui.toast('Connection dropped - order saved, will sync once back online', 'success'); clearCart(); })
                     .catch(() => { ui.toast('Could not save order offline on this device. Please note it down manually.', 'error'); });
             } else {
                 ui.toast('Could not create order. Please try again.', 'error');
@@ -1479,8 +1479,8 @@
     }
 
     /* ── Print receipt ──────────────────────────────────────────────
-       Inside the Rasova Android app, the EC2 server cannot reach the LAN
-       printer, so we push the job to the print queue — the app's on-device
+       Inside the Oi Ramen Android app, the EC2 server cannot reach the LAN
+       printer, so we push the job to the print queue - the app's on-device
        service polls it and sends bytes to the printer over WiFi.
        On desktop/browser, fall back to the thermal-receipt print popup. */
     async function printReceipt(orderId) {
@@ -1549,7 +1549,7 @@
         document.querySelectorAll('.parcel-btn').forEach(btn => {
             btn.style.borderColor = _parcelOn ? 'var(--accent-gold)' : 'var(--border-color)';
             btn.style.color       = _parcelOn ? 'var(--accent-gold)' : 'var(--text-muted)';
-            btn.style.background  = _parcelOn ? 'rgba(197,160,89,0.06)' : 'transparent';
+            btn.style.background  = _parcelOn ? 'rgba(216, 148, 47,0.06)' : 'transparent';
         });
         document.querySelectorAll('.parcel-btn-text').forEach(el => {
             el.textContent = _parcelOn

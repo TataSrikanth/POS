@@ -37,7 +37,7 @@
   .stat-row { display: grid; grid-template-columns: repeat(auto-fit,minmax(160px,1fr)); gap: 0.75rem; margin-bottom: 2rem; }
   .stat-card { padding: 0.9rem; border-left: 3px solid var(--accent-gold); background: var(--panel-bg); }
   .stat-label { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
-  .stat-value { font-family: 'DM Serif Display', serif; font-size: 1.4rem; margin-top: 0.2rem; }
+  .stat-value { font-family: 'Inter', sans-serif; font-size: 1.4rem; margin-top: 0.2rem; }
 
   .labor-table { width: 100%; border-collapse: collapse; }
   .labor-table th {
@@ -45,7 +45,7 @@
     font-weight: 600; padding: 0.75rem 0.5rem; border-bottom: 1px solid var(--border-color); text-align: left;
   }
   .labor-table td { padding: 0.9rem 0.5rem; border-bottom: 1px solid var(--border-color); font-size: 0.85rem; }
-  .labor-table td.num { text-align: right; font-family: 'Space Mono', monospace; }
+  .labor-table td.num { text-align: right; font-family: 'Inter', ui-monospace, monospace; }
   .pay-type-badge {
     font-size: 0.62rem; text-transform: uppercase; letter-spacing: 1px;
     padding: 3px 9px; border-radius: 20px; font-weight: 600;
@@ -96,7 +96,7 @@
 
 <div class="page-wrap">
   <h1 class="section-title">Labor Cost</h1>
-  <p class="section-sub">Staff cost vs. revenue — {{ start_date }} to {{ end_date }}</p>
+  <p class="section-sub">Staff cost vs. revenue - {{ start_date }} to {{ end_date }}</p>
 
   <div class="stat-row">
     <div class="stat-card">

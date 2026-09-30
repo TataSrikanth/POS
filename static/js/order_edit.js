@@ -53,9 +53,9 @@
     if (document.getElementById("oe-styles")) return;
     var css =
       ".oe-popup{border-radius:var(--border-radius,0)!important;padding:1.4rem 1.3rem 1.2rem!important}" +
-      ".oe-popup .swal2-title{font-family:var(--font-display,'DM Serif Display',serif);font-weight:400;font-size:1.45rem;padding:0}" +
+      ".oe-popup .swal2-title{font-family:var(--font-display,'Inter', sans-serif);font-weight:400;font-size:1.45rem;padding:0}" +
       ".oe-popup .swal2-actions{flex-wrap:wrap;gap:.4rem}" +
-      ".oe-qty{display:flex;align-items:center;justify-content:center;gap:.9rem;margin:.4rem 0 1rem;font-family:var(--font-mono,'Space Mono',monospace)}" +
+      ".oe-qty{display:flex;align-items:center;justify-content:center;gap:.9rem;margin:.4rem 0 1rem;font-family:var(--font-mono,'Inter', ui-monospace, monospace)}" +
       ".oe-qty .oe-from{font-size:1.6rem;color:var(--text-muted,#737373)}" +
       ".oe-qty .oe-to{font-size:2.1rem;font-weight:700;color:var(--text-main,#111)}" +
       ".oe-qty .bi{color:var(--text-muted,#737373)}" +
@@ -64,17 +64,17 @@
       ".oe-chips{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:.7rem}" +
       ".oe-chip{min-height:44px;padding:.45rem .85rem;border:1px solid var(--border-color,#eaeaea);background:transparent;" +
       "color:var(--text-main,#111);font:inherit;font-size:.86rem;cursor:pointer;border-radius:var(--border-radius,0);transition:border-color .15s,background .15s}" +
-      ".oe-chip:hover{border-color:var(--accent-gold,#c5a059)}" +
-      ".oe-chip[aria-pressed=true]{border-color:var(--accent-gold,#c5a059);background:var(--accent-gold,#c5a059);color:#fff}" +
-      ".oe-chip:focus-visible,.oe-opt:focus-visible{outline:2px solid var(--accent-gold,#c5a059);outline-offset:2px}" +
+      ".oe-chip:hover{border-color:var(--accent-gold,#D8942F)}" +
+      ".oe-chip[aria-pressed=true]{border-color:var(--accent-gold,#D8942F);background:var(--accent-gold,#D8942F);color:#fff}" +
+      ".oe-chip:focus-visible,.oe-opt:focus-visible{outline:2px solid var(--accent-gold,#D8942F);outline-offset:2px}" +
       ".oe-other{width:100%;min-height:44px;padding:.55rem .7rem;border:1px solid var(--border-color,#eaeaea);background:transparent;" +
       "color:var(--text-main,#111);font:inherit;font-size:.9rem;border-radius:var(--border-radius,0)}" +
-      ".oe-other:focus{outline:none;border-color:var(--accent-gold,#c5a059)}" +
+      ".oe-other:focus{outline:none;border-color:var(--accent-gold,#D8942F)}" +
       ".oe-stock{display:grid;gap:.45rem;margin:0 0 1rem}" +
       ".oe-opt{display:flex;flex-direction:column;align-items:flex-start;gap:.15rem;width:100%;min-height:44px;padding:.6rem .8rem;text-align:left;" +
       "border:1px solid var(--border-color,#eaeaea);background:transparent;color:var(--text-main,#111);font:inherit;cursor:pointer;border-radius:var(--border-radius,0);transition:border-color .15s,background .15s}" +
-      ".oe-opt:hover:not(:disabled){border-color:var(--accent-gold,#c5a059)}" +
-      ".oe-opt[aria-checked=true]{border-color:var(--accent-gold,#c5a059);box-shadow:inset 3px 0 0 var(--accent-gold,#c5a059)}" +
+      ".oe-opt:hover:not(:disabled){border-color:var(--accent-gold,#D8942F)}" +
+      ".oe-opt[aria-checked=true]{border-color:var(--accent-gold,#D8942F);box-shadow:inset 3px 0 0 var(--accent-gold,#D8942F)}" +
       ".oe-opt:disabled{cursor:not-allowed;opacity:.55}" +
       ".oe-opt-t{font-size:.92rem;font-weight:600;display:flex;align-items:center;gap:.45rem;flex-wrap:wrap}" +
       ".oe-opt-d{font-size:.8rem;color:var(--text-muted,#737373)}" +
@@ -87,7 +87,7 @@
       ".oe-list .oe-st{font-size:.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted,#737373);white-space:nowrap}" +
       ".oe-confirm,.oe-cancel,.oe-deny{border-radius:var(--border-radius,0)!important;min-height:44px;text-transform:uppercase;letter-spacing:1px;font-size:.78rem!important;font-weight:600}" +
       ".oe-confirm.oe-danger{background:var(--danger,#ef4444)!important}" +
-      ".oe-deny{background:transparent!important;color:var(--text-main,#111)!important;border:1px solid var(--accent-gold,#c5a059)!important}";
+      ".oe-deny{background:transparent!important;color:var(--text-main,#111)!important;border:1px solid var(--accent-gold,#D8942F)!important}";
     var el = document.createElement("style");
     el.id = "oe-styles";
     el.textContent = css;
@@ -218,7 +218,7 @@
         cancelButton: "oe-cancel",
       },
       buttonsStyling: true,
-      confirmButtonColor: "var(--accent-gold, #c5a059)",
+      confirmButtonColor: "var(--accent-gold, #D8942F)",
       cancelButtonColor: "transparent",
       didOpen: function (popup) {
         var cancel = popup.querySelector(".swal2-cancel");

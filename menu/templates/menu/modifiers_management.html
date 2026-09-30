@@ -19,7 +19,7 @@
     .modifier-row { padding: 0.75rem 0; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; }
     .modifier-row:last-child { border-bottom: none; }
     .modifier-name { font-weight: 500; }
-    .modifier-price { font-family: 'Space Mono', monospace; color: var(--accent-gold); }
+    .modifier-price { font-family: 'Inter', ui-monospace, monospace; color: var(--accent-gold); }
 
     .form-input-luxury {
         background: transparent; border: none; border-bottom: 1px solid var(--border-color);
@@ -40,7 +40,7 @@
     }
     .btn-luxury:hover { border-color: var(--text-main); color: var(--panel-bg); background: var(--text-main); }
     .btn-gold { background: var(--accent-gold); border-color: var(--accent-gold); color: #fff; }
-    .btn-gold:hover { background: #b59250; border-color: #b59250; color: #fff; }
+    .btn-gold:hover { background: #C28226; border-color: #C28226; color: #fff; }
 
     html.dark .btn-close { filter: invert(1) grayscale(100%) brightness(200%); }
     html.dark .modal-content { background: var(--panel-bg); border-color: var(--border-color); color: var(--text-main); }
@@ -179,7 +179,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content" style="border-radius:0;border:1px solid var(--border-color);background:var(--panel-bg);color:var(--text-main);">
             <div class="modal-header" style="border-color:var(--border-color);">
-                <h5 class="modal-title serif-text text-uppercase">Inventory Link — <span id="invModalName"></span></h5>
+                <h5 class="modal-title serif-text text-uppercase">Inventory Link - <span id="invModalName"></span></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
@@ -192,7 +192,7 @@
                 <div class="border-top pt-3">
                     <p class="small text-uppercase fw-bold mb-2" style="letter-spacing:1px;">Add Ingredient</p>
                     <select id="invItemSelect" class="form-control form-input-luxury mb-2">
-                        <option value="">— Select ingredient —</option>
+                        <option value="">- Select ingredient -</option>
                         {% for item in inventory_items %}
                         <option value="{{ item.id }}" data-unit="{{ item.unit }}">{{ item.name }} ({{ item.unit }})</option>
                         {% endfor %}

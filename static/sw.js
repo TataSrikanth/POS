@@ -1,8 +1,8 @@
 /* ============================================================
-   Rasova POS — Service Worker
+   Oi Ramen POS - Service Worker
    Handles: offline caching, install prompt.
-   (Offline order queuing lives in page JS — see offlineQueue in
-   templates/core/base.html — not here. Background Sync API support is
+   (Offline order queuing lives in page JS - see offlineQueue in
+   templates/core/base.html - not here. Background Sync API support is
    unreliable inside the Android app's WebView, so the queue is flushed
    from the page itself on 'online'/page-load, not via a sync event.)
    ============================================================ */
@@ -21,7 +21,7 @@ const STATIC_ASSETS = [
     'https://cdn.jsdelivr.net/npm/sweetalert2@11.10.8/dist/sweetalert2.min.css',
 ];
 
-/* Pages to pre-warm on install (best-effort, need auth so may 302 — that's fine) */
+/* Pages to pre-warm on install (best-effort, need auth so may 302 - that's fine) */
 const OFFLINE_PAGES = [
     '/dashboard/',
     '/billing/',
@@ -74,7 +74,7 @@ self.addEventListener('fetch', event => {
 
     // Skip: non-GET, cross-origin API calls, admin, landing page
     if (request.method !== 'GET') return;
-    if (url.pathname === '/') return;           // landing page — let nginx/browser handle it
+    if (url.pathname === '/') return;           // landing page - let nginx/browser handle it
     if (url.pathname.startsWith('/admin/')) return;
     if (url.pathname.startsWith('/api/')) return;
     // /live-demo/ redirects to the tenant's own subdomain (see
@@ -87,7 +87,7 @@ self.addEventListener('fetch', event => {
     // reasoning as the landing page skip just above.
     if (url.pathname === '/live-demo/') return;
 
-    // Static assets (JS, CSS, fonts) — cache first
+    // Static assets (JS, CSS, fonts) - cache first
     if (
         url.hostname !== location.hostname ||
         url.pathname.startsWith('/static/')
@@ -106,7 +106,7 @@ self.addEventListener('fetch', event => {
         return;
     }
 
-    // App pages — network first, cache on success, serve cache when offline
+    // App pages - network first, cache on success, serve cache when offline
     const isBillingOrKitchen = url.pathname.startsWith('/billing') || url.pathname.startsWith('/kitchen');
     event.respondWith(
         fetch(request, { credentials: 'include' })

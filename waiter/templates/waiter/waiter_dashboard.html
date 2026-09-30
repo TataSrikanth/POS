@@ -37,7 +37,7 @@
     .call-card:hover { transform: translateY(-3px); }
 
     .table-name {
-        font-family: 'DM Serif Display', serif;
+        font-family: 'Inter', sans-serif;
         font-size: 2.2rem;
         color: var(--text-main);
         margin: 0.5rem 0;
@@ -89,7 +89,7 @@
             {{ request.user.tenant.name }}
         </h1>
     </a>
-    <p class="brand-subtitle">Waiter Calls — {{ request.user.outlet.name }}</p>
+    <p class="brand-subtitle">Waiter Calls - {{ request.user.outlet.name }}</p>
 </div>
 {% endblock %}
 
@@ -149,7 +149,7 @@
     {% else %}
     <div class="empty-state">
         <i class="bi bi-cup-hot"></i>
-        <h3 style="font-family:'DM Serif Display',serif;">Everything is Calm</h3>
+        <h3 style="font-family:'Inter', sans-serif;">Everything is Calm</h3>
         <p class="text-uppercase" style="letter-spacing:2px;font-size:0.8rem;">No active waiter calls right now.</p>
     </div>
     {% endif %}

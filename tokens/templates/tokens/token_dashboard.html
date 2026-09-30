@@ -1,7 +1,7 @@
 {% extends 'core/base.html' %}
 {% load static %}
 
-{% block title %}Token Board | {{ request.user.outlet.name }} — {{ request.user.tenant.name }}{% endblock %}
+{% block title %}Token Board | {{ request.user.outlet.name }} - {{ request.user.tenant.name }}{% endblock %}
 
 {% block extra_css %}
 <style>
@@ -41,15 +41,15 @@
     @media (max-width: 480px) { .stats-row { grid-template-columns: repeat(2, 1fr); } }
     .stat-card { background: var(--panel); border: 1px solid var(--border); padding: 1.25rem; text-align: center; }
     .stat-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); margin-bottom: 0.4rem; }
-    .stat-value { font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--gold); line-height: 1; }
+    .stat-value { font-family: 'Inter', sans-serif; font-size: 2rem; color: var(--gold); line-height: 1; }
     .stat-value.neutral { color: var(--text); }
     .stat-value.online-color { color: var(--online); }
 
     /* ── Section header ── */
     .section-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 1rem; border-bottom: 1px solid var(--border); margin-bottom: 1.5rem; }
-    .section-header h2 { font-family: 'DM Serif Display', serif; font-size: 1.3rem; display: flex; align-items: center; gap: 0.5rem; margin: 0; }
-    .section-tag { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; padding: 0.2rem 0.5rem; border-radius: 2px; font-family: 'Outfit', sans-serif; font-weight: 600; }
-    .section-tag.counter { background: rgba(197,160,89,0.12); color: var(--gold); }
+    .section-header h2 { font-family: 'Inter', sans-serif; font-size: 1.3rem; display: flex; align-items: center; gap: 0.5rem; margin: 0; }
+    .section-tag { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; padding: 0.2rem 0.5rem; border-radius: 2px; font-family: 'Inter', sans-serif; font-weight: 600; }
+    .section-tag.counter { background: rgba(216, 148, 47,0.12); color: var(--gold); }
     .section-tag.online-tag { background: rgba(252,128,25,0.12); color: var(--online); }
 
     /* ── Token grid ── */
@@ -64,7 +64,7 @@
     .token-card.is-online { border-left: 3px solid var(--online); }
     .token-card.is-online:hover { border-color: var(--online); }
 
-    .token-number { font-family: 'DM Serif Display', serif; font-size: 2.2rem; line-height: 1; margin-bottom: 0.4rem; }
+    .token-number { font-family: 'Inter', sans-serif; font-size: 2.2rem; line-height: 1; margin-bottom: 0.4rem; }
     .token-amount { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.4rem; }
     .token-badge { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; padding: 0.15rem 0.5rem; border: 1px solid var(--border); display: inline-block; color: var(--muted); }
     .token-badge.billing { border-color: var(--warning); color: var(--warning); }
@@ -102,7 +102,7 @@
             {{ request.user.tenant.name }}
         </h1>
     </a>
-    <p class="brand-subtitle">Tokens — {{ request.user.outlet.name }}</p>
+    <p class="brand-subtitle">Tokens - {{ request.user.outlet.name }}</p>
 </div>
 {% endblock %}
 
@@ -179,7 +179,7 @@
                class="token-card status-{{ token.order.status }}"
                id="token-card-{{ token.order.id }}">
                 <div class="token-number" style="color:var(--accent-gold);">{{ token.token_number }}</div>
-                <div class="token-amount">{% if token.order.grand_total %}₹{{ token.order.grand_total|floatformat:0 }}{% else %}—{% endif %}</div>
+                <div class="token-amount">{% if token.order.grand_total %}₹{{ token.order.grand_total|floatformat:0 }}{% else %}-{% endif %}</div>
                 <div class="token-badge {% if token.order.status == 'billing' %}billing{% elif token.order.status == 'closed' %}paid{% endif %}">
                     {{ token.order.get_status_display }}
                 </div>
@@ -194,7 +194,7 @@
         {% empty %}
         <div class="empty-state" style="grid-column:1/-1;" id="emptyState">
             <i class="bi bi-inbox"></i>
-            <p>No active counter tokens — press New Order to start</p>
+            <p>No active counter tokens - press New Order to start</p>
         </div>
         {% endfor %}
     </div>
@@ -251,7 +251,7 @@
                    class="token-card is-online status-{{ token.order.status }}"
                    id="token-card-{{ token.order.id }}">
                     <div class="token-number" style="color:var(--online);">O-{{ token.token_number }}</div>
-                    <div class="token-amount">{% if token.order.grand_total %}₹{{ token.order.grand_total|floatformat:0 }}{% else %}—{% endif %}</div>
+                    <div class="token-amount">{% if token.order.grand_total %}₹{{ token.order.grand_total|floatformat:0 }}{% else %}-{% endif %}</div>
                     <div class="token-badge platform {% if token.order.source == 'zomato' %}zomato{% elif token.order.source == 'swiggy' %}swiggy{% else %}web{% endif %}">
                         {{ token.order.get_source_display }}
                     </div>
@@ -317,7 +317,7 @@
         if (remaining === 0) {
             const grid = document.getElementById('tokenGrid');
             if (grid && !document.getElementById('emptyState')) {
-                grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1;" id="emptyState"><i class="bi bi-inbox"></i><p>No active counter tokens — press New Order to start</p></div>`;
+                grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1;" id="emptyState"><i class="bi bi-inbox"></i><p>No active counter tokens - press New Order to start</p></div>`;
             }
         }
     }

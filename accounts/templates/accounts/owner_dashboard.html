@@ -6,7 +6,7 @@
 {% block extra_css %}
 <style>
     .section-title {
-        font-family: 'DM Serif Display', serif;
+        font-family: 'Inter', sans-serif;
         font-size: 1.3rem;
         font-weight: 700;
         margin-top: 2rem;
@@ -19,7 +19,7 @@
     }
     .section-title small {
         font-size: 0.7rem;
-        font-family: 'Outfit', sans-serif;
+        font-family: 'Inter', sans-serif;
         letter-spacing: 2px;
         text-transform: uppercase;
         color: var(--text-muted);
@@ -51,12 +51,24 @@
         box-shadow: var(--shadow-hover);
     }
     .quick-card:active { transform: translateY(0); }
+    /* Every tile icon is brand gold on a soft gold chip; on hover the chip
+       fills solid with dark ink (white-on-gold fails contrast). */
     .quick-card .icon {
-        font-size: 1.75rem;
-        margin-bottom: 0.6rem;
-        color: var(--text-muted);
+        font-size: 1.6rem;
+        margin-bottom: 0.7rem;
+        width: 3.25rem;
+        height: 3.25rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 14px;
+        color: var(--accent-gold);
+        background: rgba(216, 148, 47, 0.12);
+        transition: var(--transition-smooth);
     }
-    .quick-card:hover .icon { color: var(--accent-gold); }
+    .quick-card .icon i { color: var(--accent-gold) !important; line-height: 1; transition: var(--transition-smooth); }
+    .quick-card:hover .icon { background: var(--accent-gold); }
+    .quick-card:hover .icon i { color: var(--accent-ink, #181715) !important; }
     .quick-card h5 {
         margin: 0;
         font-weight: 600;
@@ -96,7 +108,7 @@
         padding: 1.25rem;
     }
     .outlet-card h6 {
-        font-family: 'DM Serif Display', serif;
+        font-family: 'Inter', sans-serif;
         font-size: 1.1rem;
         color: var(--accent-gold);
         border-bottom: 1px solid var(--border-color);
@@ -147,7 +159,7 @@
         margin-bottom: 1rem;
     }
     .strip-revenue {
-        font-family: 'DM Serif Display', serif;
+        font-family: 'Inter', sans-serif;
         font-size: 2.4rem;
         font-weight: 700;
         color: var(--accent-gold);
@@ -190,7 +202,7 @@
     /* ── Mobile ────────────────────────────────────── */
     @media (max-width: 576px) {
         .quick-card { min-height: 90px; padding: 1rem 0.75rem; }
-        .quick-card .icon { font-size: 1.5rem; margin-bottom: 0.4rem; }
+        .quick-card .icon { font-size: 1.3rem; width: 2.75rem; height: 2.75rem; margin-bottom: 0.4rem; }
         .quick-card h5 { font-size: 0.72rem; }
         .quick-card p { display: none; }
         .section-title { font-size: 1.1rem; }
@@ -209,7 +221,7 @@
             {{ request.user.tenant.name }}
         </h1>
     </a>
-    <p class="brand-subtitle">Dashboard — {{ request.user.outlet.name }}</p>
+    <p class="brand-subtitle">Dashboard - {{ request.user.outlet.name }}</p>
 </div>
 {% endblock %}
 
@@ -224,6 +236,9 @@
 {% if 'reports' in tenant_features %}
 <a href="/reports/dashboard/" class="btn-luxury text-decoration-none d-none d-md-inline-flex">Reports</a>
 {% endif %}
+{% if not is_cashier %}
+<a href="/setup/" class="btn-luxury text-decoration-none d-none d-md-inline-flex">Setup</a>
+{% endif %}
 <a href="/logout/" class="btn-luxury text-decoration-none d-none d-sm-inline-flex">Logout</a>
 <button class="btn-icon" onclick="themeManager.toggle()" title="Toggle Theme">
     <i class="bi bi-moon" id="themeIcon"></i>
@@ -233,7 +248,7 @@
 {% block content %}
 <div class="container-fluid py-3 px-3 px-md-4">
 
-<!-- ══ MOBILE REVENUE STRIP — only on phones ═══════════════ -->
+<!-- ══ MOBILE REVENUE STRIP - only on phones ═══════════════ -->
 {% if not is_cashier %}
 {% for m in metrics %}
 <div class="mobile-revenue-strip" id="mobileStrip{{ forloop.counter }}">
@@ -280,10 +295,10 @@
         {% else %}
         <a href="{% url 'token-dashboard' %}" class="quick-card" style="border-color:var(--accent-gold);">
         {% endif %}
-            <div class="icon" style="position:relative;display:inline-block;">
+            <div class="icon" style="position:relative;">
                 <i class="bi bi-receipt-cutoff" style="color:var(--accent-gold);"></i>
                 {% if active_token_count > 0 %}
-                <span style="position:absolute;top:-6px;right:-10px;background:var(--accent-gold);color:#fff;border-radius:9px;font-size:0.6rem;padding:1px 5px;font-weight:700;">{{ active_token_count }}</span>
+                <span style="position:absolute;top:-6px;right:-10px;background:var(--accent-gold);color:#181715;border-radius:9px;font-size:0.6rem;padding:1px 5px;font-weight:700;">{{ active_token_count }}</span>
                 {% endif %}
             </div>
             <h5>{% if direct_billing_mode %}New Order{% else %}Tokens{% endif %}</h5>
@@ -405,7 +420,7 @@
     {% comment %}
       Cash Register / EOD is a payment prerequisite (fine-dining blocks payment
       without an open session), so it must NOT be gated behind the optional
-      shift_management feature — owners/managers always need access to it.
+      shift_management feature - owners/managers always need access to it.
     {% endcomment %}
     <div class="col-6 col-md-3 col-lg-2">
         <a href="/shifts/sessions/" class="quick-card">
@@ -523,7 +538,7 @@
                 <div class="metric-cell"><span>Active Tables</span><span data-field="tables">{{ m.active_tables }}</span></div>
                 <div class="metric-cell"><span>Low Stock</span><span data-field="stock" class="{% if m.low_stock > 0 %}low-stock{% endif %}">{{ m.low_stock }}</span></div>
                 <div class="metric-cell"><span>Voids Today</span><span data-field="voids" class="{% if m.voids_today > 0 %}val-warn{% endif %}">{{ m.voids_today }}</span></div>
-                <div class="metric-cell"><span>Discounts</span><span data-field="discounts" class="{% if m.discounts_amount > 0 %}val-warn{% endif %}">{% if m.discounts_amount > 0 %}₹ {{ m.discounts_amount }}{% else %}—{% endif %}</span></div>
+                <div class="metric-cell"><span>Discounts</span><span data-field="discounts" class="{% if m.discounts_amount > 0 %}val-warn{% endif %}">{% if m.discounts_amount > 0 %}₹ {{ m.discounts_amount }}{% else %}-{% endif %}</span></div>
             </div>
         </div>
     </div>
@@ -602,7 +617,7 @@
                     set('tables',   m.active_tables);
                     set('stock',    m.low_stock);
                     set('voids',    m.voids_today);
-                    set('discounts', m.discounts_amount > 0 ? '₹ ' + m.discounts_amount : '—');
+                    set('discounts', m.discounts_amount > 0 ? '₹ ' + m.discounts_amount : '-');
                 });
             })
             .catch(() => {});

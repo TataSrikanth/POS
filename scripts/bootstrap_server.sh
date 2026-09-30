@@ -9,7 +9,7 @@
 #
 # Requires: Ubuntu 24.04+ (Django 6.0 needs Python 3.12+). Run as root:
 #
-#     sudo DOMAIN=rasova.net GOOGLE_API_KEY=AIza... bash scripts/bootstrap_server.sh
+#     sudo DOMAIN=oiramen.com GOOGLE_API_KEY=AIza... bash scripts/bootstrap_server.sh
 #
 # You can also just run `sudo bash scripts/bootstrap_server.sh` and edit the
 # CONFIG block below first. Anything left blank gets a sensible default.
@@ -26,7 +26,7 @@ DB_NAME="${DB_NAME:-pos_db}"
 DB_USER="${DB_USER:-pos_user}"
 DB_PASSWORD="${DB_PASSWORD:-$(openssl rand -hex 16)}"   # generated once if not given
 
-DOMAIN="${DOMAIN:-}"                 # e.g. rasova.net  (blank = localhost only, DEBUG stays off)
+DOMAIN="${DOMAIN:-}"                 # e.g. oiramen.com  (blank = localhost only, DEBUG stays off)
 GOOGLE_API_KEY="${GOOGLE_API_KEY:-}" # optional — enables AI menu import
 # ──────────────────────────────────────────────────────────────────────────────
 

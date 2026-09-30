@@ -5,20 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="color-scheme" content="dark">
-    <meta name="theme-color" content="#0a0a0a">
-    <!-- Inline dark background — prevents white flash between page navigations -->
+    <meta name="theme-color" content="#181715">
+    <!-- Inline dark background - prevents white flash between page navigations -->
     <style>html,body{background:#0a0a0a;}</style>
-    <title>{% block title %}{{ request.user.tenant.name|default:"Rasova POS" }}{% endblock %}</title>
+    <title>{% block title %}{{ request.user.tenant.name|default:"Oi Ramen POS" }}{% endblock %}</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="{% static 'favicon.svg' %}">
-    <link rel="apple-touch-icon" href="{% static 'icon-512.svg' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'brand/favicon-32.png' %}">
+    <link rel="shortcut icon" href="{% static 'brand/favicon.ico' %}">
+    <link rel="apple-touch-icon" href="{% static 'brand/apple-touch-icon.png' %}">
     <link rel="manifest" href="/manifest.json">
 
-    <!-- Google Fonts — Outfit (body) · DM Serif Display (headings) · Space Mono (mono) -->
+    <!-- Google Fonts - Outfit (body) · DM Serif Display (headings) · Space Mono (mono) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family={{ request.user.tenant.font_family|default:'Outfit' }}:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital,wght@0,400;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Bootstrap & Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -38,8 +39,8 @@
         }
     </script>
 
-    <!-- Theme CSS (luxury by default — superuser can change per tenant) -->
-    <link rel="stylesheet" href="{% static 'css/themes/' %}{{ request.user.tenant.theme|default:'luxury' }}.css">
+    <!-- Theme CSS (luxury by default - superuser can change per tenant) -->
+    <link rel="stylesheet" href="{% static 'css/themes/' %}{{ request.user.tenant.theme|default:'luxury' }}.css?v=oiramen1">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token }}">
@@ -47,8 +48,8 @@
     <!-- Tenant-specific dynamic overrides (primary_color, font_family, font_scale from DB) -->
     <style>
         :root {
-            --accent-gold: {{ request.user.tenant.primary_color|default:"#c5a059" }};
-            --font-main:   '{{ request.user.tenant.font_family|default:"Outfit" }}', sans-serif;
+            --accent-gold: {{ request.user.tenant.primary_color|default:"#D8942F" }};
+            --font-main:   'Inter', sans-serif;
             --font-scale:  {{ request.user.tenant.font_scale|default:1.0 }};
             font-size: calc(16px * {{ request.user.tenant.font_scale|default:1.0 }});
         }
@@ -59,7 +60,20 @@
             display: flex;
             flex-direction: column;
         }
-        .mono-text { font-family: 'Space Mono', monospace; }
+        .mono-text { font-family: 'Inter', ui-monospace, monospace; }
+        /* Brand mark: the header icon placeholder becomes the Oi Ramen badge.
+           Inline so a cached theme stylesheet can't leave the old diamond. */
+        .bi.bi-diamond-half, .brand-title > i.bi:first-child { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        .bi.bi-diamond-half::before, .brand-title > i.bi:first-child::before {
+            content: "" !important;
+            display: inline-block;
+            width: 1.9em;
+            height: 1.9em;
+            vertical-align: middle;
+            background: url("{% static 'brand/logo.png' %}") center / contain no-repeat;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
 
         /* NOTIFICATION BADGE (WhatsApp-style) */
         .notif-wrapper { position: relative; display: inline-flex; }
@@ -158,7 +172,7 @@
             color: #fff;
             font-size: 0.65rem;
             font-weight: 700;
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Inter', sans-serif;
             border-radius: 9px;
             display: flex;
             align-items: center;
@@ -208,7 +222,7 @@
         }
 
         .brand-title {
-            font-family: 'DM Serif Display', serif;
+            font-family: 'Inter', sans-serif;
             font-size: 1.65rem;
             margin: 0;
             color: var(--text-main);
@@ -226,7 +240,7 @@
             letter-spacing: 2px;
             color: var(--text-muted);
             margin: 3px 0 0 0;
-            font-family: var(--font-main, 'Outfit', sans-serif);
+            font-family: var(--font-main, 'Inter', sans-serif);
         }
 
         .btn-icon {
@@ -256,7 +270,7 @@
             {% block header_left %}
             <a href="/dashboard/" class="brand-title">
                 <i class="bi bi-diamond-half"></i>
-                <span>{{ request.user.tenant.name|default:"Rasova POS" }}</span>
+                <span>{{ request.user.tenant.name|default:"Oi Ramen POS" }}</span>
             </a>
             <p class="brand-subtitle">{{ request.user.outlet.name|default:"Standard Outlet" }}</p>
             {% endblock %}
@@ -412,13 +426,13 @@
 
         // --- 4b. Offline Queues (IndexedDB) ---
         // Real offline support for order *creation* and, as of this version,
-        // cash payment closure — see plan notes. Records queued here are
+        // cash payment closure - see plan notes. Records queued here are
         // replayed against the real endpoint the moment connectivity
         // returns. Does not depend on the Background Sync API (unreliable
-        // inside the Android app's WebView) — flushes from page JS on
+        // inside the Android app's WebView) - flushes from page JS on
         // 'online' and on load.
         //
-        // UPI/card payments are deliberately NOT queueable offline — both
+        // UPI/card payments are deliberately NOT queueable offline - both
         // require a live round-trip to a payment gateway to actually verify
         // money moved, no client-side queue can fake that verification
         // without accepting an unconfirmed payment claim as real, which is
@@ -491,7 +505,7 @@
                                             // flush (e.g. from page load) is still running
                 if (!navigator.onLine) return;
                 let records;
-                try { records = await this.all(); } catch (e) { return; } // IndexedDB unavailable — nothing to do
+                try { records = await this.all(); } catch (e) { return; } // IndexedDB unavailable - nothing to do
 
                 if (!records.length) return;
                 _flushing = true;
@@ -511,19 +525,19 @@
                         }
 
                         let data;
-                        try { data = await createResp.json(); } catch (e) { break; } // malformed/empty response — stop, retry later
+                        try { data = await createResp.json(); } catch (e) { break; } // malformed/empty response - stop, retry later
 
                         if (!createResp.ok || !data.success) {
                             // Edge case: server rejected the order itself (e.g. the
                             // table/menu item no longer exists by the time we're back
                             // online). Don't retry forever on a request that will never
-                            // succeed — drop it, but tell the cashier so it isn't silently lost.
+                            // succeed - drop it, but tell the cashier so it isn't silently lost.
                             await this.remove(record.id);
-                            ui.toast('A saved offline order could not be recreated (' + (data && data.error ? data.error : 'server rejected it') + ') — please re-enter it.', 'error');
+                            ui.toast('A saved offline order could not be recreated (' + (data && data.error ? data.error : 'server rejected it') + ') - please re-enter it.', 'error');
                             continue;
                         }
 
-                        // Order created — best-effort send to kitchen. Even if this
+                        // Order created - best-effort send to kitchen. Even if this
                         // single call fails, the order itself is now safely created
                         // server-side, so we still drop it from the local queue rather
                         // than risk creating it twice on a retry.
@@ -544,8 +558,8 @@
             }
         };
 
-        // --- 4c. Offline Payment Queue (cash only — see note above) ---
-        // Same shape as offlineQueue, deliberately not shared code with it —
+        // --- 4c. Offline Payment Queue (cash only - see note above) ---
+        // Same shape as offlineQueue, deliberately not shared code with it -
         // the two have different failure semantics (an order can always be
         // safely re-created if the server rejects it; a payment must never
         // be silently retried against a *different* order than the one the
@@ -608,7 +622,7 @@
                                 body: JSON.stringify({ method: 'cash', amount: record.amount })
                             });
                         } catch (networkErr) {
-                            // Connection dropped again mid-flush — stop, leave the
+                            // Connection dropped again mid-flush - stop, leave the
                             // rest queued, retry on next online/load. Never guess
                             // whether a payment we couldn't confirm went through.
                             break;
@@ -620,7 +634,7 @@
                         if (!payResp.ok || !data.success) {
                             // The order itself may have changed state while this
                             // device was offline (e.g. another device already
-                            // closed or cancelled it) — don't retry forever on a
+                            // closed or cancelled it) - don't retry forever on a
                             // request that will never succeed, but this is real
                             // money, so this never gets silently dropped like a
                             // re-creatable order can be. Surface it clearly and
@@ -644,8 +658,8 @@
             const banner = document.getElementById('offline-banner');
             if (!banner) return;
             let orderCount = 0, paymentCount = 0;
-            try { orderCount = (await offlineQueue.all()).length; } catch (e) { /* IndexedDB unavailable — treat as 0 queued */ }
-            try { paymentCount = (await offlinePaymentQueue.all()).length; } catch (e) { /* IndexedDB unavailable — treat as 0 queued */ }
+            try { orderCount = (await offlineQueue.all()).length; } catch (e) { /* IndexedDB unavailable - treat as 0 queued */ }
+            try { paymentCount = (await offlinePaymentQueue.all()).length; } catch (e) { /* IndexedDB unavailable - treat as 0 queued */ }
             const count = orderCount + paymentCount;
 
             if (!navigator.onLine) {
@@ -689,7 +703,7 @@
         let prevSystemCount = -1;
         let pollInterval = null;
 
-        // Short two-tone beep via Web Audio API — no static asset to ship/deploy.
+        // Short two-tone beep via Web Audio API - no static asset to ship/deploy.
         // Browsers block audio until a user gesture; the try/catch just means
         // the very first alert on a page nobody has clicked on yet is silent
         // (the toast + badge still show), which is an acceptable trade-off.
@@ -707,7 +721,7 @@
                     osc.start(ctx.currentTime + i * 0.15);
                     osc.stop(ctx.currentTime + i * 0.15 + 0.15);
                 });
-            } catch (e) { /* audio not available — badge/toast still work */ }
+            } catch (e) { /* audio not available - badge/toast still work */ }
         }
 
         function updateBadge(baseId, count) {
@@ -726,12 +740,12 @@
         }
 
         async function pollNotifications() {
-            // Silently fail — never crash the POS
+            // Silently fail - never crash the POS
             try {
                 const res = await fetch(REAL_URL, {
                     headers: { 'X-Requested-With': 'XMLHttpRequest' }
                 });
-                if (!res.ok) return; // User not logged in or server error — skip silently
+                if (!res.ok) return; // User not logged in or server error - skip silently
 
                 const data = await res.json();
                 const wCount = data.waiter_calls.count || 0;
@@ -748,7 +762,7 @@
                         ui.toast(`🔔 Waiter called from ${call.table}`, 'warning');
                     });
                     if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
-                    sendBrowserNotif(`Waiter Call — ${newCalls[0]?.table || 'Table'}`,
+                    sendBrowserNotif(`Waiter Call - ${newCalls[0]?.table || 'Table'}`,
                         `Customer is calling for assistance.`);
                 }
                 prevWaiterCount = wCount;
@@ -759,7 +773,7 @@
                         ui.toast(`Kitchen (${msg.table}): ${msg.message}`, 'info');
                     });
                     if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
-                    sendBrowserNotif(`Kitchen Alert — ${newMsgs[0]?.table || 'Table'}`,
+                    sendBrowserNotif(`Kitchen Alert - ${newMsgs[0]?.table || 'Table'}`,
                         newMsgs[0]?.message || 'Message from kitchen');
                 }
                 prevKitchenCount = kCount;
@@ -772,11 +786,11 @@
                     if (prevQrCount !== -1 && qCount > prevQrCount) {
                         const newOrders = data.qr_orders.items.slice(0, qCount - prevQrCount);
                         newOrders.forEach(o => {
-                            ui.toast(`🧺 New QR order — ${o.table}. Tap Tables to approve.`, 'success');
+                            ui.toast(`🧺 New QR order - ${o.table}. Tap Tables to approve.`, 'success');
                         });
                         if (navigator.vibrate) navigator.vibrate([200, 100, 200, 100, 200]);
                         playAlertBeep();
-                        sendBrowserNotif(`New QR Order — ${newOrders[0]?.table || 'Table'}`,
+                        sendBrowserNotif(`New QR Order - ${newOrders[0]?.table || 'Table'}`,
                             'A customer placed an order from the table QR menu. Approve it to send to the kitchen.');
                     }
                     prevQrCount = qCount;
@@ -799,7 +813,7 @@
                 }
 
             } catch (e) {
-                // Network blip — ignore, next poll will recover
+                // Network blip - ignore, next poll will recover
             }
         }
 
@@ -809,7 +823,7 @@
             if (Notification.permission === 'granted') {
                 new Notification(title, { body, icon: '/static/icons/icon-192.png' });
             } else if (Notification.permission !== 'denied') {
-                // Ask once — don't spam
+                // Ask once - don't spam
                 Notification.requestPermission();
             }
         }
@@ -847,9 +861,9 @@
         const ios          = /iphone|ipad|ipod/.test(ua) && !android;
         const windows      = !android && !ios && /windows/.test(ua);
         const mac          = !android && !ios && /mac/.test(ua);
-        // nativeAndroid = running inside the Rasova Android APK (WebView shell).
+        // nativeAndroid = running inside the Oi Ramen Android APK (WebView shell).
         // The APK appends "RasovaPOS-Android/1.0" to the user-agent string.
-        // When true: printing is handled by the native foreground service — no Termux needed.
+        // When true: printing is handled by the native foreground service - no Termux needed.
         const nativeAndroid = /rasovaPOS-android/i.test(navigator.userAgent);
         // standalone = running as installed PWA (from home screen shortcut)
         const standalone = window.matchMedia('(display-mode: standalone)').matches
@@ -859,7 +873,7 @@
     })();
 
     // ── Native Android app: auto-configure print service after login ───────────
-    // When the user logs in inside the Rasova APK, tell the native print service
+    // When the user logs in inside the Oi Ramen APK, tell the native print service
     // what URL to poll. The JSBridge receives this and starts the ForegroundService.
     {% if request.user.is_authenticated and request.user.outlet %}
     (function () {
@@ -867,14 +881,14 @@
         // service. Harmless no-op in a browser or when the bridge is absent.
         if (!window.rasovaPlatform || !window.rasovaPlatform.nativeAndroid) return;
         if (typeof Android === 'undefined') return;
-        // Always https — behind Cloudflare (Flexible SSL) request.scheme can be
+        // Always https - behind Cloudflare (Flexible SSL) request.scheme can be
         // 'http', which builds a cleartext URL the Android service rejects
         // (CLEARTEXT not permitted). The app always reaches the server over TLS.
         const pollUrl = 'https://{{ request.get_host }}/orders/agent/{{ request.user.outlet.print_agent_key }}/';
         try {
             Android.startPrinting(pollUrl);
         } catch (e) {
-            console.warn('Rasova native bridge error:', e);
+            console.warn('Oi Ramen native bridge error:', e);
         }
     })();
     {% endif %}
@@ -885,7 +899,7 @@
          ================================================ -->
     <script>
     (function() {
-        // Register service worker (static-asset caching only — offline order
+        // Register service worker (static-asset caching only - offline order
         // and cash-payment queuing/sync happens in page JS via offlineQueue
         // and offlinePaymentQueue, not the service worker, so there's no
         // postMessage listener to wire up here).
@@ -897,7 +911,7 @@
 
         // ── Install prompt ──────────────────────────────────────────────────────
         // Suppressed entirely for the shared /live-demo/ account (trailer-mode
-        // visitors AND the founder-key walkthrough) -- "Install Rasova POS"
+        // visitors AND the founder-key walkthrough) -- "Install Oi Ramen POS"
         // makes no sense on a demo account nobody actually owns, and it's a
         // confusing thing to have pop up mid pitch on a real prospect's screen.
         const IS_DEMO_SESSION = {% if "demo_trailer_mode" in request.session %}true{% else %}false{% endif %};
@@ -912,9 +926,9 @@
             if (document.getElementById('pwa-banner')) return;
             const p = rasovaPlatform;
             const sub = p.nativeAndroid
-                ? 'Rasova app — printing is already active'
+                ? 'Oi Ramen app - printing is already active'
                 : p.android
-                ? 'Add to home screen — tap Install, then set up printing in Termux'
+                ? 'Add to home screen - tap Install, then set up printing in Termux'
                 : p.ios
                     ? 'Use Share → Add to Home Screen in Safari'
                     : 'Add to your desktop for the best experience';
@@ -925,11 +939,11 @@
                 background:var(--panel-bg);border-top:1px solid var(--border-color);
                 padding:0.75rem 1.25rem;display:flex;align-items:center;
                 justify-content:space-between;z-index:9998;gap:1rem;
-                font-family:var(--font-main,'Outfit',sans-serif);
+                font-family:var(--font-main,'Inter',sans-serif);
             `;
             banner.innerHTML = `
                 <div style="flex:1;">
-                    <div style="font-weight:600;font-size:0.9rem;color:var(--text-main);">Install Rasova POS</div>
+                    <div style="font-weight:600;font-size:0.9rem;color:var(--text-main);">Install Oi Ramen POS</div>
                     <div style="font-size:0.75rem;color:var(--text-muted);">${sub}</div>
                 </div>
                 <button id="pwa-install-btn" style="background:var(--accent-gold);color:#fff;border:none;padding:0.6rem 1.2rem;font-size:0.8rem;text-transform:uppercase;letter-spacing:1px;cursor:pointer;min-height:44px;white-space:nowrap;">Install</button>
@@ -960,16 +974,16 @@
         // ── Post-install setup sheet ────────────────────────────────────────────
         function showPostInstallSheet() {
             if (localStorage.getItem('rasova_agent_setup_done')) return;
-            // Native Android app handles printing itself — no setup sheet needed
+            // Native Android app handles printing itself - no setup sheet needed
             if (rasovaPlatform.nativeAndroid) return;
             const p = rasovaPlatform;
 
-            // Poll URL shown in Android steps — baked in by Django template
+            // Poll URL shown in Android steps - baked in by Django template
         const POLL_URL = '{{ request.scheme }}://{{ request.get_host }}/orders/agent/{{ request.user.outlet.print_agent_key }}/';
 
         let title, steps, canTest;
             if (p.android) {
-                title   = 'Enable printing — 3 steps, once only';
+                title   = 'Enable printing - 3 steps, once only';
                 const cmd1 = `pkg install python &amp;&amp; pip install requests`;
                 const cmd2 = `python rasova_agent.py --poll '${POLL_URL}' --install-boot`;
                 steps   = [
@@ -978,11 +992,11 @@
                     `Copy <strong>rasova_agent.py</strong> to phone, then run:<br><code style="background:rgba(255,255,255,0.05);padding:2px 6px;font-size:0.73rem;word-break:break-all;">${cmd2}</code>`,
                     'Android Settings → Apps → Termux → Battery → <strong>Unrestricted</strong>',
                 ];
-                canTest = false; // polling mode — no local WebSocket to test
+                canTest = false; // polling mode - no local WebSocket to test
             } else if (p.ios) {
                 title   = 'Printing on iOS';
                 steps   = [
-                    'Rasova will open the receipt in a new tab when you print',
+                    'Oi Ramen will open the receipt in a new tab when you print',
                     'Use <strong>Share → Print</strong> to send to AirPrint printers',
                     'No extra app needed',
                 ];
@@ -1002,7 +1016,7 @@
             sheet.style.cssText = `
                 position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:10000;
                 display:flex;align-items:flex-end;justify-content:center;
-                font-family:var(--font-main,'Outfit',sans-serif);
+                font-family:var(--font-main,'Inter',sans-serif);
             `;
             sheet.innerHTML = `
                 <div style="background:var(--panel-bg);border:1px solid var(--border-color);width:100%;max-width:540px;padding:1.5rem;border-radius:0;position:relative;">
@@ -1017,7 +1031,7 @@
                         <button onclick="testAgentFromSheet(this)" style="background:var(--accent-gold);color:#fff;border:none;padding:0.55rem 1.2rem;font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;cursor:pointer;min-height:44px;">Test Connection</button>
                         <span id="sheet-agent-status" style="font-size:0.78rem;color:var(--text-muted);"></span>
                     </div>` : ''}
-                    <button onclick="localStorage.setItem('rasova_agent_setup_done','1');document.getElementById('post-install-sheet').remove();" style="margin-top:1rem;width:100%;background:transparent;border:1px solid var(--border-color);color:var(--text-muted);padding:0.5rem;font-size:0.72rem;text-transform:uppercase;letter-spacing:1px;cursor:pointer;min-height:44px;">Got it — don't show again</button>
+                    <button onclick="localStorage.setItem('rasova_agent_setup_done','1');document.getElementById('post-install-sheet').remove();" style="margin-top:1rem;width:100%;background:transparent;border:1px solid var(--border-color);color:var(--text-muted);padding:0.5rem;font-size:0.72rem;text-transform:uppercase;letter-spacing:1px;cursor:pointer;min-height:44px;">Got it - don't show again</button>
                 </div>
             `;
             document.body.appendChild(sheet);
@@ -1041,10 +1055,10 @@
                     };
                     ws.onerror = () => { clearTimeout(t); rej(); };
                 });
-                status.textContent = '✓ Agent connected — printing is ready';
+                status.textContent = '✓ Agent connected - printing is ready';
                 status.style.color = '#10b981';
             } catch {
-                status.textContent = 'Not running — follow the steps above first';
+                status.textContent = 'Not running - follow the steps above first';
                 status.style.color = '#ef4444';
             } finally {
                 btn.disabled = false;
@@ -1052,13 +1066,13 @@
         };
 
         // ── Agent check when running as installed PWA ───────────────────────────
-        // Android uses polling mode — no WebSocket to probe. We detect via a
+        // Android uses polling mode - no WebSocket to probe. We detect via a
         // lightweight ping to the poll URL. Desktop checks the WebSocket.
         if (rasovaPlatform.standalone && !localStorage.getItem('rasova_agent_setup_done')) {
             window.addEventListener('load', () => {
                 if (rasovaPlatform.ios) return;
                 if (rasovaPlatform.android) {
-                    // For polling mode, just show the setup sheet — there's nothing to probe
+                    // For polling mode, just show the setup sheet - there's nothing to probe
                     // (the agent running or not doesn't affect connectivity from the browser's POV)
                     return;
                 }
@@ -1083,15 +1097,15 @@
                 background:#92400e;color:#fef3c7;
                 padding:0.5rem 1rem;font-size:0.78rem;
                 display:flex;align-items:center;justify-content:space-between;
-                z-index:9999;gap:1rem;font-family:var(--font-main,'Outfit',sans-serif);
+                z-index:9999;gap:1rem;font-family:var(--font-main,'Inter',sans-serif);
             `;
             const msg = rasovaPlatform.nativeAndroid
-                ? 'Printing unavailable — open Rasova app and allow battery optimization'
+                ? 'Printing unavailable - open Oi Ramen app and allow battery optimization'
                 : rasovaPlatform.android
-                ? 'Printing unavailable — open Termux and run: python rasova_agent.py'
-                : 'Printing unavailable — start Rasova Agent on this device';
+                ? 'Printing unavailable - open Termux and run: python rasova_agent.py'
+                : 'Printing unavailable - start Oi Ramen Agent on this device';
             hint.innerHTML = `
-                <span><strong>Agent offline</strong> — ${msg}</span>
+                <span><strong>Agent offline</strong> - ${msg}</span>
                 <button onclick="document.getElementById('agent-offline-hint').remove();" style="background:none;border:none;color:#fef3c7;font-size:1.1rem;cursor:pointer;padding:0;min-height:32px;">✕</button>
             `;
             document.body.insertAdjacentElement('afterbegin', hint);
@@ -1100,7 +1114,7 @@
     </script>
 
     {% if user.is_authenticated and user.tenant %}
-    <div id="setup-checklist-widget" style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:9990;font-family:var(--font-main,'Outfit',sans-serif);display:none;">
+    <div id="setup-checklist-widget" style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:9990;font-family:var(--font-main,'Inter',sans-serif);display:none;">
         <div id="setup-checklist-panel" style="display:none;background:var(--panel-bg);border:1px solid var(--border-color);width:260px;margin-bottom:0.5rem;box-shadow:0 8px 32px rgba(0,0,0,0.3);">
             <div style="padding:0.85rem 1rem;border-bottom:1px solid var(--border-color);display:flex;align-items:center;justify-content:space-between;">
                 <span style="font-size:0.7rem;text-transform:uppercase;letter-spacing:2px;color:var(--accent-gold);font-weight:700;">Setup Checklist</span>

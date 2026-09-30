@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bill — {{ tenant.name }}</title>
+<title>Bill - {{ tenant.name }}</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   body {
@@ -22,7 +22,7 @@
     padding: 2rem 1.6rem;
   }
   .r-header { text-align: center; margin-bottom: 1.4rem; border-bottom: 1px dashed #2a2a2a; padding-bottom: 1.4rem; }
-  .r-logo { font-family: 'Georgia', serif; font-size: 1.6rem; color: #c5a059; margin-bottom: .3rem; }
+  .r-logo { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.6rem; color: #D8942F; margin-bottom: .3rem; }
   .r-addr { font-size: .72rem; color: #8a8278; line-height: 1.4; }
 
   .meta { display: flex; justify-content: space-between; font-size: .78rem; margin-bottom: .9rem; }
@@ -36,13 +36,13 @@
   .total-row { display: flex; justify-content: space-between; padding: .2rem 0; font-size: .85rem; color: #b0a89c; }
   .grand-total {
     display: flex; justify-content: space-between;
-    font-size: 1.3rem; color: #c5a059; font-weight: 600;
+    font-size: 1.3rem; color: #D8942F; font-weight: 600;
     border-top: 1px solid #2a2a2a; margin-top: .8rem; padding-top: .8rem;
   }
 
   .balance {
     margin-top: 1rem; padding: .9rem; text-align: center;
-    background: rgba(197,160,89,.06); border: 1px solid #2a2a2a;
+    background: rgba(216, 148, 47,.06); border: 1px solid #2a2a2a;
   }
   .balance.paid { background: rgba(34,197,94,.06); border-color: rgba(34,197,94,.2); }
   .balance .lbl { font-size: .58rem; text-transform: uppercase; letter-spacing: 2px; color: #6a655e; margin-bottom: 4px; }
@@ -50,10 +50,10 @@
 
   .feedback-link {
     display: block; text-align: center; margin-top: 1.2rem; padding: .8rem;
-    border: 1px solid #2a2a2a; color: #c5a059; text-decoration: none;
+    border: 1px solid #2a2a2a; color: #D8942F; text-decoration: none;
     font-size: .8rem; letter-spacing: .5px;
   }
-  .feedback-link:hover { border-color: #c5a059; }
+  .feedback-link:hover { border-color: #D8942F; }
 
   .footer { text-align: center; font-size: .65rem; color: #4a463f; margin-top: 1.4rem; letter-spacing: .5px; }
 </style>
@@ -105,7 +105,7 @@
   <a class="feedback-link" href="{% url 'public-feedback' feedback_token %}">&#9733; Rate Your Experience</a>
   {% endif %}
 
-  <div class="footer">Powered by Rasova POS</div>
+  <div class="footer">Powered by Oi Ramen POS</div>
 </div>
 </body>
 </html>

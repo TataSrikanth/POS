@@ -5,7 +5,7 @@
 {% block extra_css %}
 <style>
   .page-eyebrow { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 4px; color: var(--accent-gold); margin-bottom: 0.5rem; }
-  .page-title   { font-family: 'DM Serif Display', serif; font-size: 1.8rem; font-weight: 700; }
+  .page-title   { font-family: 'Inter', sans-serif; font-size: 1.8rem; font-weight: 700; }
   .divider      { width: 40px; height: 1px; background: var(--accent-gold); margin: 1.2rem 0; }
   .page-sub     { color: var(--text-muted); font-size: 0.8rem; line-height: 1.6; margin-bottom: 2rem; }
   .section-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); font-weight: 600; margin-bottom: 1rem; }
@@ -34,7 +34,7 @@
     transition: border-color 0.15s, background 0.15s; font-family: inherit;
   }
   .print-mode-opt:hover  { border-color: var(--accent-gold); }
-  .print-mode-opt.active { border-color: var(--accent-gold); background: rgba(197,160,89,0.07); }
+  .print-mode-opt.active { border-color: var(--accent-gold); background: rgba(216, 148, 47,0.07); }
   .pm-icon  { font-size: 1.2rem; margin-bottom: 0.2rem; }
   .pm-title { font-size: 0.78rem; font-weight: 700; color: var(--text-main); }
   .pm-desc  { font-size: 0.65rem; color: var(--text-muted); line-height: 1.4; }
@@ -100,7 +100,7 @@
 {% endblock %}
 
 {% block header_left %}
-<a href="/setup/" style="text-decoration:none;color:inherit;font-family:'DM Serif Display',serif;font-size:1.1rem;">
+<a href="/setup/" style="text-decoration:none;color:inherit;font-family:'Inter', sans-serif;font-size:1.1rem;">
   <i class="bi bi-asterisk me-2" style="color:var(--accent-gold)"></i>Setup
 </a>
 {% endblock %}
@@ -126,7 +126,7 @@
 
     {% if messages %}
       {% for msg in messages %}
-        <div style="background:rgba(197,160,89,0.07);border-left:3px solid var(--accent-gold);padding:0.9rem 1.1rem;font-size:0.75rem;line-height:1.6;color:var(--text-main);margin-bottom:1.5rem;">{{ msg }}</div>
+        <div style="background:rgba(216, 148, 47,0.07);border-left:3px solid var(--accent-gold);padding:0.9rem 1.1rem;font-size:0.75rem;line-height:1.6;color:var(--text-main);margin-bottom:1.5rem;">{{ msg }}</div>
       {% endfor %}
     {% endif %}
 
@@ -141,11 +141,11 @@
   <!-- RIGHT: EXISTING STATIONS -->
   <div>
 
-    <!-- Agent status — single row -->
+    <!-- Agent status - single row -->
     <div class="agent-row">
       <span class="agent-pill">
         <span class="dot" id="agentDot"></span>
-        <span id="agentStatusText" style="color:var(--text-muted);">Checking Rasova Agent…</span>
+        <span id="agentStatusText" style="color:var(--text-muted);">Checking Oi Ramen Agent…</span>
       </span>
       <a href="{% url 'printer_setup' %}" style="font-size:0.7rem;color:var(--accent-gold);text-decoration:none;letter-spacing:1px;text-transform:uppercase;">
         Printer Settings <i class="bi bi-arrow-right ms-1"></i>
@@ -230,13 +230,13 @@
           <div>
             <label class="field-label">Paper Width</label>
             <select class="field-select" id="paper-{{ station.id }}">
-              <option value="80" {% if station.paper_width_mm == 80 %}selected{% endif %}>80mm — standard</option>
-              <option value="58" {% if station.paper_width_mm == 58 %}selected{% endif %}>58mm — narrow</option>
+              <option value="80" {% if station.paper_width_mm == 80 %}selected{% endif %}>80mm - standard</option>
+              <option value="58" {% if station.paper_width_mm == 58 %}selected{% endif %}>58mm - narrow</option>
             </select>
           </div>
         </div>
 
-        <!-- Advanced fields — collapsed by default -->
+        <!-- Advanced fields - collapsed by default -->
         <button class="advanced-toggle" onclick="toggleAdvanced({{ station.id }})">
           <i class="bi bi-chevron-right" id="adv-icon-{{ station.id }}" style="font-size:0.6rem;"></i>
           Advanced
@@ -259,9 +259,9 @@
           </div>
           <label class="field-label">Encoding</label>
           <select class="field-select" id="enc-{{ station.id }}" style="max-width:320px;">
-            <option value="cp437" {% if station.printer_encoding == 'cp437' %}selected{% endif %}>CP437 — standard (most printers)</option>
-            <option value="cp850" {% if station.printer_encoding == 'cp850' %}selected{% endif %}>CP850 — western Europe</option>
-            <option value="utf-8" {% if station.printer_encoding == 'utf-8' %}selected{% endif %}>UTF-8 — modern printers only</option>
+            <option value="cp437" {% if station.printer_encoding == 'cp437' %}selected{% endif %}>CP437 - standard (most printers)</option>
+            <option value="cp850" {% if station.printer_encoding == 'cp850' %}selected{% endif %}>CP850 - western Europe</option>
+            <option value="utf-8" {% if station.printer_encoding == 'utf-8' %}selected{% endif %}>UTF-8 - modern printers only</option>
           </select>
           <p class="hint">Leave CP437 unless your printer explicitly supports UTF-8.</p>
         </div>
@@ -289,7 +289,7 @@
       </div>
     </div>
     {% empty %}
-    <p class="empty-state">No stations yet. Add one on the left — at least one is needed for KOT routing.</p>
+    <p class="empty-state">No stations yet. Add one on the left - at least one is needed for KOT routing.</p>
     {% endfor %}
 
   </div>
@@ -328,16 +328,16 @@
   {% else %}
   <div style="background:var(--panel-bg);border:1px solid var(--border-color);padding:1.5rem;">
     <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:1.25rem;">
-      <span style="font-size:0.65rem;text-transform:uppercase;letter-spacing:2px;font-weight:700;color:var(--accent-gold);background:rgba(197,160,89,.1);padding:3px 10px;">Cashier Strip Mode</span>
+      <span style="font-size:0.65rem;text-transform:uppercase;letter-spacing:2px;font-weight:700;color:var(--accent-gold);background:rgba(216, 148, 47,.1);padding:3px 10px;">Cashier Strip Mode</span>
       <span style="font-size:0.75rem;color:var(--text-muted);">Bill + all KOTs print as one connected strip at payment</span>
     </div>
     <div style="display:flex;align-items:stretch;gap:0;flex-wrap:wrap;row-gap:0.5rem;">
       <div class="strip-block strip-bill">BILL</div>
-      <div class="strip-cut strip-part">— partial</div>
+      <div class="strip-cut strip-part">- partial</div>
       {% for station in stations %}
       <div class="strip-block strip-kot">KOT<br><span style="font-size:0.6rem;opacity:0.8;">{{ station.name }}</span></div>
       {% if not forloop.last %}
-      <div class="strip-cut strip-part">— partial</div>
+      <div class="strip-cut strip-part">- partial</div>
       {% else %}
       <div class="strip-cut strip-full">✂ FULL CUT</div>
       {% endif %}
@@ -345,7 +345,7 @@
     </div>
     <p style="font-size:0.72rem;color:var(--text-muted);margin-top:1rem;margin-bottom:0;border-top:1px solid var(--border-color);padding-top:0.75rem;">
       Cashier tears off the full strip after payment. Staff deliver each section to the station.
-      {% if not cashier_ip %}<br><strong style="color:#f59e0b;">No printer IP set</strong> — open the default station above and enter its IP.{% endif %}
+      {% if not cashier_ip %}<br><strong style="color:#f59e0b;">No printer IP set</strong> - open the default station above and enter its IP.{% endif %}
     </p>
   </div>
   {% endif %}
@@ -380,11 +380,11 @@ async function checkAgentStatus() {
     const ws = await connectAgent(2000);
     ws.send(JSON.stringify({ type: 'ping' }));
     dot.className  = 'dot green';
-    text.textContent = 'Rasova Agent running';
+    text.textContent = 'Oi Ramen Agent running';
     text.style.color = '#10b981';
   } catch {
     dot.className  = 'dot red';
-    text.innerHTML = 'Agent not running — <a href="{% static "agent/rasova_agent_installer.bat" %}" download style="color:var(--accent-gold);">Download installer</a>';
+    text.innerHTML = 'Agent not running - <a href="{% static "agent/rasova_agent_installer.bat" %}" download style="color:var(--accent-gold);">Download installer</a>';
     text.style.color = 'var(--text-muted)';
   }
 }
@@ -395,7 +395,7 @@ async function setPrintMode(mode) {
     if (!confirm(
       'Switch to One Printer mode?\n\n' +
       'This will clear the printer IP from all stations except the default station.\n\n' +
-      'The default station keeps its IP — bill + KOTs print there as one strip.'
+      'The default station keeps its IP - bill + KOTs print there as one strip.'
     )) return;
     try {
       await apiClient.post('/setup/kitchen-stations/set-mode/cashier/', {});
@@ -419,7 +419,7 @@ document.addEventListener('DOMContentLoaded', () => {
   {% if any_station_has_printer %}
   hint.textContent = 'Each station has its own printer. KOTs print at the station when the order is sent.';
   {% else %}
-  hint.innerHTML = '✓ One Printer mode — enter the IP on the <strong>{% if default_station %}{{ default_station.name }}{% else %}default{% endif %}</strong> station only.';
+  hint.innerHTML = '✓ One Printer mode - enter the IP on the <strong>{% if default_station %}{{ default_station.name }}{% else %}default{% endif %}</strong> station only.';
   hint.style.color = '#10b981';
   {% endif %}
 });
@@ -483,7 +483,7 @@ async function testPrint(id) {
     ESC + '@',
     ESC + 'a\x01',
     ESC + '!\x18',
-    'Rasova\n',
+    'Oi Ramen\n',
     ESC + '!\x00',
     ESC + 'a\x01',
     'Test Print\n',
@@ -514,7 +514,7 @@ async function testPrint(id) {
     const dots = document.getElementById(`card-${id}`).querySelectorAll('.dot');
     if (dots.length) dots[0].style.background = '#10b981';
   } catch(e) {
-    const msg = e.message === 'not running' ? 'Rasova Agent not running' : (e.message || 'Could not reach printer');
+    const msg = e.message === 'not running' ? 'Oi Ramen Agent not running' : (e.message || 'Could not reach printer');
     setStatus(id, 'err', msg);
     ui.toast(msg, 'error');
   } finally {
@@ -559,7 +559,7 @@ async function discoverPrinterIp(id) {
       result.style.color = 'var(--text-muted)';
     }
   } catch(e) {
-    result.textContent = e.message === 'not running' ? 'Rasova Agent not running' : 'Scan failed: ' + e.message;
+    result.textContent = e.message === 'not running' ? 'Oi Ramen Agent not running' : 'Scan failed: ' + e.message;
     result.style.color = '#ef4444';
   } finally {
     btn.disabled = false;
