@@ -555,7 +555,7 @@ class PurchaseOrderItem(models.Model):
     quantity_received = models.DecimalField(
         max_digits=12, decimal_places=3, default=0,
         help_text="How much of this line has actually arrived so far. Can be "
-                   "less than quantity - a delivery can be partial or split "
+                   "less than quantity — a delivery can be partial or split "
                    "across more than one receipt.",
     )
     invoiced_price = models.DecimalField(
